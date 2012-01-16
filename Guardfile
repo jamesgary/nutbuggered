@@ -2,7 +2,7 @@ guard 'coffeescript', :output => 'nutbuggered/js/compiled' do
   watch(%r{^app/(.+\.coffee)$})
 end
 
-guard 'coffeescript', :output => 'spec/javascripts/compiled' do
+guard 'coffeescript', :output => 'spec/js/compiled' do
   watch(%r{^spec/coffee/(.+\.coffee)$})
 end
 
