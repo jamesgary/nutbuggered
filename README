@@ -1,0 +1,5 @@
+Start guard:
+    bundle exec guard
+Start jasmine:
+    bundle exec rake jasmine
+When you open your browser to localhost:8080 for Jasmine, download the LiveReload plugin to get all the LiveReload goodies.
