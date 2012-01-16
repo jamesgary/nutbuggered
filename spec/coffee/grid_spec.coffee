@@ -5,7 +5,7 @@ describe 'Grid', ->
   O = false
   describe 'when freshly constructed', ->
     beforeEach ->
-      @g = new Grid
+      @g = new NB.Grid
     it 'should have a default length of 10', ->
       expect(@g.length).toEqual 10
     it 'should have a default width of 10', ->
@@ -14,7 +14,7 @@ describe 'Grid', ->
       beforeEach ->
         @custom_length = 4
         @custom_width = 2
-        @g = new Grid @custom_width, @custom_length
+        @g = new NB.Grid @custom_width, @custom_length
       it 'should have custom length', ->
         expect(@g.length).toEqual @custom_length
       it 'should have custom width', ->
@@ -30,7 +30,7 @@ describe 'Grid', ->
         expect(@g.cellAt(9,9)).toEqual O
   describe 'after some generations', ->
     beforeEach ->
-      @g = new Grid 3, 3 # smaller grid for more managable test cases
+      @g = new NB.Grid 3, 3 # smaller grid for more managable test cases
     describe 'Rule 0: Any dead cell without exactly three live neighbors remains dead', ->
       describe 'with a grid of a dead cells', ->
         it 'should remain a grid of dead cells', ->
@@ -98,7 +98,7 @@ describe 'Grid', ->
           expect(@g.cellAt(1,1)).toBe(X)
   describe 'smoke test', ->
     it 'should perform a couple tall "glider" generations', ->
-      @g = new Grid 3, 4
+      @g = new NB.Grid 3, 4
       @g.cells = [[O, X, O],
                   [O, O, X],
                   [X, X, X],
@@ -114,7 +114,7 @@ describe 'Grid', ->
                                 [X, O, X],
                                 [O, X, X]]
     it 'should perform a couple wide "glider" generations', ->
-      @g = new Grid 4, 3
+      @g = new NB.Grid 4, 3
       @g.cells = [[O, O, X, O],
                   [X, O, X, O],
                   [O, X, X, O]]
@@ -129,5 +129,5 @@ describe 'Grid', ->
   describe '.randomize', ->
     # don't feel like writing test, so...
     it "shouldn't break anything", ->
-      g = new Grid()
+      g = new NB.Grid()
       g.randomize()

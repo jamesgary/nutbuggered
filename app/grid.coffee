@@ -1,4 +1,4 @@
-(exports ? this).Grid = class Grid
+NB.Grid = class Grid
   constructor: (@width = 10, @length = 10) ->
     @cells = []
     for x in [0...@length]
