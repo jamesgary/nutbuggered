@@ -1,4 +1,8 @@
+files = [
+  "../js/compiled/grid_spec.js",
+  "../js/compiled/map_spec.js",
+]
 require ["../../nutbuggered/js/compiled/boot.js"], ->
   console.log("App is loaded")
-  require ["../js/compiled/grid_spec.js"], ->
+  require files, ->
     console.log("Specs are loaded")

@@ -1,3 +1,7 @@
 (exports ? this).NB = {}
-require ["js/compiled/grid.js"], ->
+files = [
+  "js/compiled/grid.js",
+  "js/compiled/map.js",
+]
+require files, ->
   console.log("* All loaded, sir!")
