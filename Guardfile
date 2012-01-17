@@ -7,6 +7,6 @@ guard 'coffeescript', :output => 'spec/js/compiled' do
 end
 
 guard 'livereload', :apply_js_live => false do
-  watch(%r{^spec/javascripts/compiled/(.+\.js)$})
+  watch(%r{^spec/js/compiled/(.+\.js)$})
   watch(%r{^nutbuggered/js/(.+\.js)$})
 end
