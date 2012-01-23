@@ -9,6 +9,7 @@
   <link rel="stylesheet" type="text/css" href="jasmine.css">
   <script type="text/javascript" src="jasmine.js"></script>
   <script type="text/javascript" src="jasmine-html.js"></script>
+  <script type="text/javascript" src="jasmine-dn/dn-reporter.js"></script>
 
   <script data-main="../js/compiled/spec_boot.js" src="../../nutbuggered/js/vendor/require.js"></script>
 
@@ -18,8 +19,9 @@
       jasmineEnv.updateInterval = 1000;
 
       var trivialReporter = new jasmine.TrivialReporter();
-
       jasmineEnv.addReporter(trivialReporter);
+
+      jasmineEnv.addReporter(new jasmine.DnReporter());
 
       jasmineEnv.specFilter = function(spec) {
         return trivialReporter.specFilter(spec);
