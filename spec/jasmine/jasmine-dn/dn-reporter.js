@@ -2,7 +2,7 @@ jasmine.DnReporter = function(params) {
 };
 
 jasmine.DnReporter.prototype.reportRunnerResults = function(spec) {
-  if (window.webkitNotifications.checkPermission() == 0) {
+  if (window.webkitNotifications.checkPermission() === 0) {
     var results = spec.results();
     var notification;
 
@@ -20,7 +20,9 @@ jasmine.DnReporter.prototype.reportRunnerResults = function(spec) {
       title = 'Failed';
     }
     notification = window.webkitNotifications.createNotification(iconUrl, title, body);
-    notification.show();
+    setTimeout(function(){
+      notification.show();
+    }, '100'); // to prevent premature showing during fast refreshes
     setTimeout(function(){
       notification.cancel();
     }, '3000');

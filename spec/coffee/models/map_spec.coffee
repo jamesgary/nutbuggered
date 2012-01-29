@@ -2,7 +2,7 @@ describe 'Map', ->
   beforeEach ->
     @map = new NB.Map
   it 'exists', ->
-    expect(@map).toNotBe undefined
+    expect(@map).toBeDefined
   it 'can retrieve cells', ->
     expect(@map.cellAt(1, 1)).toBe null
   describe 'when placing towers', ->
