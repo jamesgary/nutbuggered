@@ -9,4 +9,4 @@ files = [
 ]
 require files, ->
   console.log("* All loaded, sir!")
-  NB.Director.start()
+  #NB.Director.start()

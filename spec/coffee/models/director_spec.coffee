@@ -6,6 +6,8 @@ describe 'Director', ->
       load: ->,
     }
     spyOn(NB, 'Stage').andReturn(@mockStage)
+  afterEach ->
+    @director.end()
   describe 'when it starts', ->
     it 'creates a stage', ->
       @director.start()
@@ -14,10 +16,15 @@ describe 'Director', ->
       @mockMap = {}
       spyOn(NB, 'Map').andReturn(@mockMap)
       spyOn(@mockStage, 'load')
-      @director = NB.Director.start()
+      @director.start()
       expect(@mockStage.load).toHaveBeenCalledWith(@mockMap)
   describe 'after it starts', ->
-    xit 'ticks about 60 times per second'
+    it 'ticks about 60 times per second', ->
+      spyOn(@director, 'tick')
+      @director.start()
+      waits(1000)
+      runs ->
+        expect(@director.tick.callCount).toBeGreaterThan(40)
   describe '#tick', ->
     it 'ticks the stage', ->
       spyOn(@mockStage, 'tick')
