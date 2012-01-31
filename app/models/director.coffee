@@ -3,10 +3,8 @@ NB.Director = {
   start: ->
     @stage = new NB.Stage()
     @stage.load(new NB.Map())
-    @tickerInterval = setInterval(@tick, 1000 / @FPS)
+    @tick()
   tick: ->
-    @stage.tick()
-  end: ->
-    if @tickerInterval
-      clearInterval(@tickerInterval)
+    webkitRequestAnimationFrame(NB.Director.tick)
+    NB.Director.stage.tick()
 }

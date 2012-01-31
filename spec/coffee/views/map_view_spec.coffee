@@ -1,5 +1,8 @@
 describe 'MapView', ->
   beforeEach ->
     @map = new NB.Map
-  xit 'can draw', ->
-    @map.draw()
+  afterEach ->
+    element = document.getElementById("main")
+    element.parentNode.removeChild(element)
+  it 'can draw initially', ->
+    @map.drawInit()

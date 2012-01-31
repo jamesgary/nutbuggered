@@ -1,6 +1,6 @@
-NB.Map.prototype.draw = ->
+NB.Map.prototype.drawInit = ->
   canvas = document.getElementById('main')
-  canvas.width = 800
+  canvas.width = 640
   canvas.height = 640
   ctx = canvas.getContext("2d")
 
@@ -11,4 +11,4 @@ NB.Map.prototype.draw = ->
       for y in [0...@height]
         ctx.drawImage(grass, x * dim, y * dim)
 
-  grass.src = "grass.png?#{new Date().getTime()}"
+  grass.src = "img/grass.png?#{new Date().getTime()}"

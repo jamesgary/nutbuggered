@@ -9,4 +9,5 @@ files = [
 ]
 require files, ->
   console.log("* All loaded, sir!")
-  #NB.Director.start()
+  if (typeof jasmine == 'undefined')
+    NB.Director.start()

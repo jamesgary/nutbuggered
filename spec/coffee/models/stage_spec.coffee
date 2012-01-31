@@ -1,6 +1,12 @@
 describe 'Stage', ->
   beforeEach ->
     @stage = new NB.Stage()
+  describe '.load', ->
+    it 'draws the initial image for the object if possible', ->
+      drawInitable = {drawInit: ->}
+      spyOn(drawInitable, 'drawInit')
+      @stage.load(drawInitable)
+      expect(drawInitable.drawInit).toHaveBeenCalled()
   describe '.tick', ->
     it 'ticks all loaded tickables', ->
       tickable = {tick: ->}
