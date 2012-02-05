@@ -1,8 +1,10 @@
 describe 'Map', ->
   beforeEach ->
     @map = new NB.Map
-  it 'exists', ->
-    expect(@map).toBeDefined
+  it 'uses default values', ->
+    expect(@map.height).toEqual 15
+    expect(@map.width).toEqual 15
+    expect(@map.path).toEqual new NB.Path([[7,7], [7,5], [2,5], [2, 10], [13, 10]])
   it 'can retrieve cells', ->
     expect(@map.cellAt(1, 1)).toBe null
   describe 'when placing towers', ->
@@ -16,3 +18,4 @@ describe 'Map', ->
       tower2 = new NB.Tower
       expect(@map.placeTower(tower2, 1, 1)).toBe false
       expect(@map.cellAt(1, 1)).toBe @tower
+    xit 'cannot have towers placed on path'
