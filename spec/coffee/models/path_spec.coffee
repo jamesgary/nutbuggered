@@ -17,7 +17,6 @@ describe 'Path', ->
     it 'returns false for a cell it does not contain', ->
       expect(@path.contains([1,1])).toBeFalsy()
       expect(@path.contains([19,9])).toBeFalsy()
-      expect(@path.contains([1,1])).toBeFalsy()
     it 'returns true for a cell it does contain', ->
       expect(@path.contains([0, 0])).toBeTruthy() # corner
       expect(@path.contains([0, 9])).toBeTruthy() # edge

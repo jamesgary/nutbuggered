@@ -1,8 +1,8 @@
-NB.Creep = class Creep
-  defaultHp: 50
-  defaultSpeed: .001
-  defaultWait: 20
-  defaultCount: 10
+NB.TestCreep = class TestCreep extends NB.Creep
+  defaultHp: 1000
+  defaultCount: 100
+  defaultWait: 10
+  defaultSpeed: .1
 
   constructor: (data) ->
     @path = NB.currentMap.path

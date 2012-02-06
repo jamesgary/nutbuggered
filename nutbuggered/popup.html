@@ -4,10 +4,19 @@
     <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 
     <script data-main="js/compiled/boot.js" src="js/vendor/require.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="css/compiled/style.css" />
   </head>
   <body>
       <div id="wrapper">
-        <canvas id="main" width="1" height="1"></canvas>
+        <article id="main">
+          <section id="map">
+            <canvas id="background" width="640" height="640"></canvas>
+            <canvas id="foreground" width="640" height="640"></canvas>
+          </section>
+          <section id="buttons">
+            <a id="send_wave">Send Wave</a>
+          </section>
+        </article>
       </div>
   </body>
 </html>

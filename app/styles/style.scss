@@ -1,0 +1,16 @@
+canvas {
+  position:absolute;
+}
+article#main {
+  $map_height: 640px;
+  section#map {
+    float: left;
+    height: $map_height;
+    width: 640px;
+  }
+  section#buttons {
+    float: left;
+    height: $map_height;
+    width: 320px;
+  }
+}

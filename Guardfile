@@ -10,3 +10,5 @@ end
 guard 'coffeescript', {:output => 'spec/js/compiled', :all_on_start => true} do
   watch(%r{^spec/coffee/(.+\.coffee)$})
 end
+
+guard 'sass', :input => 'app/styles', :output => 'nutbuggered/css/compiled', :all_on_start => true

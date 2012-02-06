@@ -1,8 +1,8 @@
 NB.Map = class Map
-  constructor: (data) ->
+  constructor: (data = {}) ->
     @height = 15 # TODO
     @width  = 15 # TODO
-    @path = new NB.Path([[7,7], [7,5], [2,5], [2, 10], [13, 10]])
+    @path = if data.path? then data.path else new NB.Path([[7,7], [7,5], [2,5], [2, 10], [13, 10]]) # TODO
     @cells = []
     for x in [0...@width]
       @cells[x] = []

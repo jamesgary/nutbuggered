@@ -9,6 +9,8 @@ files = [
   "js/compiled/models/creep.js",
   "js/compiled/models/path.js",
   "js/compiled/models/arc.js",
+  "js/compiled/models/level.js",
+  "js/compiled/models/wave.js",
 ]
 require files, ->
   console.log("* All loaded, sir!")

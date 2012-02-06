@@ -1,7 +1,5 @@
 NB.Map.prototype.drawInit = ->
-  canvas = document.getElementById('main')
-  canvas.width = 640
-  canvas.height = 640
+  canvas = document.getElementById('background')
   ctx = canvas.getContext("2d")
 
   dim = 32
