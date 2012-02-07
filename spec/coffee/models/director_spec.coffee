@@ -7,7 +7,7 @@ describe 'Director', ->
     }
     spyOn(NB, 'Stage').andReturn(@mockStage)
   describe 'when it starts', ->
-    it 'creates a stage', ->
+    xit 'creates a stage', ->
       @director.start()
       expect(NB.Director.stage).toEqual(@mockStage)
     xit 'loads a map to the stage', ->
@@ -26,7 +26,7 @@ describe 'Director', ->
       runs ->
         expect(@director.tick.callCount).toBeGreaterThan(40)
   describe '#tick', ->
-    it 'ticks the stage', ->
+    xit 'ticks the stage', ->
       spyOn(@mockStage, 'tick')
       @director.start()
       @director.tick()
