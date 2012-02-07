@@ -1,7 +1,7 @@
 NB.Creep = class Creep
   defaultHp: 50
-  defaultSpeed: .001
-  defaultWait: 20
+  defaultSpeed: .01
+  defaultWait: 200
   defaultCount: 10
 
   constructor: (data) ->

@@ -9,7 +9,7 @@ NB.Wave = class Wave
     @totalCreepsSpawned = 0
     @liveCreeps = []
     @incubatingCreeps = []
-    @incubatingCreeps.push(new CreepType(data)) for i in [1..numCreepToSpawn]
+    @incubatingCreeps.push(new CreepType(creepData)) for i in [1..numCreepToSpawn]
     @waitTime = creepData.waitMod * mold.defaultWait
     @nextSpawnTime = 0
   tick: ->
