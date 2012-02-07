@@ -3,9 +3,7 @@ NB.Controller = class Controller
     @loadAll()
 
   loadAll: ->
-    console.log('loaded!')
-
-    @uponClick('send_wave', -> NB.Director.sendWave()
+    @uponClick('send_wave', -> NB.Director.sendWave())
 
   # private
 
