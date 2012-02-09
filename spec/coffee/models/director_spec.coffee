@@ -31,3 +31,12 @@ describe 'Director', ->
       @director.start()
       @director.tick()
       expect(@mockStage.tick).toHaveBeenCalled()
+  describe '#placeTower', ->
+    it 'places a tower on the map', ->
+      mockMap = {placeTower: ->}
+      tower = 'mockTower'
+      coordinates = [2, 3]
+      NB.currentMap = mockMap
+      spyOn(NB.currentMap, 'placeTower')
+      @director.placeTower(tower, coordinates)
+      expect(mockMap.placeTower).toHaveBeenCalledWith(tower, 2, 3)

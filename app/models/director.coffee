@@ -23,6 +23,6 @@ NB.Director = {
 
   sendWave: ->
     @currentLevel.sendNextWave()
-  placeTower: (coordinates)->
-    NB.currentMap.placeTower(coordinates)
+  placeTower: (tower, coordinates)->
+    NB.currentMap.placeTower(tower, coordinates[0], coordinates[1])
 }

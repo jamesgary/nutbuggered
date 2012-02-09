@@ -11,6 +11,7 @@ NB.Map = class Map
   placeTower: (tower, x, y) ->
     if @cells[x][y] == null #isEmpty
       @cells[x][y] = tower
+      @drawInit()
       true
     else
       false

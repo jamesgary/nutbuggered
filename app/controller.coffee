@@ -4,6 +4,11 @@ NB.Controller = class Controller
 
   loadAll: ->
     @uponClick('send_wave', -> NB.Director.sendWave())
+    @uponClick('map', (e) ->
+      x = parseInt(e.offsetX / 32)
+      y = parseInt(e.offsetY / 32)
+      NB.Director.placeTower(new NB.Tower(), [x, y])
+    )
 
   # private
 

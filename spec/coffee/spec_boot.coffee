@@ -1,15 +1,17 @@
 spec_files = [
   "../js/compiled/fixtures.js",
-  "../js/compiled/models/grid_spec.js",
-  "../js/compiled/models/map_spec.js",
-  "../js/compiled/models/tower_spec.js",
-  "../js/compiled/models/director_spec.js",
-  "../js/compiled/models/stage_spec.js",
-  "../js/compiled/models/creep_spec.js",
-  "../js/compiled/models/path_spec.js",
   "../js/compiled/models/arc_spec.js",
+  "../js/compiled/models/director_spec.js",
+  "../js/compiled/models/grid_spec.js",
   "../js/compiled/models/level_spec.js",
+  "../js/compiled/models/map_spec.js",
+  "../js/compiled/models/path_spec.js",
+  "../js/compiled/models/stage_spec.js",
   "../js/compiled/models/wave_spec.js",
+
+  "../js/compiled/models/creeps/creep_spec.js",
+  "../js/compiled/models/towers/tower_spec.js",
+
   "../js/compiled/views/map_view_spec.js",
 ]
 require ["../../nutbuggered/js/compiled/boot.js"], ->

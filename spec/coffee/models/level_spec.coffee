@@ -1,5 +1,6 @@
 describe 'Level', ->
   beforeEach ->
+    NB.currentMap = new NB.Map()
     @waveData1 = {creepData: {type: NB.TestCreep, hpMod: 1, speedMod: 1, countMod: 1, waitMod: 1}}
     @waveData2 = {creepData: {type: NB.TestCreep, hpMod: 1.2, speedMod: 1.2, countMod: .8, waitMod: .8}}
     @waveData3 = {creepData: {type: NB.TestCreep, hpMod: 2.5, speedMod: 2.5, countMod: 2.5, waitMod: 1}}

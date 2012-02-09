@@ -22,4 +22,8 @@ describe 'Map', ->
       tower2 = new NB.Tower
       expect(@map.placeTower(tower2, 1, 1)).toBe false
       expect(@map.cellAt(1, 1)).toBe @tower
+    it 'redraws the map', ->
+      spyOn(@map, 'drawInit')
+      @map.placeTower(@tower, 1, 1)
+      expect(@map.drawInit).toHaveBeenCalled()
     xit 'cannot have towers placed on path'
