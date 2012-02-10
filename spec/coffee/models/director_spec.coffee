@@ -7,15 +7,16 @@ describe 'Director', ->
     }
     spyOn(NB, 'Stage').andReturn(@mockStage)
   describe 'when it starts', ->
-    xit 'creates a stage', ->
+    it 'creates a stage', ->
       @director.start()
       expect(NB.Director.stage).toEqual(@mockStage)
-    xit 'loads a map to the stage', ->
+    it 'loads a map to the stage', ->
       @mockMap = {}
       spyOn(NB, 'Map').andReturn(@mockMap)
       spyOn(@mockStage, 'load')
       @director.start()
       expect(@mockStage.load).toHaveBeenCalledWith(@mockMap)
+      expect(NB.currentMap).toBe @mockMap
   describe 'after it starts', ->
     # only works when using setInterval,
     # webkitRequestAnimationFrame plays a little differently

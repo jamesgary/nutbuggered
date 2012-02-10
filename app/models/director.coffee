@@ -5,17 +5,18 @@ NB.Director = {
     @stage = new NB.Stage()
     NB.currentMap = new NB.Map()
     @stage.load(NB.currentMap)
-    NB.controller = new NB.Controller()
+    #NB.controller = new NB.Controller()
 
-    @waveData1 = {creepData: {type: NB.Creep, hpMod: 1, speedMod: 1, countMod: 1, waitMod: 1}}
-    @waveData2 = {creepData: {type: NB.Creep, hpMod: 1.2, speedMod: 1.2, countMod: .8, waitMod: .8}}
-    @waveData3 = {creepData: {type: NB.Creep, hpMod: 2.5, speedMod: 2.5, countMod: 2.5, waitMod: 1}}
-    levelData = {waves: [@waveData1, @waveData2, @waveData3]}
-    @currentLevel = new NB.Level(levelData)
+    #@waveData1 = {creepData: {type: NB.Creep, hpMod: 1, speedMod: 1, countMod: 1, waitMod: 1}}
+    #@waveData2 = {creepData: {type: NB.Creep, hpMod: 1.2, speedMod: 1.2, countMod: .8, waitMod: .8}}
+    #@waveData3 = {creepData: {type: NB.Creep, hpMod: 2.5, speedMod: 2.5, countMod: 2.5, waitMod: 1}}
+    #levelData = {waves: [@waveData1, @waveData2, @waveData3], path: NB.currentMap.path}
+    #@currentLevel = new NB.Level(levelData)
+    #NB.currentLevel = @currentLevel
 
-    @stage.load(@currentLevel)
+    #@stage.load(@currentLevel)
 
-    @tick()
+    #@tick()
   tick: ->
     webkitRequestAnimationFrame(NB.Director.tick)
     NB.Director.stage.tick()
@@ -25,4 +26,5 @@ NB.Director = {
     @currentLevel.sendNextWave()
   placeTower: (tower, coordinates)->
     NB.currentMap.placeTower(tower, coordinates[0], coordinates[1])
+    @stage.load(tower)
 }

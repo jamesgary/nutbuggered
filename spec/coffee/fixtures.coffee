@@ -5,7 +5,7 @@ NB.TestCreep = class TestCreep extends NB.Creep
   defaultSpeed: .1
 
   constructor: (data) ->
-    @path = NB.currentMap.path
+    @path = data.path
     @position = @path.start()
 
     @speed = @defaultSpeed * data.speedMod

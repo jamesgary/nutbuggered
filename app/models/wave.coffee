@@ -1,6 +1,7 @@
 NB.Wave = class Wave
   constructor: (data) ->
     creepData = data.creepData
+    creepData.path = data.path
     CreepType = creepData.type
     mold = new CreepType(creepData)
     numCreepToSpawn = creepData.countMod * mold.defaultCount
@@ -19,6 +20,9 @@ NB.Wave = class Wave
       @totalCreepsSpawned++
       @nextSpawnTime = @totalCreepsSpawned * @waitTime
     creep.tick() for creep in @liveCreeps
+  findCreep: (criteria) ->
+    range = criteria.range
+    (creep for creep in @liveCreeps when creep.isInRange(range))
 
   #private
 

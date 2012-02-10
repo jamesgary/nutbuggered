@@ -14,6 +14,7 @@ files = [
 
   "js/compiled/models/creeps/creep.js",
   "js/compiled/models/towers/tower.js",
+  "js/compiled/models/towers/boxer_tower.js",
 
   # views
   "js/compiled/views/level_view.js",

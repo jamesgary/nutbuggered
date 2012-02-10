@@ -7,7 +7,7 @@ NB.Controller = class Controller
     @uponClick('map', (e) ->
       x = parseInt(e.offsetX / 32)
       y = parseInt(e.offsetY / 32)
-      NB.Director.placeTower(new NB.Tower(), [x, y])
+      NB.Director.placeTower(new NB.BoxerTower([x, y], 's'), [x,y])
     )
 
   # private

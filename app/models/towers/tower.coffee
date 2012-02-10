@@ -1,3 +1,3 @@
 NB.Tower = class Tower
-  constructor: ->
+  constructor: (@coordinates) ->
     @cost = 100

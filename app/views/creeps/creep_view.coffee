@@ -13,3 +13,7 @@ NB.Creep.prototype.draw = (ctx) ->
   ctx.arc(x + xOffset, y + yOffset, size, 0, Math.PI*2, true)
   ctx.closePath()
   ctx.fill()
+
+  #ctx.font = "20px Times New Roman"
+  #ctx.fillStyle = "Black";  
+  ctx.fillText(@hp, x, y - 10)
