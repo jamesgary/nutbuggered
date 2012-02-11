@@ -2,42 +2,49 @@ describe 'Director', ->
   beforeEach ->
     @director = NB.Director
     @mockStage = {
+      load: ->
       tick: ->
-      load: ->,
+      draw: ->
     }
     spyOn(NB, 'Stage').andReturn(@mockStage)
+    spyOn(@mockStage, 'load')
+    @levelData = {
+      level: {}
+    }
   describe 'when it starts', ->
-    it 'creates a stage', ->
-      @director.start()
-      expect(NB.Director.stage).toEqual(@mockStage)
-    it 'loads a map to the stage', ->
-      @mockMap = {}
-      spyOn(NB, 'Map').andReturn(@mockMap)
-      spyOn(@mockStage, 'load')
-      @director.start()
-      expect(@mockStage.load).toHaveBeenCalledWith(@mockMap)
-      expect(NB.currentMap).toBe @mockMap
-  describe 'after it starts', ->
-    # only works when using setInterval,
-    # webkitRequestAnimationFrame plays a little differently
-    xit 'ticks about 60 times per second', ->
+    beforeEach ->
       spyOn(@director, 'tick')
-      @director.start()
-      waits(1000)
-      runs ->
-        expect(@director.tick.callCount).toBeGreaterThan(40)
+      @director.start(@levelData)
+    it 'creates a stage', ->
+      expect(@director.stage).toEqual(@mockStage)
+    it 'loads a level to the stage', ->
+      expect(@mockStage.load).toHaveBeenCalledWith(@levelData.level)
+    it 'starts the tick cycle', ->
+      expect(@director.tick).toHaveBeenCalled()
+  #describe 'after it starts', ->
+  #  # only works when using setInterval,
+  #  # webkitRequestAnimationFrame plays a little differently
+  #  xit 'ticks about 60 times per second', ->
+  #    spyOn(@director, 'tick')
+  #    @director.start()
+  #    waits(1000)
+  #    runs ->
+  #      expect(@director.tick.callCount).toBeGreaterThan(40)
   describe '#tick', ->
-    xit 'ticks the stage', ->
+    it 'ticks the stage', ->
       spyOn(@mockStage, 'tick')
-      @director.start()
-      @director.tick()
+      @director.start(@levelData)
       expect(@mockStage.tick).toHaveBeenCalled()
-  describe '#placeTower', ->
-    it 'places a tower on the map', ->
-      mockMap = {placeTower: ->}
-      tower = 'mockTower'
-      coordinates = [2, 3]
-      NB.currentMap = mockMap
-      spyOn(NB.currentMap, 'placeTower')
-      @director.placeTower(tower, coordinates)
-      expect(mockMap.placeTower).toHaveBeenCalledWith(tower, 2, 3)
+    it 'draws the stage', ->
+      spyOn(@mockStage, 'draw')
+      @director.start(@levelData)
+      expect(@mockStage.draw).toHaveBeenCalled()
+  #describe '#placeTower', ->
+  #  it 'places a tower on the map', ->
+  #    mockMap = {placeTower: ->}
+  #    tower = 'mockTower'
+  #    coordinates = [2, 3]
+  #    NB.currentMap = mockMap
+  #    spyOn(NB.currentMap, 'placeTower')
+  #    @director.placeTower(tower, coordinates)
+  #    expect(mockMap.placeTower).toHaveBeenCalledWith(tower, 2, 3)

@@ -1,7 +1,4 @@
-NB.Controller = class Controller
-  constructor: ->
-    @loadAll()
-
+NB.Controller = {
   loadAll: ->
     @uponClick('send_wave', -> NB.Director.sendWave())
     @uponClick('map', (e) ->
@@ -14,3 +11,4 @@ NB.Controller = class Controller
 
   uponClick: (elementId, event) ->
     document.getElementById(elementId).addEventListener('click', event)
+}

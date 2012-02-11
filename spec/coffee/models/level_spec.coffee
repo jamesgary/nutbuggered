@@ -1,38 +1,38 @@
 describe 'Level', ->
   beforeEach ->
-    @path = new NB.Path([[2,2],[6,2]])
-    @waveData1 = {creepData: {type: NB.TestCreep, hpMod: 1, speedMod: 1, countMod: 1, waitMod: 1}}
-    @waveData2 = {creepData: {type: NB.TestCreep, hpMod: 1.2, speedMod: 1.2, countMod: .8, waitMod: .8}}
-    @waveData3 = {creepData: {type: NB.TestCreep, hpMod: 2.5, speedMod: 2.5, countMod: 2.5, waitMod: 1}}
-    levelData = {path: @path, waves: [@waveData1, @waveData2, @waveData3]}
-    @level = new NB.Level(levelData)
-  it 'creates a list of waves', ->
-    expect(@level.waves.length).toBe 3
-    expect(@level.waves[0] instanceof NB.Wave).toBeTruthy
-  describe '#sendNextWave', ->
-    it 'sends a wave to be ticked', ->
-      firstWave = @level.waves[0]
-      spyOn(firstWave, 'tick')
-      @level.sendNextWave()
+    @map = {path: {}}
+    @waveData1 = {}
+    @waveData2 = {}
+    @wavesData = [@waveData1, @waveData2]
+    @levelData = {map: @map, wavesData: @wavesData}
+
+    @mockWave = {
+      tick: ->
+      draw: ->
+      findCreep: ->
+    }
+    spyOn(NB, 'Wave').andReturn(@mockWave)
+  describe '#sendNextWave & #tick', ->
+    it 'makes the next wave tick when level is ticked', ->
+      spyOn(@mockWave, 'tick')
+      @level = new NB.Level(@levelData)
+      expect(NB.Wave).toHaveBeenCalledWith(@waveData1)
       @level.tick()
-      expect(firstWave.tick).toHaveBeenCalled()
+      expect(@mockWave.tick).not.toHaveBeenCalled()
+      @level.sendNextWave()
+      expect(@mockWave.tick).not.toHaveBeenCalled()
+      @level.tick()
+      expect(@mockWave.tick).toHaveBeenCalled()
   describe '#findCreep', ->
-    it 'finds a creep in a range', ->
-      # FIXME being lazy
-      expect(@level.findCreep({range: [[2, 2]]}).length).toBe 0
-      @level.sendNextWave()
-      expect(@level.findCreep({range: [[2, 2]]}).length).toBe 1
-      @level.sendNextWave()
-      expect(@level.findCreep({range: [[2, 2]]}).length).toBe 2
+    describe 'with one current wave', ->
+      beforeEach ->
+        @level = new NB.Level(@levelData)
+        @level.sendNextWave()
+      it 'finds a creep in the current wave with a criteria', ->
+        @mockCreep = {}
+        spyOn(@mockWave, 'findCreep').andReturn(@mockCreep)
+        criteria = {}
+        @level.findCreep(criteria)
+        expect(@mockWave.findCreep).toHaveBeenCalledWith(criteria)
     it 'finds the first/last/strongest/weakest creep'
     it 'finds a spread or not'
-
-# Level.sendNextWave
-#
-# Level has many Waves
-# Wave
-#   list of Creep to appear at a given tick
-#
-# Level.load(level_data)
-# Level.sendNextWave()
-# - tells Director when player wins/loses

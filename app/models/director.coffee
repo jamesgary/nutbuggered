@@ -1,30 +1,19 @@
 NB.Director = {
   FPS: 60
-  start: ->
-    NB.mainElement = document.getElementById('main')
+  start: (levelData) ->
     @stage = new NB.Stage()
-    NB.currentMap = new NB.Map()
-    @stage.load(NB.currentMap)
-    #NB.controller = new NB.Controller()
+    @stage.load(levelData.level)
 
-    #@waveData1 = {creepData: {type: NB.Creep, hpMod: 1, speedMod: 1, countMod: 1, waitMod: 1}}
-    #@waveData2 = {creepData: {type: NB.Creep, hpMod: 1.2, speedMod: 1.2, countMod: .8, waitMod: .8}}
-    #@waveData3 = {creepData: {type: NB.Creep, hpMod: 2.5, speedMod: 2.5, countMod: 2.5, waitMod: 1}}
-    #levelData = {waves: [@waveData1, @waveData2, @waveData3], path: NB.currentMap.path}
-    #@currentLevel = new NB.Level(levelData)
-    #NB.currentLevel = @currentLevel
-
-    #@stage.load(@currentLevel)
-
-    #@tick()
+    @tick()
+    @level = levelData.level
   tick: ->
     webkitRequestAnimationFrame(NB.Director.tick)
     NB.Director.stage.tick()
     NB.Director.stage.draw()
 
   sendWave: ->
-    @currentLevel.sendNextWave()
+    @level.sendNextWave()
   placeTower: (tower, coordinates)->
-    NB.currentMap.placeTower(tower, coordinates[0], coordinates[1])
-    @stage.load(tower)
+    #NB.currentMap.placeTower(tower, coordinates[0], coordinates[1])
+    #@stage.load(tower)
 }

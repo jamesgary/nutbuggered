@@ -11,6 +11,5 @@ NB.BoxerTower = class BoxerTower extends NB.Tower
         when 'w' then [x-1, y]
     ]
   tick: ->
-    creeps = NB.currentLevel.findCreep({range: @range})
-    creeps = creeps[0]
+    creeps = NB.Director.level.findCreep({range: @range})
     creep.damage(20) for creep in creeps

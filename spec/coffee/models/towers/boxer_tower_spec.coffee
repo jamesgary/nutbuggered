@@ -34,10 +34,10 @@ describe 'BoxerTower', ->
       it 'hits a creep in its range', ->
         mockCreep = {damage: {}}
         spyOn(mockCreep, 'damage')
-        NB.currentLevel = {findCreep: {}}
-        spyOn(NB.currentLevel, 'findCreep').andReturn([mockCreep])
+        NB.Director.level = {findCreep: ->}
+        spyOn(NB.Director.level, 'findCreep').andReturn([mockCreep])
 
         @bt.tick()
 
-        expect(NB.currentLevel.findCreep).toHaveBeenCalledWith({range: @bt.range})
+        expect(NB.Director.level.findCreep).toHaveBeenCalledWith({range: @bt.range})
         expect(mockCreep.damage).toHaveBeenCalledWith(20)
