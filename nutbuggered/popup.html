@@ -1,22 +1,43 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
   <head>
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-
-    <script data-main="js/compiled/boot.js" src="js/vendor/require.js"></script>
-    <link rel="stylesheet" type="text/css" media="screen" href="css/compiled/style.css" />
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+    <script data-main='js/compiled/boot.js' src='js/vendor/require.js'></script>
+    <link href='css/compiled/style.css' media='screen' rel='stylesheet' type='text/css' />
   </head>
   <body>
-      <div id="wrapper">
-        <article id="main">
-          <section id="map">
-            <canvas id="background" width="640" height="640"></canvas>
-            <canvas id="foreground" width="640" height="640"></canvas>
-          </section>
-          <section id="buttons">
-            <a id="send_wave">Send Wave</a>
-          </section>
-        </article>
+    <div id='wrapper'>
+      <div id='splash_screen'>
+        <div id='blurb'>
+          by
+          <a class='link' href='https://twitter.com/#!/james_gary'>@james_gary</a>
+        </div>
       </div>
+      <div id='main_game'>
+        <div id='infobar'>
+          <div id='floatRight'>
+            <div id='money'>420</div>
+            <div id='minimize'>[-]</div>
+          </div>
+        </div>
+        <ul id='waves'>
+          <li>Wave 1</li>
+          <li>Wave 2</li>
+          <li>Wave 3</li>
+        </ul>
+        <div id='map'>
+          <canvas height='512' id='background' width='512'></canvas>
+          <canvas height='512' id='foreground' width='512'></canvas>
+        </div>
+        <div id='buttons'>
+          <a id='send_wave'>
+            Send Wave!
+          </a>
+        </div>
+        <div id='infospace'>
+          stuff go here!
+        </div>
+      </div>
+    </div>
   </body>
 </html>

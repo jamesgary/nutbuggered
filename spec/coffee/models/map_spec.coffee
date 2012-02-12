@@ -2,8 +2,8 @@ describe 'Map', ->
   beforeEach ->
     @map = new NB.Map()
   it 'uses default values', ->
-    expect(@map.height).toEqual 15
-    expect(@map.width).toEqual 15
+    expect(@map.height).toEqual 16
+    expect(@map.width).toEqual 16
     expect(@map.path).toEqual new NB.Path([[7,7], [7,5], [2,5], [2, 10], [13, 10]])
   it 'uses passed values', ->
     path = new NB.Path([[1,1],[1,13]])

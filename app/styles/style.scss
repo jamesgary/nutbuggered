@@ -1,16 +1,97 @@
-canvas {
-  position:absolute;
-}
-article#main {
-  $map_height: 640px;
-  section#map {
-    float: left;
-    height: $map_height;
-    width: 640px;
+@import 'compass/css3';
+
+$main_width: 910px;
+$main_height: 710px;
+$map_height: 512px;
+$map_width: $map_height;
+
+$dark_blue: #154447;
+$med_blue: #2F7069;
+$tan: #D5A659;
+$light_green: #86A143;
+$dark_green: #476228;
+
+$wave_width: 150px;
+$button_width: $main_width - ($wave_width + $map_width);
+
+$infobar_height: 20px;
+$infospace_height: $main_height - ($infobar_height + $map_height);
+html, body {
+  background: black;
+  &, ul, li {
+    font-family: "Helvetica Neue Light", "Lucida Grande", "Calibri", "Arial", sans-serif;
+    padding: 0;
+    margin: 0;
   }
-  section#buttons {
+  a {
+    color: blue;
+    text-decoration: none;
+    &.link:hover {
+      text-decoration: underline;
+    }
+  }
+  button {
+  }
+}
+#floatRight {
+  float: right;
+}
+#wrapper {
+  background: green;
+  height: $main_height;
+  width: $main_width;
+}
+
+#splash_screen {
+  background: #30c70d url('../../img/splash.png') no-repeat left top;
+  height: 100%;
+  width: 100%;
+  #blurb {
+    font-size: 28px;
+    text-align: center;
+    padding-top: 350px;
+  }
+}
+
+
+#main_game {
+  display: none;
+  #infobar {
+    background: $dark_blue;
+    color: white;
+    height: 20px;
+    #money, #minimize {
+      display: inline-block;
+    }
+    #money:before {
+      content: 'Money: $';
+    }
+  }
+  ul#waves {
+    background-color: $tan;
+    display: inline-block;
+    float: left;
+    width: $wave_width;
+    height: $map_height;
+  }
+  #map {
+    display: inline-block;
     float: left;
     height: $map_height;
-    width: 320px;
+    width: $map_width;
+    canvas { position:absolute; }
+  }
+  #buttons {
+    background: $light_green;
+    display: inline-block;
+    float: left;
+    height: $map_height;
+    width: $button_width;
+  }
+  #infospace {
+    background: $med_blue;
+    float:left;
+    height: $infospace_height;
+    width: 100%;
   }
 }

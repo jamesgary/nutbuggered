@@ -11,4 +11,10 @@ guard 'coffeescript', {:output => 'spec/js/compiled', :all_on_start => true} do
   watch(%r{^spec/coffee/(.+\.coffee)$})
 end
 
-guard 'sass', :input => 'app/styles', :output => 'nutbuggered/css/compiled', :all_on_start => true
+guard 'haml', {:input => 'app/haml', :output => 'nutbuggered/', :all_on_start => true} do
+  watch(%r{^.+(\.html\.haml)})
+end
+
+guard 'compass', :all_on_start => true do
+  watch(/^(.*)\.s[ac]ss/)
+end
