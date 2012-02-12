@@ -2,6 +2,7 @@ NB.Wave = class Wave
   constructor: (data) ->
     creepData = data.creepData
     creepData.path = data.path
+    creepData.parentWave = this
     CreepType = creepData.type
     mold = new CreepType(creepData)
     numCreepToSpawn = creepData.countMod * mold.defaultCount
@@ -28,6 +29,10 @@ NB.Wave = class Wave
     for creep in @liveCreeps
       return true if creep.isAlive()
     false
+  notifyDeathOf: (creep) ->
+    @liveCreeps.remove(creep)
+    if @incubatingCreeps.isEmpty() && @liveCreeps.isEmpty()
+      NB.Director.level.notifyCompletionOf(this)
 
   #private
 

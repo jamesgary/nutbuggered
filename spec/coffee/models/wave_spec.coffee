@@ -73,3 +73,24 @@ describe 'Wave', ->
           @wave.liveCreeps = []
       it 'returns true', ->
         expect(@wave.isAlive()).toBeFalsy()
+  describe '#notifyDeathOf', ->
+    it 'removes the dead creep', ->
+      @wave.liveCreeps = [@mockCreep]
+      @wave.notifyDeathOf(@mockCreep)
+      expect(@wave.liveCreeps).not.toContain(@mockCreep)
+    describe 'which was not the last creep of the wave', ->
+      it 'notifies the level that this wave is cleared', ->
+        NB.Director.level = {notifyCompletionOf: ->}
+        spyOn(NB.Director.level, 'notifyCompletionOf')
+        @wave.incubatingCreeps = []
+        @wave.liveCreeps = [@mockCreep, @mockCreep]
+        @wave.notifyDeathOf(@mockCreep)
+        expect(NB.Director.level.notifyCompletionOf).not.toHaveBeenCalledWith(@wave)
+    describe 'which was the last creep of the wave', ->
+      it 'notifies the level that this wave is cleared', ->
+        NB.Director.level = {notifyCompletionOf: ->}
+        spyOn(NB.Director.level, 'notifyCompletionOf')
+        @wave.incubatingCreeps = []
+        @wave.liveCreeps = [@mockCreep]
+        @wave.notifyDeathOf(@mockCreep)
+        expect(NB.Director.level.notifyCompletionOf).toHaveBeenCalledWith(@wave)

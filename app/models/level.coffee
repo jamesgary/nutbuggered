@@ -5,6 +5,7 @@ NB.Level = class Level
       new NB.Wave(waveData)
     @currentWaves = []
     @map = data.map
+    @tree = data.tree
   sendNextWave: ->
     @currentWaves.push(@waves.shift())
   tick: ->
@@ -19,3 +20,7 @@ NB.Level = class Level
     for wave in @currentWaves
       return false if wave.isAlive()
     true
+  notifyCompletionOf: (completedWave) ->
+    @currentWaves.remove(completedWave)
+    if @currentWaves.isEmpty() && @waves.isEmpty()
+      NB.Director.endGame(true)

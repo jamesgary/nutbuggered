@@ -7,6 +7,7 @@ spec_files = [
   "../js/compiled/models/map_spec.js",
   "../js/compiled/models/path_spec.js",
   "../js/compiled/models/stage_spec.js",
+  "../js/compiled/models/tree_spec.js",
   "../js/compiled/models/wave_spec.js",
 
   "../js/compiled/models/creeps/creep_spec.js",

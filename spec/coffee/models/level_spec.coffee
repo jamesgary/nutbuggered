@@ -5,10 +5,11 @@ describe 'Level', ->
       placeTower: ->,
       tick: ->,
     }
+    @treeHp = 1000
     @waveData1 = {}
     @waveData2 = {}
     @wavesData = [@waveData1, @waveData2]
-    @levelData = {map: @map, wavesData: @wavesData}
+    @levelData = {map: @map, wavesData: @wavesData, tree: @tree}
 
     @mockWave = {
       tick: ->
@@ -79,3 +80,36 @@ describe 'Level', ->
           @level.currentWaves = [@deadWave, @liveWave]
         it 'returns false', ->
           expect(@level.checkForVictory()).toBeFalsy()
+  it 'has a tree', ->
+    @level = new NB.Level(@levelData)
+    expect(@level.tree).toBe @tree
+  describe '#notifyCompletionOf', ->
+    beforeEach ->
+      @level = new NB.Level(@levelData)
+      spyOn(NB.Director, 'endGame')
+      @wave = {}
+      @level.currentWaves = [@wave]
+    it 'removes the wave', ->
+      @level.notifyCompletionOf(@wave)
+      expect(@level.currentWaves).toEqual([])
+    describe 'when all waves are completed', ->
+      beforeEach ->
+        @level.waves = []
+        @level.currentWaves = [@wave]
+      it 'ends the game victoriously', ->
+        @level.notifyCompletionOf(@wave)
+        expect(NB.Director.endGame).toHaveBeenCalledWith(true)
+    describe 'when some waves are still queued', ->
+      beforeEach ->
+        @level.waves = [{}]
+        @level.currentWaves = [@wave]
+      it 'does not end the game', ->
+        @level.notifyCompletionOf(@wave)
+        expect(NB.Director.endGame).not.toHaveBeenCalled()
+    describe 'when some waves are still running', ->
+      beforeEach ->
+        @level.waves = []
+        @level.currentWaves = [@wave, @wave]
+      it 'does not end the game', ->
+        @level.notifyCompletionOf(@wave)
+        expect(NB.Director.endGame).not.toHaveBeenCalled()

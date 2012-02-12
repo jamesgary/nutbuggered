@@ -28,15 +28,21 @@ describe 'Path', ->
       expect(@path.contains([16, 5])).toBeTruthy() # edge
       expect(@path.contains([15, 5])).toBeTruthy() # corner
   describe '#travel', ->
-    it 'returns the coordinates from given origin traveled given distance', ->
-      origin = [0, 0]
-      distance = 1
-      expect(@path.travel(origin, distance)).toEqual [0, 1]
-    it 'returns the coordinates from given origin traveled a large given distance', ->
-      origin = [0, 0]
-      distance = 12
-      expect(@path.travel(origin, distance)).toEqual [2, 10]
-    it 'returns the coordinates from given origin traveled a huge given distance', ->
-      origin = [0, 0]
-      distance = 39.9
-      expect(@path.travel(origin, distance)).toEqualAbout [15.1, 5]
+    describe 'when possible', ->
+      beforeEach ->
+        @origin = [0,0]
+      it 'returns the coordinates from given origin traveled given distance', ->
+        distance = 1
+        expect(@path.travel(@origin, distance)).toEqual [0, 1]
+      it 'returns the coordinates from given origin traveled a large given distance', ->
+        distance = 12
+        expect(@path.travel(@origin, distance)).toEqual [2, 10]
+      it 'returns the coordinates from given origin traveled a huge given distance', ->
+        distance = 39.9
+        expect(@path.travel(@origin, distance)).toEqualAbout [15.1, 5]
+    describe 'when not possible', ->
+      beforeEach ->
+        @origin = [0,0]
+      it 'returns false', ->
+        distance = 999
+        expect(@path.travel(@origin, distance)).toBeFalsy()

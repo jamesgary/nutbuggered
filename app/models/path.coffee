@@ -16,6 +16,7 @@ NB.Path = class Path
     while(typeof result == 'number') # we've surpassed this arc's finish
       i++
       arc = @arcs[i]
+      return false unless arc
       result = arc.travel(arc.start, result)
     result
   contains: (coordinate) ->

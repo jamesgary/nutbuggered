@@ -1,5 +1,6 @@
 describe 'Director', ->
   beforeEach ->
+    window.webkitRequestAnimationFrame = -> # stub
     @director = NB.Director
     @mockStage = {
       load: ->
