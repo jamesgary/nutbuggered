@@ -48,3 +48,16 @@ describe 'Director', ->
 
       @director.placeTower(tower, coordinates)
       expect(@director.level.placeTower).toHaveBeenCalledWith(tower, [2, 3])
+  describe '#endGame', ->
+    describe 'win', ->
+      it 'congratulates', ->
+        @director.start(@levelData)
+        spyOn(console, 'log')
+        @director.endGame(true)
+        expect(console.log).toHaveBeenCalledWith('A winner is you!')
+    describe 'lose', ->
+      it 'disparages', ->
+        @director.start(@levelData)
+        spyOn(console, 'log')
+        @director.endGame(false)
+        expect(console.log).toHaveBeenCalledWith('A loser is you!')

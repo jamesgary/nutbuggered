@@ -4,6 +4,7 @@ describe 'Wave', ->
       defaultCount: 42,
       tick: ->,
       isInRange: ->,
+      isAlive: -> true,
     }
     spyOn(NB, 'TestCreep').andReturn(@mockCreep)
     @path = {}
@@ -53,3 +54,22 @@ describe 'Wave', ->
       expect(creeps).toEqual [@mockCreep]
     xit 'finds the first/last/strongest/weakest creep'
     xit 'finds a spread or not'
+  describe '#isAlive', ->
+    describe 'when not all creeps have been sent', ->
+      beforeEach ->
+        @wave.incubatingCreeps = [@mockCreep]
+      it 'returns true', ->
+        expect(@wave.isAlive()).toBeTruthy()
+    describe 'when all creeps have been sent', ->
+      beforeEach ->
+        @wave.incubatingCreeps = []
+      describe 'when there are some live creep', ->
+        beforeEach ->
+          @wave.liveCreeps = [@mockCreep]
+        it 'returns true', ->
+          expect(@wave.isAlive()).toBeTruthy()
+      describe 'when there are no more live creep', ->
+        beforeEach ->
+          @wave.liveCreeps = []
+      it 'returns true', ->
+        expect(@wave.isAlive()).toBeFalsy()

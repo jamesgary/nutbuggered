@@ -23,3 +23,5 @@ NB.Creep = class Creep
      (posY - .5 < coorY < posY + .5))
   damage: (hp) ->
     @hp -= hp
+  isAlive: ->
+    @health > 0

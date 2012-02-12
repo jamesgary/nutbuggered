@@ -14,3 +14,8 @@ NB.Level = class Level
     (wave.findCreep(criteria) for wave in @currentWaves)
   placeTower: (tower, coordinates) ->
     @map.placeTower(tower, coordinates)
+  checkForVictory: ->
+    return false if @waves.length > 0
+    for wave in @currentWaves
+      return false if wave.isAlive()
+    true

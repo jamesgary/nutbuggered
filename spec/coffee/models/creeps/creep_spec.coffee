@@ -47,3 +47,14 @@ describe 'Creep', ->
     it 'depletes hp', ->
       @creep.damage(1)
       expect(@creep.hp).toEqual 49
+  describe '#isAlive', ->
+    describe 'when it has health', ->
+      beforeEach ->
+        @creep.health = 42
+      it 'return true', ->
+        expect(@creep.isAlive()).toBeTruthy()
+    describe 'when it does not health', ->
+      beforeEach ->
+        @creep.health = 0
+      it 'return false', ->
+        expect(@creep.isAlive()).toBeFalsy()

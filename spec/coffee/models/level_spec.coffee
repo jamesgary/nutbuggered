@@ -56,3 +56,26 @@ describe 'Level', ->
 
       @level.placeTower(tower, coordinates)
       expect(@level.map.placeTower).toHaveBeenCalledWith(tower, [2, 3])
+  describe '#checkForVictory', ->
+    beforeEach ->
+      @level = new NB.Level(@levelData)
+      @deadWave = {isAlive: -> false}
+      @liveWave = {isAlive: -> true}
+    describe 'when some waves are not yet sent', ->
+      beforeEach ->
+        @level.waves = [new NB.Wave()]
+      it 'returns false', ->
+        expect(@level.checkForVictory()).toBeFalsy()
+    describe 'when all waves have been sent', ->
+      beforeEach ->
+        @level.waves = []
+      describe 'when all current waves are dead', ->
+        beforeEach ->
+          @level.currentWaves = [@deadWave, @deadWave]
+        it 'returns true', ->
+          expect(@level.checkForVictory()).toBeTruthy()
+      describe 'when not all current waves are dead', ->
+        beforeEach ->
+          @level.currentWaves = [@deadWave, @liveWave]
+        it 'returns false', ->
+          expect(@level.checkForVictory()).toBeFalsy()

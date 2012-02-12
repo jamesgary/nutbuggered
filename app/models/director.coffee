@@ -15,4 +15,9 @@ NB.Director = {
     @level.sendNextWave()
   placeTower: (tower, coordinates) ->
     @level.placeTower(tower, coordinates)
+  endGame: (won) ->
+    if won
+      console.log('A winner is you!')
+    else
+      console.log('A loser is you!')
 }

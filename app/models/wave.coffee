@@ -23,6 +23,11 @@ NB.Wave = class Wave
   findCreep: (criteria) ->
     range = criteria.range
     (creep for creep in @liveCreeps when creep.isInRange(range))
+  isAlive: ->
+    return true if @incubatingCreeps.length > 0
+    for creep in @liveCreeps
+      return true if creep.isAlive()
+    false
 
   #private
 
