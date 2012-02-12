@@ -13,17 +13,24 @@ describe 'Map', ->
     expect(@map.cellAt(1, 1)).toBe null
   describe 'when placing towers', ->
     beforeEach ->
-      @tower = new NB.Tower
+      @tower = new NB.Tower()
+      @coordinates = [2,3]
     it 'can have towers placed in empty cells', ->
-      expect(@map.placeTower(@tower, 1, 1)).toBe true
-      expect(@map.cellAt(1, 1)).toBe @tower
+      expect(@map.placeTower(@tower, @coordinates)).toBe true
+      expect(@map.cellAt(2, 3)).toBe @tower
     it 'cannot have towers placed in occupied cells', ->
-      @map.placeTower(@tower, 1, 1)
-      tower2 = new NB.Tower
-      expect(@map.placeTower(tower2, 1, 1)).toBe false
-      expect(@map.cellAt(1, 1)).toBe @tower
+      @map.placeTower(@tower, @coordinates)
+      tower2 = new NB.Tower()
+      expect(@map.placeTower(tower2, @coordinates)).toBe false
+      expect(@map.cellAt(2, 3)).toBe @tower
     it 'redraws the map', ->
       spyOn(@map, 'drawInit')
-      @map.placeTower(@tower, 1, 1)
+      @map.placeTower(@tower, @coordinates)
       expect(@map.drawInit).toHaveBeenCalled()
     xit 'cannot have towers placed on path'
+    describe '#tick', ->
+      it 'ticks all towers', ->
+        spyOn(@tower, 'tick')
+        @map.placeTower(@tower, [2,3])
+        @map.tick()
+        expect(@tower.tick).toHaveBeenCalled()

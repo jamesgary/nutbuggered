@@ -35,7 +35,7 @@ describe 'BoxerTower', ->
         mockCreep = {damage: {}}
         spyOn(mockCreep, 'damage')
         NB.Director.level = {findCreep: ->}
-        spyOn(NB.Director.level, 'findCreep').andReturn([mockCreep])
+        spyOn(NB.Director.level, 'findCreep').andReturn([[mockCreep]])
 
         @bt.tick()
 

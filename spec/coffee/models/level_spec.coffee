@@ -1,6 +1,10 @@
 describe 'Level', ->
   beforeEach ->
-    @map = {path: {}}
+    @map = {
+      path: {},
+      placeTower: ->,
+      tick: ->,
+    }
     @waveData1 = {}
     @waveData2 = {}
     @wavesData = [@waveData1, @waveData2]
@@ -12,6 +16,12 @@ describe 'Level', ->
       findCreep: ->
     }
     spyOn(NB, 'Wave').andReturn(@mockWave)
+  describe '#tick', ->
+    it 'makes the map tick', ->
+      spyOn(@map, 'tick')
+      @level = new NB.Level(@levelData)
+      @level.tick()
+      expect(@map.tick).toHaveBeenCalled()
   describe '#sendNextWave & #tick', ->
     it 'makes the next wave tick when level is ticked', ->
       spyOn(@mockWave, 'tick')
@@ -36,3 +46,13 @@ describe 'Level', ->
         expect(@mockWave.findCreep).toHaveBeenCalledWith(criteria)
     it 'finds the first/last/strongest/weakest creep'
     it 'finds a spread or not'
+  describe '#placeTower', ->
+    beforeEach ->
+      @level = new NB.Level(@levelData)
+    it 'places a tower on the map', ->
+      tower = 'mockTower'
+      coordinates = [2, 3]
+      spyOn(@level.map, 'placeTower')
+
+      @level.placeTower(tower, coordinates)
+      expect(@level.map.placeTower).toHaveBeenCalledWith(tower, [2, 3])

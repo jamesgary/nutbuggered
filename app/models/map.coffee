@@ -8,12 +8,18 @@ NB.Map = class Map
       @cells[x] = []
       for y in [0...@width]
         @cells[x][y] = null
-  placeTower: (tower, x, y) ->
+    @towers = []
+  placeTower: (tower, coordinates) ->
+    x = coordinates[0]
+    y = coordinates[1]
     if @cells[x][y] == null #isEmpty
       @cells[x][y] = tower
+      @towers.push(tower)
       @drawInit()
       true
     else
       false
   cellAt: (x, y) ->
     @cells[x][y]
+  tick: ->
+    tower.tick() for tower in @towers

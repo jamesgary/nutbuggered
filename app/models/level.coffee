@@ -9,5 +9,8 @@ NB.Level = class Level
     @currentWaves.push(@waves.shift())
   tick: ->
     wave.tick() for wave in @currentWaves
+    @map.tick()
   findCreep: (criteria) ->
     (wave.findCreep(criteria) for wave in @currentWaves)
+  placeTower: (tower, coordinates) ->
+    @map.placeTower(tower, coordinates)

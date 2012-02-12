@@ -9,7 +9,7 @@ describe 'Director', ->
     spyOn(NB, 'Stage').andReturn(@mockStage)
     spyOn(@mockStage, 'load')
     @levelData = {
-      level: {}
+      level: {placeTower: ->}
     }
   describe 'when it starts', ->
     beforeEach ->
@@ -39,12 +39,12 @@ describe 'Director', ->
       spyOn(@mockStage, 'draw')
       @director.start(@levelData)
       expect(@mockStage.draw).toHaveBeenCalled()
-  #describe '#placeTower', ->
-  #  it 'places a tower on the map', ->
-  #    mockMap = {placeTower: ->}
-  #    tower = 'mockTower'
-  #    coordinates = [2, 3]
-  #    NB.currentMap = mockMap
-  #    spyOn(NB.currentMap, 'placeTower')
-  #    @director.placeTower(tower, coordinates)
-  #    expect(mockMap.placeTower).toHaveBeenCalledWith(tower, 2, 3)
+  describe '#placeTower', ->
+    it 'places a tower in the level', ->
+      tower = 'mockTower'
+      coordinates = [2, 3]
+      @director.start(@levelData)
+      spyOn(@director.level, 'placeTower')
+
+      @director.placeTower(tower, coordinates)
+      expect(@director.level.placeTower).toHaveBeenCalledWith(tower, [2, 3])
