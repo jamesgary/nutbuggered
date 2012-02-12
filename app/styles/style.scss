@@ -16,6 +16,39 @@ $button_width: $main_width - ($wave_width + $map_width);
 
 $infobar_height: 20px;
 $infospace_height: $main_height - ($infobar_height + $map_height);
+
+@mixin buttonize($base_color: $dark_blue, $font_size: 30px) {
+  $light: lighten($base_color, 30%);
+  $dark: lighten($base_color, 10%);
+  @include border-radius($font_size*.7);
+  @include background-image(linear-gradient($light, $dark));
+  @include box-shadow(inset 0 1px 1px rgba(255,255,255,.5), 0 2px 4px rgba(0,0,0,.9));
+  border: 2px solid darken($base_color, 0%);
+  color: #fff;
+  display: inline-block;
+  line-height: $font_size;
+  padding: $font_size/4 $font_size/1.2 $font_size/3.3;
+  text-decoration: none;
+  text-shadow: darken($base_color, 10%) 0 -1px 0;
+  font-size: $font_size;
+  &:hover {
+    @include background-image(linear-gradient(lighten($light, 5%), lighten($dark, 5%)));
+    @include box-shadow(inset 0 1px 1px rgba(255,255,255,.8), 0 2px 5px rgba(0,0,0,.99));
+    cursor: pointer;
+  }
+  &:active {
+    @include background-image(linear-gradient(darken($light, 5%), darken($dark, 5%)));
+    @include box-shadow(inset 0 1px 1px rgba(255,255,255,.3), 0 1px 2px rgba(0,0,0,.9));
+    color: #eee;
+    cursor: pointer;
+  }
+}
+
+* {
+  -webkit-user-select: none;
+  user-select: none;
+  cursor: default;
+}
 html, body {
   background: black;
   &, ul, li {
@@ -27,10 +60,12 @@ html, body {
     color: blue;
     text-decoration: none;
     &.link:hover {
+      cursor: pointer;
       text-decoration: underline;
     }
   }
-  button {
+  .button {
+    @include buttonize($dark_blue, 42px);
   }
 }
 #floatRight {
@@ -45,11 +80,15 @@ html, body {
 #splash_screen {
   background: #30c70d url('../../img/splash.png') no-repeat left top;
   height: 100%;
+  text-align: center;
   width: 100%;
   #blurb {
     font-size: 28px;
     text-align: center;
     padding-top: 350px;
+  }
+  #start.button {
+    margin-top: 50px;
   }
 }
 
