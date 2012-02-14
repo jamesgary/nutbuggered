@@ -1,4 +1,6 @@
 NB.Level = class Level
+  waveLifespan: 300 # 1200
+
   constructor: (data) ->
     @waves = for waveData in data.wavesData
       waveData.path = data.map.path
@@ -7,13 +9,26 @@ NB.Level = class Level
     @map = data.map
     @tree = data.tree
     @money = 1000
+    @currentWaveIndex = 0
+    @currentWaveAge = 0
+  sendWave: (index) ->
+    console.log('asdf')
+    while @currentWaveIndex < index
+      @sendNextWave()
   sendNextWave: ->
+    @started = true
     if @waves.isEmpty()
       false
     else
       @currentWaves.push(@waves.shift())
+      @currentWaveIndex++
+      @currentWaveAge = 0
       true
   tick: ->
+    if @started
+      @currentWaveAge++
+      if (@currentWaveAge > @waveLifespan) && !@waves.isEmpty()
+        @sendNextWave()
     wave.tick() for wave in @currentWaves
     @map.tick()
   findCreep: (criteria) ->

@@ -122,11 +122,34 @@ html, body {
     }
   }
   ul#waves {
+    $wave_height: 42px;
     background-color: $tan;
     display: inline-block;
     float: left;
+    font-size: 24px;
+    position: relative;
     width: $wave_width;
     height: $map_height;
+    li {
+      $light: lighten($tan, 30%);
+      $dark: lighten($tan, 10%);
+      @include background-image(linear-gradient($light, $dark));
+      //@include box-shadow(inset 0 1px 1px rgba(255,255,255,.5), 0 2px 4px rgba(0,0,0,.9));
+      border: 2px solid $tan;
+      border-top-color: white;
+      border-bottom-color: $tan;
+      height: $wave_height;
+      padding: 5px;
+      width: 100%;
+    }
+    li#needle {
+      background: transparent;
+      border: 4px ridge #ff4500;
+      border-left: 0;
+      pointer-events: none;
+      position: absolute;
+      top: 0;
+    }
   }
   #map {
     display: inline-block;

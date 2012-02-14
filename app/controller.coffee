@@ -10,8 +10,13 @@ NB.Controller = {
     )
 
     # game
-    @uponClick('send_wave', -> NB.Director.sendWave())
+    # # sending waves
+    $('#game_screen').on('click', 'ul#waves li.wave', (e) -> NB.Director.sendWave(parseInt(e.toElement.dataset.wave_index)))
+
+    # # choosing towers
     $('#game_screen').on('click', '.tower_chooser', (e) -> NB.Director.clickTowerChooser(NB[e.toElement.dataset.tower_type]))
+
+    # # placing towers
     $('#game_screen').on('mousemove', '#map', (e) ->
       x = parseInt(e.offsetX / 32)
       y = parseInt(e.offsetY / 32)
@@ -46,6 +51,8 @@ NB.Controller = {
       NB.Director.turnPlaceholderTower(dir)
     )
     @uponClick('dpad', -> NB.Director.setPlaceholderTower())
+
+    # # context menus
     $('#game_screen').on('click', '.return_to_levels', (e) -> NB.Director.returnToLevels())
 
   # private

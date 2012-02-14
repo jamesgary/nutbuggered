@@ -26,8 +26,8 @@ NB.Director = {
 
   # from the controller
 
-  sendWave: ->
-    @level.sendNextWave()
+  sendWave: (index) ->
+    @level.sendWave(index)
   startFromSplash: ->
     $('#levels_screen').fadeIn 200, ->
       $('#splash_screen').hide()
