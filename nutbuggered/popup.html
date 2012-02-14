@@ -7,16 +7,16 @@
   </head>
   <body>
     <div id='wrapper'>
-      <div id='splash_screen'>
+      <div class='screen' id='splash_screen'>
         <div id='blurb'>
           by
           <a class='link' href='https://twitter.com/#!/james_gary'>@james_gary</a>
         </div>
-        <div class='button' id='start'>
+        <div class='button' id='start_from_splash'>
           Start
         </div>
       </div>
-      <div id='main_game'>
+      <div class='screen' id='game_screen'>
         <div id='infobar'>
           <div id='floatRight'>
             <div id='money'>420</div>
@@ -27,19 +27,55 @@
           <li>Wave 1</li>
           <li>Wave 2</li>
           <li>Wave 3</li>
+          <li>
+            <a id='send_wave'>Send Wave!</a>
+          </li>
         </ul>
         <div id='map'>
           <canvas height='512' id='background' width='512'></canvas>
           <canvas height='512' id='foreground' width='512'></canvas>
+          <div id='dpad'></div>
         </div>
         <div id='buttons'>
-          <a id='send_wave'>
-            Send Wave!
-          </a>
+          <a class='button tower_chooser' data-tower_type='BoxerTowerPlaceholder'>Boxer Brown!</a>
+          <a class='button tower_chooser' data-tower_type='BoxerTowerPlaceholder'>Boxer Brown!</a>
+          <a class='button tower_chooser' data-tower_type='BoxerTowerPlaceholder'>Boxer Brown!</a>
+          <a class='button tower_chooser' data-tower_type='BoxerTowerPlaceholder'>Boxer Brown!</a>
+          <a class='button tower_chooser' data-tower_type='BoxerTowerPlaceholder'>Boxer Brown!</a>
+          <a class='button tower_chooser' data-tower_type='BoxerTowerPlaceholder'>Boxer Brown!</a>
+          <a class='button tower_chooser' data-tower_type='BoxerTowerPlaceholder'>Boxer Brown!</a>
+          <a class='button tower_chooser' data-tower_type='BoxerTowerPlaceholder'>Boxer Brown!</a>
         </div>
         <div id='infospace'>
           stuff go here!
         </div>
+        <div id='victory_dialogue'>
+          Awwwww yea! You did it!
+          <a class='button return_to_levels'>OK</a>
+        </div>
+        <div id='defeat_dialogue'>
+          Darn! We got buggered!
+          <a class='button return_to_levels'>OK</a>
+        </div>
+      </div>
+      <div class='screen' id='levels_screen'>
+        <ul>
+          <li>
+            <a class='button level_chooser' data-map='level1'>Map 1</a>
+          </li>
+          <li>
+            <a class='button level_chooser' data-map='level2'>Map 2</a>
+          </li>
+          <li>
+            <a class='button level_chooser' data-map='level3'>Map 3</a>
+          </li>
+          <li>
+            <a class='button level_chooser' data-map='level4'>Map 4</a>
+          </li>
+          <li>
+            <a class='button level_chooser' data-map='level5'>Map 5</a>
+          </li>
+        </ul>
       </div>
     </div>
   </body>

@@ -30,14 +30,32 @@ describe 'BoxerTower', ->
       expect(@bt.direction).toEqual 'w'
       expect(@bt.range).toEqual [[4,2]]
   describe '#tick', ->
-    describe 'hits a creep in its range for 20 dmg', ->
-      it 'hits a creep in its range', ->
-        mockCreep = {damage: {}}
-        spyOn(mockCreep, 'damage')
-        NB.Director.level = {findCreep: ->}
-        spyOn(NB.Director.level, 'findCreep').andReturn([[mockCreep]])
-
+    beforeEach ->
+      spyOn(@bt, 'attack')
+    describe 'if cooled down', ->
+      beforeEach ->
+        @ticksUntilAttack = 0
+      it 'attacks', ->
         @bt.tick()
-
-        expect(NB.Director.level.findCreep).toHaveBeenCalledWith({range: @bt.range})
-        expect(mockCreep.damage).toHaveBeenCalledWith(20)
+        expect(@bt.attack).toHaveBeenCalled()
+      it 'resets its ticks until attack', ->
+        @bt.tick()
+        expect(@bt.ticksUntilAttack).toEqual @bt.cooldown
+    describe 'if not cooled down', ->
+      beforeEach ->
+        @bt.ticksUntilAttack = 5
+      it 'does not attack', ->
+        @bt.tick()
+        expect(@bt.attack).not.toHaveBeenCalled()
+      it 'decrements the ticks until attack', ->
+        @bt.tick()
+        expect(@bt.ticksUntilAttack).toEqual 4
+  describe '#attack', ->
+    it 'hits a creep in its range for 20 dmg', ->
+      @mockCreep = {damage: {}}
+      spyOn(@mockCreep, 'damage')
+      NB.Director.level = {findCreep: ->}
+      spyOn(NB.Director.level, 'findCreep').andReturn([[@mockCreep]])
+      @bt.attack()
+      expect(NB.Director.level.findCreep).toHaveBeenCalledWith({range: @bt.range})
+      expect(@mockCreep.damage).toHaveBeenCalledWith(20)

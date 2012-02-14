@@ -10,3 +10,6 @@ NB.Stage = class Stage
     tickable.tick() for tickable in @tickables
   draw: ->
     drawable.draw() for drawable in @drawables
+  clear: ->
+    @tickables = []
+    @drawables = []

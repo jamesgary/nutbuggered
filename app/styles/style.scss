@@ -10,9 +10,10 @@ $med_blue: #2F7069;
 $tan: #D5A659;
 $light_green: #86A143;
 $dark_green: #476228;
+$aqua_green: #90EE90;
 
 $wave_width: 150px;
-$button_width: $main_width - ($wave_width + $map_width);
+$buttons_width: $main_width - ($wave_width + $map_width);
 
 $infobar_height: 20px;
 $infospace_height: $main_height - ($infobar_height + $map_height);
@@ -55,6 +56,7 @@ html, body {
     font-family: "Helvetica Neue Light", "Lucida Grande", "Calibri", "Arial", sans-serif;
     padding: 0;
     margin: 0;
+    list-style: none;
   }
   a {
     color: blue;
@@ -68,6 +70,14 @@ html, body {
     @include buttonize($dark_blue, 42px);
   }
 }
+.screen {
+  height: $main_height;
+  left:0;
+  position: absolute;
+  top:0;
+  width: $main_width;
+}
+
 #floatRight {
   float: right;
 }
@@ -75,6 +85,7 @@ html, body {
   background: green;
   height: $main_height;
   width: $main_width;
+  position: relative;
 }
 
 #splash_screen {
@@ -87,13 +98,12 @@ html, body {
     text-align: center;
     padding-top: 350px;
   }
-  #start.button {
+  #start_from_splash.button {
     margin-top: 50px;
   }
 }
 
-
-#main_game {
+#game_screen {
   display: none;
   #infobar {
     background: $dark_blue;
@@ -117,15 +127,33 @@ html, body {
     display: inline-block;
     float: left;
     height: $map_height;
+    position: relative;
     width: $map_width;
     canvas { position:absolute; }
+    #dpad {
+      background: transparent url('../../img/dpad.svg') no-repeat center center;
+      background-size: 250px;
+      display: none;
+      height: 100%;
+      opacity: .5;
+      position: absolute;
+      width: 100%;
+    }
   }
   #buttons {
     background: $light_green;
     display: inline-block;
     float: left;
     height: $map_height;
-    width: $button_width;
+    width: $buttons_width;
+    a.tower_chooser {
+      $button_width: .4 * $buttons_width;
+      @include box-sizing(border-box);
+      @include buttonize($med_blue, 18px);
+      height: $button_width;
+      margin: 10px 0 10px 15px;
+      width: $button_width;
+    }
   }
   #infospace {
     background: $med_blue;
@@ -133,4 +161,23 @@ html, body {
     height: $infospace_height;
     width: 100%;
   }
+  #victory_dialogue, #defeat_dialogue {
+    @include box-sizing(border-box);
+    @include border-radius(10px);
+    border: 2px solid darken($aqua_green, 50%);
+    background: $aqua_green;
+    height: 400px;
+    display: none;
+    left: 50%;
+    margin-left: -250px;
+    margin-top: 100px;
+    padding: 20px;
+    position: absolute;
+    width: 500px;
+  }
+}
+
+#levels_screen {
+  display:none;
+  background: $light_green;
 }

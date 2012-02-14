@@ -15,22 +15,44 @@ describe 'Map', ->
     beforeEach ->
       @tower = new NB.Tower()
       @coordinates = [2,3]
-    it 'can have towers placed in empty cells', ->
+    it 'places towers when possible', ->
       expect(@map.placeTower(@tower, @coordinates)).toBe true
       expect(@map.cellAt(2, 3)).toBe @tower
-    it 'cannot have towers placed in occupied cells', ->
-      @map.placeTower(@tower, @coordinates)
-      tower2 = new NB.Tower()
-      expect(@map.placeTower(tower2, @coordinates)).toBe false
-      expect(@map.cellAt(2, 3)).toBe @tower
+    it 'does not place towers when impossible', ->
+      spyOn(@map, 'canPlaceTower').andReturn(false)
+      expect(@map.placeTower(@tower, @coordinates)).toBe false
+      expect(@map.cellAt(2, 3)).toBe null
     it 'redraws the map', ->
       spyOn(@map, 'drawInit')
       @map.placeTower(@tower, @coordinates)
       expect(@map.drawInit).toHaveBeenCalled()
-    xit 'cannot have towers placed on path'
     describe '#tick', ->
       it 'ticks all towers', ->
         spyOn(@tower, 'tick')
         @map.placeTower(@tower, [2,3])
         @map.tick()
         expect(@tower.tick).toHaveBeenCalled()
+  describe '#canPlaceTower', ->
+    beforeEach ->
+      @tower = new NB.Tower()
+      @coordinates = [2,3]
+    it 'can have towers placed in empty cells', ->
+      expect(@map.canPlaceTower(@tower, @coordinates)).toBeTruthy()
+    it 'can have towers placed in cells occupied by itself (needed for placeholding)', ->
+      #@tower.hovering = true
+      @map.placeTower(@tower, @coordinates)
+      expect(@map.canPlaceTower(@tower, @coordinates)).toBeTruthy()
+    it 'cannot have towers placed in cells occupied by others', ->
+      @map.placeTower(new NB.Tower(), @coordinates)
+      expect(@map.canPlaceTower(@tower, @coordinates)).toBeFalsy()
+    it 'cannot have towers placed on path', ->
+      expect(@map.canPlaceTower(@tower, [7,7])).toBeFalsy()
+  describe 'removeTower', ->
+    beforeEach ->
+      @tower = {coordinates: [2,3]}
+      @map.towers = [@tower]
+      @map.removeTower(@tower)
+    it 'should remove the given tower from the list of towers', ->
+      expect(@map.towers).toEqual []
+    it 'should remove the given tower from the map cells', ->
+      expect(@map.cells[2][3]).toEqual null

@@ -29,3 +29,18 @@ describe 'Stage', ->
       nondrawable = {}
       @stage.load(nondrawable)
       @stage.draw() # don't throw exception
+  describe '.clear', ->
+    it 'removes all tickables', ->
+      tickable = {tick: ->}
+      @stage.load(tickable)
+      spyOn(tickable, 'tick')
+      @stage.clear()
+      @stage.tick()
+      expect(tickable.tick).not.toHaveBeenCalled()
+    it 'removes all drawables', ->
+      drawable = {draw: ->}
+      @stage.load(drawable)
+      spyOn(drawable, 'draw')
+      @stage.clear()
+      @stage.draw()
+      expect(drawable.draw).not.toHaveBeenCalled()

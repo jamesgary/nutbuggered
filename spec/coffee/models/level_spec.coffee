@@ -1,9 +1,11 @@
 describe 'Level', ->
   beforeEach ->
     @map = {
-      path: {},
-      placeTower: ->,
-      tick: ->,
+      path: {}
+      placeTower: ->
+      canPlaceTower: ->
+      tick: ->
+      removeTower: ->
     }
     @treeHp = 1000
     @waveData1 = {}
@@ -23,6 +25,17 @@ describe 'Level', ->
       @level = new NB.Level(@levelData)
       @level.tick()
       expect(@map.tick).toHaveBeenCalled()
+  describe '#sendNextWave', ->
+    it 'returns true if a wave could be sent', ->
+      @level = new NB.Level(@levelData)
+      expect(@level.sendNextWave()).toBeTruthy()
+      expect(@level.sendNextWave()).toBeTruthy()
+    it 'returns false if no more waves', ->
+      @level = new NB.Level(@levelData)
+      @level.sendNextWave()
+      @level.sendNextWave()
+      expect(@level.sendNextWave()).toBeFalsy()
+
   describe '#sendNextWave & #tick', ->
     it 'makes the next wave tick when level is ticked', ->
       spyOn(@mockWave, 'tick')
@@ -57,6 +70,21 @@ describe 'Level', ->
 
       @level.placeTower(tower, coordinates)
       expect(@level.map.placeTower).toHaveBeenCalledWith(tower, [2, 3])
+  describe '#canPlaceTower', ->
+    beforeEach ->
+      @mockTower = 'mockTower'
+      @coordinates = [2, 3]
+      @level = new NB.Level(@levelData)
+    describe 'if map can place tower', ->
+      beforeEach ->
+        spyOn(@level.map, 'canPlaceTower').andReturn(true)
+      it 'returns true if map can place tower', ->
+        expect(@level.canPlaceTower(@tower, @coordinates)).toBeTruthy()
+    describe 'if map cannot place tower', ->
+      beforeEach ->
+        spyOn(@level.map, 'canPlaceTower').andReturn(false)
+      it 'returns true if map can place tower', ->
+        expect(@level.canPlaceTower(@tower, @coordinates)).toBeFalsy()
   describe '#checkForVictory', ->
     beforeEach ->
       @level = new NB.Level(@levelData)
@@ -113,3 +141,10 @@ describe 'Level', ->
       it 'does not end the game', ->
         @level.notifyCompletionOf(@wave)
         expect(NB.Director.endGame).not.toHaveBeenCalled()
+  describe '#removeTower', ->
+    it 'removes the given tower from the map', ->
+      @level = new NB.Level(@levelData)
+      tower = {}
+      spyOn(@level.map, 'removeTower')
+      @level.removeTower(tower)
+      expect(@level.map.removeTower).toHaveBeenCalledWith(tower)

@@ -6,13 +6,13 @@
     %link{:rel => 'stylesheet', :type => 'text/css', :media => 'screen', :href => 'css/compiled/style.css'}/
   %body
     #wrapper
-      #splash_screen
+      #splash_screen.screen
         #blurb
           by
           %a.link{:href => 'https://twitter.com/#!/james_gary'}@james_gary
-        #start.button
+        #start_from_splash.button
           Start
-      #main_game
+      #game_screen.screen
         #infobar
           #floatRight
             #money 420
@@ -21,11 +21,40 @@
           %li Wave 1
           %li Wave 2
           %li Wave 3
+          %li
+            %a#send_wave Send Wave!
         #map
           %canvas#background{:width => '512', :height => '512'}
           %canvas#foreground{:width => '512', :height => '512'}
+          #dpad
         #buttons
-          %a#send_wave
-            Send Wave!
+          %a.button.tower_chooser{'data-tower_type' => 'BoxerTowerPlaceholder'} Boxer Brown!
+          %a.button.tower_chooser{'data-tower_type' => 'BoxerTowerPlaceholder'} Boxer Brown!
+          %a.button.tower_chooser{'data-tower_type' => 'BoxerTowerPlaceholder'} Boxer Brown!
+          %a.button.tower_chooser{'data-tower_type' => 'BoxerTowerPlaceholder'} Boxer Brown!
+          %a.button.tower_chooser{'data-tower_type' => 'BoxerTowerPlaceholder'} Boxer Brown!
+          %a.button.tower_chooser{'data-tower_type' => 'BoxerTowerPlaceholder'} Boxer Brown!
+          %a.button.tower_chooser{'data-tower_type' => 'BoxerTowerPlaceholder'} Boxer Brown!
+          %a.button.tower_chooser{'data-tower_type' => 'BoxerTowerPlaceholder'} Boxer Brown!
         #infospace
           stuff go here!
+        #victory_dialogue
+          Awwwww yea! You did it!
+          %a.button.return_to_levels OK
+        #defeat_dialogue
+          Darn! We got buggered!
+          %a.button.return_to_levels OK
+
+      #levels_screen.screen
+        %ul
+          %li
+            %a.button.level_chooser{'data-map' => 'level1'} Map 1
+          %li
+            %a.button.level_chooser{'data-map' => 'level2'} Map 2
+          %li
+            %a.button.level_chooser{'data-map' => 'level3'} Map 3
+          %li
+            %a.button.level_chooser{'data-map' => 'level4'} Map 4
+          %li
+            %a.button.level_chooser{'data-map' => 'level5'} Map 5
+

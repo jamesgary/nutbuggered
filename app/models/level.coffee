@@ -7,7 +7,11 @@ NB.Level = class Level
     @map = data.map
     @tree = data.tree
   sendNextWave: ->
-    @currentWaves.push(@waves.shift())
+    if @waves.isEmpty()
+      false
+    else
+      @currentWaves.push(@waves.shift())
+      true
   tick: ->
     wave.tick() for wave in @currentWaves
     @map.tick()
@@ -15,6 +19,8 @@ NB.Level = class Level
     (wave.findCreep(criteria) for wave in @currentWaves)
   placeTower: (tower, coordinates) ->
     @map.placeTower(tower, coordinates)
+  canPlaceTower: (tower, coordinates) ->
+    @map.canPlaceTower(tower, coordinates)
   checkForVictory: ->
     return false if @waves.length > 0
     for wave in @currentWaves
@@ -24,3 +30,5 @@ NB.Level = class Level
     @currentWaves.remove(completedWave)
     if @currentWaves.isEmpty() && @waves.isEmpty()
       NB.Director.endGame(true)
+  removeTower: (tower) ->
+    @map.removeTower(tower)

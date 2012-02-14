@@ -23,23 +23,19 @@ files = [
   "js/compiled/views/wave_view.js",
 
   "js/compiled/views/creeps/creep_view.js",
+  "js/compiled/views/towers/boxer_tower_view.js",
 
   # other
   "js/compiled/controller.js",
   "js/compiled/lib.js",
+  "js/compiled/data/level_data.js",
+  "js/compiled/data/image_data.js",
+  "js/vendor/jquery.js",
 ]
 require files, ->
   console.log("* All loaded, sir!")
 
   if (typeof jasmine == 'undefined')
-    waveData1 = {creepData: {type: NB.Creep, hpMod: 1, speedMod: 1, countMod: 1, waitMod: 1}}
-    waveData2 = {creepData: {type: NB.Creep, hpMod: 1.2, speedMod: 1.2, countMod: .8, waitMod: .8}}
-    waveData3 = {creepData: {type: NB.Creep, hpMod: 2.5, speedMod: 2.5, countMod: 2.5, waitMod: 1}}
-    path = new NB.Path([[7,7], [7,5], [2,5], [2, 10], [13, 10]])
-    map = new NB.Map(path)
-    tree = new NB.Tree(1000)
-    levelData = {wavesData: [waveData1, waveData2, waveData3], map: map, tree: tree}
-    level = new NB.Level(levelData)
-
-    NB.Director.start({level: level})
+    NB.Director.start()
     NB.Controller.loadAll()
+    NB.imageData.loadAll()

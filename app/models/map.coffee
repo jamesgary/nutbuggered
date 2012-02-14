@@ -12,14 +12,25 @@ NB.Map = class Map
   placeTower: (tower, coordinates) ->
     x = coordinates[0]
     y = coordinates[1]
-    if @cells[x][y] == null #isEmpty
+    if @canPlaceTower(tower, coordinates)
       @cells[x][y] = tower
       @towers.push(tower)
       @drawInit()
       true
     else
       false
+  canPlaceTower: (tower, coordinates) ->
+    x = coordinates[0]
+    y = coordinates[1]
+    cellOccupant = @cells[x][y]
+    (@cells[x][y] == null || cellOccupant == tower) && !@path.contains([x,y])
   cellAt: (x, y) ->
     @cells[x][y]
   tick: ->
     tower.tick() for tower in @towers
+  removeTower: (tower) ->
+    coordinates = tower.coordinates
+    x = coordinates[0]
+    y = coordinates[1]
+    @cells[x][y] = null
+    @towers.remove(tower)
