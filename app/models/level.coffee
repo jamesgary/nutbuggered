@@ -6,6 +6,7 @@ NB.Level = class Level
     @currentWaves = []
     @map = data.map
     @tree = data.tree
+    @money = 1000
   sendNextWave: ->
     if @waves.isEmpty()
       false
@@ -19,6 +20,7 @@ NB.Level = class Level
     (wave.findCreep(criteria) for wave in @currentWaves)
   placeTower: (tower, coordinates) ->
     @map.placeTower(tower, coordinates)
+    @chargeMoney(tower.cost)
   canPlaceTower: (tower, coordinates) ->
     @map.canPlaceTower(tower, coordinates)
   checkForVictory: ->
@@ -32,3 +34,5 @@ NB.Level = class Level
       NB.Director.endGame(true)
   removeTower: (tower) ->
     @map.removeTower(tower)
+  chargeMoney: (dollars) ->
+    @money -= dollars

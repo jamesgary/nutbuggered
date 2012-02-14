@@ -26,6 +26,8 @@ NB.BoxerTower = class BoxerTower extends NB.Tower
 
 NB.BoxerTowerPlaceholder = class BoxerTowerPlaceholder extends NB.BoxerTower
   constructor: (@coordinates) ->
+    @direction = 's'
+    @cost = 0
     unless @coordinates
       @hovering = true
   tick: -> # don't shoot!

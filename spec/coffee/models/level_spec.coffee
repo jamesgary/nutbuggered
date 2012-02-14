@@ -63,13 +63,16 @@ describe 'Level', ->
   describe '#placeTower', ->
     beforeEach ->
       @level = new NB.Level(@levelData)
-    it 'places a tower on the map', ->
-      tower = 'mockTower'
-      coordinates = [2, 3]
+      @tower = {cost: 25}
+      @coordinates = [2, 3]
       spyOn(@level.map, 'placeTower')
-
-      @level.placeTower(tower, coordinates)
-      expect(@level.map.placeTower).toHaveBeenCalledWith(tower, [2, 3])
+    it 'places a tower on the map', ->
+      @level.placeTower(@tower, @coordinates)
+      expect(@level.map.placeTower).toHaveBeenCalledWith(@tower, [2, 3])
+    it 'charges the player the cost', ->
+      @level.money = 500
+      @level.placeTower(@tower, @coordinates)
+      expect(@level.money).toEqual 475
   describe '#canPlaceTower', ->
     beforeEach ->
       @mockTower = 'mockTower'

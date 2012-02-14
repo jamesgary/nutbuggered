@@ -15,7 +15,7 @@ $aqua_green: #90EE90;
 $wave_width: 150px;
 $buttons_width: $main_width - ($wave_width + $map_width);
 
-$infobar_height: 20px;
+$infobar_height: 30px;
 $infospace_height: $main_height - ($infobar_height + $map_height);
 
 @mixin buttonize($base_color: $dark_blue, $font_size: 30px) {
@@ -46,6 +46,7 @@ $infospace_height: $main_height - ($infobar_height + $map_height);
 }
 
 * {
+  @include box-sizing(border-box);
   -webkit-user-select: none;
   user-select: none;
   cursor: default;
@@ -108,12 +109,16 @@ html, body {
   #infobar {
     background: $dark_blue;
     color: white;
-    height: 20px;
+    height: $infobar_height;
+    padding: 5px;
     #money, #minimize {
       display: inline-block;
     }
-    #money:before {
-      content: 'Money: $';
+    #money {
+      margin-left: 730px;
+      &:before {
+        content: 'Money: $';
+      }
     }
   }
   ul#waves {
@@ -148,7 +153,6 @@ html, body {
     width: $buttons_width;
     a.tower_chooser {
       $button_width: .4 * $buttons_width;
-      @include box-sizing(border-box);
       @include buttonize($med_blue, 18px);
       height: $button_width;
       margin: 10px 0 10px 15px;
@@ -162,7 +166,6 @@ html, body {
     width: 100%;
   }
   #victory_dialogue, #defeat_dialogue {
-    @include box-sizing(border-box);
     @include border-radius(10px);
     border: 2px solid darken($aqua_green, 50%);
     background: $aqua_green;
