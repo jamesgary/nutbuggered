@@ -5,18 +5,21 @@ $main_height: 710px;
 $map_height: 512px;
 $map_width: $map_height;
 
+$infobar_height: 30px;
+
+$wave_width: 150px;
+$waves_height: $main_height - $infobar_height;
+$buttons_width: $main_width - ($wave_width + $map_width);
+
+$infospace_height: $main_height - ($infobar_height + $map_height);
+$infospace_width: $main_width - $wave_width;
+
 $dark_blue: #154447;
 $med_blue: #2F7069;
 $tan: #D5A659;
 $light_green: #86A143;
 $dark_green: #476228;
 $aqua_green: #90EE90;
-
-$wave_width: 150px;
-$buttons_width: $main_width - ($wave_width + $map_width);
-
-$infobar_height: 30px;
-$infospace_height: $main_height - ($infobar_height + $map_height);
 
 @mixin buttonize($base_color: $dark_blue, $font_size: 30px) {
   $light: lighten($base_color, 30%);
@@ -127,9 +130,9 @@ html, body {
     display: inline-block;
     float: left;
     font-size: 24px;
+    height: $waves_height;
     position: relative;
     width: $wave_width;
-    height: $map_height;
     li {
       $light: lighten($tan, 30%);
       $dark: lighten($tan, 10%);
@@ -186,7 +189,7 @@ html, body {
     background: $med_blue;
     float:left;
     height: $infospace_height;
-    width: 100%;
+    width: $infospace_width;
   }
   #victory_dialogue, #defeat_dialogue {
     @include border-radius(10px);
