@@ -45,7 +45,53 @@
           %a.button.tower_chooser{'data-tower_type' => 'BoxerTowerPlaceholder'} Boxer Brown!
           %a.button.tower_chooser{'data-tower_type' => 'BoxerTowerPlaceholder'} Boxer Brown!
         #infospace
-          stuff go here!
+          #upgrades
+            .upgrade.power
+              %h6 Power
+              .conversion
+                .orig 20
+                .unit dmg
+                .arrow &rarr;
+                .new 30
+                .unit dmg
+              %a.button{'data-upgrade_power'}
+                Buy for
+                .price 100
+            .upgrade.range
+              %h6 Range
+              .conversion
+                .orig 1
+                .unit sq
+                .arrow &rarr;
+                .new 2
+                .unit sq
+              %a.button{'data-upgrade_range'}
+                Buy for
+                .price 100
+            .upgrade.speed
+              %h6 Speed
+              .conversion
+                .orig 1.1
+                .unit / s
+                .arrow &rarr;
+                .new .9
+                .unit / s
+              %a.button{'data-upgrade_speed'}
+                Buy for
+                .price 100
+            .upgrade.special
+              %h6 Special
+              .desc
+                Tail whip a bug behind you
+              %a.button{'data-upgrade_power'}
+                Buy for
+                .price 100
+            .priority
+              %h6 Attack Priority
+              %a.button.short{'data-prioritize_first'} First
+              %a.button{'data-prioritize_weakest'} Weakest
+              %a.button.short{'data-prioritize_last'} Last
+              %a.button{'data-prioritize_strongest'} Strongest
         #victory_dialogue
           Awwwww yea! You did it!
           %a.button.return_to_levels OK
