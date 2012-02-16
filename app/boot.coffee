@@ -25,11 +25,14 @@ files = [
   "js/compiled/views/creeps/creep_view.js",
   "js/compiled/views/towers/boxer_tower_view.js",
 
+  # data
+  "js/compiled/data/image_data.js",
+  "js/compiled/data/level_data.js",
+  "js/compiled/data/tower_data.js",
+
   # other
   "js/compiled/controller.js",
   "js/compiled/lib.js",
-  "js/compiled/data/level_data.js",
-  "js/compiled/data/image_data.js",
   "js/vendor/jquery.js",
 ]
 require files, ->

@@ -23,7 +23,7 @@ NB.Controller = {
       NB.Director.mapHover([x,y])
     )
     $('#game_screen').on('mouseleave', '#map', (e) -> NB.Director.movedOutOfMap())
-    @uponClick('map', (e) ->
+    @uponClick('foreground', (e) ->
       x = parseInt(e.offsetX / 32)
       y = parseInt(e.offsetY / 32)
       NB.Director.mapClick([x, y])
@@ -51,6 +51,8 @@ NB.Controller = {
       NB.Director.turnPlaceholderTower(dir)
     )
     @uponClick('dpad', -> NB.Director.setPlaceholderTower())
+
+    # # upgrading
 
     # # context menus
     $('#game_screen').on('click', '.return_to_levels', (e) -> NB.Director.returnToLevels())

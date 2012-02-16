@@ -51,7 +51,17 @@ NB.Director = {
       @placeTower(@placeholderTower, coordinates)
   mapClick: (coordinates) ->
     @placeholderTower.hovering = false if @placeholderTower
+    tower = @level.map.cellAt(coordinates[0], coordinates[1])
+    if tower
+      @activeTower.unclick() if @activeTower
+      @activeTower = tower
+      tower.clicked()
+    else
+      if @activeTower
+        @activeTower.unclick()
+        @activeTower = null
   clickTowerChooser: (towerType) ->
+    @activeTower.unclick() if @activeTower
     @placeholderTower = new towerType()
   turnPlaceholderTower: (dir) ->
     if @placeholderTower

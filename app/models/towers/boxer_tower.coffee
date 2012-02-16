@@ -1,6 +1,8 @@
 NB.BoxerTower = class BoxerTower extends NB.Tower
   constructor: (@coordinates, @direction) ->
-    @cost = 50
+    data = NB.towerData.BoxerTower
+    @cost = data.cost
+    @upgrades = data.upgrades
     @cooldown = 60
     @ticksUntilAttack = 0
     x = @coordinates[0]
@@ -12,6 +14,10 @@ NB.BoxerTower = class BoxerTower extends NB.Tower
         when 's' then [x, y+1]
         when 'w' then [x-1, y]
     ]
+    @shouldDrawRange = false
+
+    @upgradePower()
+    @upgradeSpeed()
   tick: ->
     if @ticksUntilAttack > 0
       @ticksUntilAttack--
@@ -24,13 +30,51 @@ NB.BoxerTower = class BoxerTower extends NB.Tower
       creep.damage(20) for creep in creeps
     @ticksUntilAttack = @cooldown
 
+  canUpgradePower: -> true
+  nextPowerUpgrade: ->
+    @upgrades.power[0]
+  upgradePower: ->
+    @power = @upgrades.power[0].dmg
+    @upgrades.power.shift()
+
+  canUpgradeRange: -> false
+
+  canUpgradeSpeed: -> true
+  nextSpeedUpgrade: ->
+    @upgrades.speed[0]
+  upgradeSpeed: ->
+    @speed = @upgrades.speed[0].rate
+    @upgrades.speed.shift()
+
+  clicked: ->
+    @shouldDrawRange = true
+    unless @hovering
+      @drawUpgrades()
+  unclick: ->
+    @shouldDrawRange = false
+    @undrawUpgrades()
+
 NB.BoxerTowerPlaceholder = class BoxerTowerPlaceholder extends NB.BoxerTower
   constructor: (@coordinates) ->
     @direction = 's'
     @cost = 0
     unless @coordinates
       @hovering = true
-  tick: -> # don't shoot!
+    @shouldDrawRange = true
+  tick: -> # just don't shoot!
+    # TODO: Memoize if possible
+    x = @coordinates[0]
+    y = @coordinates[1]
+    @range = [
+      switch @direction
+        when 'n' then [x, y-1]
+        when 'e' then [x+1, y]
+        when 's' then [x, y+1]
+        when 'w' then [x-1, y]
+    ]
+  clicked: ->
+    super()
+    @undrawUpgrades()
   draw: (ctx) ->
     unless @hasDrawn && @coordinates
       size = 64
