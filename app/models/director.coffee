@@ -72,6 +72,7 @@ NB.Director = {
     @placeTower(realTower, realTower.coordinates)
     $('#dpad').hide()
     @placeholderTower = null
+    @mapClick(realTower.coordinates)
   movedOutOfMap: ->
     if @placeholderTower
       console.log('getout!')
