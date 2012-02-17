@@ -106,6 +106,17 @@ describe 'Tower', ->
             @tower.upgradeRange()
             @tower.upgradeRange()
             expect(@tower.nextRangeUpgrade()).toBe null
+        describe '#refreshRange', ->
+          it 'refreshes the range', ->
+            @tower.coordinates = [8, 4]
+            @tower.refreshRange()
+            cellsInRange = [
+              [7,3], [7,4], [7,5]
+              [8,3], [8,4], [8,5]
+              [9,3], [9,4], [9,5]
+            ]
+            expect(@tower.range).toContain cell for cell in cellsInRange
+            expect(@tower.range.length).toEqual 9
         describe '#upgradeRange', ->
           it 'upgrades range', ->
             @tower.upgradeRange()

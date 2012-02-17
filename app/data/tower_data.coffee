@@ -3,18 +3,42 @@ NB.towerData = {
     cost: 50
     upgrades: {
       power: [
-        {dmg: 10, cost: 0}
-        {dmg: 25, cost: 100}
-        {dmg: 35, cost: 150}
-        {dmg: 60, cost: 250}
-        {dmg: 100, cost: 350}
+        {dmg: 20, cost: 0}
+        {dmg: 50, cost: 100}
+        {dmg: 70, cost: 150}
+        {dmg: 120, cost: 250}
+        {dmg: 200, cost: 350}
+      ]
+      speed: [
+        {rate: .7, cost: 0}
+        {rate: .5, cost: 110}
+        {rate: .4, cost: 230}
+        {rate: .3, cost: 500}
+        {rate: .2, cost: 875}
+      ]
+    }
+  }
+  SlingshotTower: -> {
+    cost: 100
+    upgrades: {
+      power: [
+        {dmg: 15, cost: 0}
+        {dmg: 25, cost: 150}
+        {dmg: 40, cost: 250}
+        {dmg: 60, cost: 350}
+        {dmg: 100, cost: 500}
+      ]
+      range: [
+        {sq: 1, cost: 0}
+        {sq: 2, cost: 300}
+        {sq: 3, cost: 500}
       ]
       speed: [
         {rate: 1.2, cost: 0}
-        {rate: .9, cost: 110}
-        {rate: .6, cost: 230}
-        {rate: .4, cost: 500}
-        {rate: .2, cost: 875}
+        {rate: .9, cost: 210}
+        {rate: .6, cost: 430}
+        {rate: .4, cost: 700}
+        {rate: .2, cost: 1075}
       ]
     }
   }

@@ -24,7 +24,9 @@ files = [
   "js/compiled/views/wave_view.js",
 
   "js/compiled/views/creeps/creep_view.js",
+  "js/compiled/views/towers/tower_view.js",
   "js/compiled/views/towers/boxer_tower_view.js",
+  "js/compiled/views/towers/slingshot_tower_view.js",
 
   # data
   "js/compiled/data/image_data.js",

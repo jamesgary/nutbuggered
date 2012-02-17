@@ -29,16 +29,20 @@ NB.Tower = class Tower
     @power = @upgrades.power[0].dmg
     @upgrades.power.shift()
 
+  refreshRange: ->
+    x = @coordinates[0]
+    y = @coordinates[1]
+    if @radius
+      @range = []
+      for newX in [x-@radius..x+@radius]
+        for newY in [y-@radius..y+@radius]
+          @range.push [newX, newY]
   nextRangeUpgrade: ->
     @upgrades.range[0] || null
   upgradeRange: ->
-    sq = @upgrades.range[0].sq
-    x = @coordinates[0]
-    y = @coordinates[1]
-    @range = []
-    for newX in [x-sq..x+sq]
-      for newY in [y-sq..y+sq]
-        @range.push [newX, newY]
+    if @coordinates
+      @radius = @upgrades.range[0].sq
+      @refreshRange()
     @upgrades.range.shift()
 
   nextSpeedUpgrade: ->

@@ -14,7 +14,8 @@ NB.BoxerTower = class BoxerTower extends NB.Tower
   attack: ->
     creepsForEachRange = NB.Director.level.findCreep({range: @range})
     for creeps in creepsForEachRange
-      for creep in creeps
+      # only attack the first one
+      if creep = creeps[0]
         creep.damage(@power)
         attacked = true
     if attacked

@@ -48,6 +48,7 @@ NB.Director = {
       if @placeholderTower.coordinates # need to replace it
         @level.removeTower(@placeholderTower)
       @placeholderTower.coordinates = coordinates
+      @placeholderTower.refreshRange()
       @placeTower(@placeholderTower, coordinates)
   mapClick: (coordinates) ->
     @placeholderTower.hovering = false if @placeholderTower
@@ -75,7 +76,6 @@ NB.Director = {
     @mapClick(realTower.coordinates)
   movedOutOfMap: ->
     if @placeholderTower
-      console.log('getout!')
       $('#dpad').hide()
       @level.removeTower(@placeholderTower)
       @placeholderTower = null
