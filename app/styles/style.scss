@@ -195,7 +195,7 @@ html, body {
     position: relative;
     width: $infospace_width;
     #upgrades {
-      display: block;
+      display: none;
       height: 100%;
       position: relative;
       & > div {
@@ -238,7 +238,7 @@ html, body {
         .button {
           @include buttonize($dark_green, 16px);
           font-size: 12px;
-          .price {
+          .cost {
             display: inline;
             font-weight: bold;
             &:before {

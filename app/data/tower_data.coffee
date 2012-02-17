@@ -1,5 +1,5 @@
 NB.towerData = {
-  BoxerTower: {
+  BoxerTower: -> {
     cost: 50
     upgrades: {
       power: [
@@ -8,13 +8,6 @@ NB.towerData = {
         {dmg: 35, cost: 150}
         {dmg: 60, cost: 250}
         {dmg: 100, cost: 350}
-      ]
-      range: [
-        {sq: 1, cost: 0}
-        {sq: 2, cost: 120}
-        {sq: 3, cost: 250}
-        {sq: 4, cost: 550}
-        {sq: 5, cost: 750}
       ]
       speed: [
         {rate: 1.2, cost: 0}

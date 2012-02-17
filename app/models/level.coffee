@@ -1,5 +1,5 @@
 NB.Level = class Level
-  waveLifespan: 300 # 1200
+  waveLifespan: 1200
 
   constructor: (data) ->
     @waves = for waveData in data.wavesData
@@ -12,7 +12,6 @@ NB.Level = class Level
     @currentWaveIndex = 0
     @currentWaveAge = 0
   sendWave: (index) ->
-    console.log('asdf')
     while @currentWaveIndex < index
       @sendNextWave()
   sendNextWave: ->
@@ -51,3 +50,5 @@ NB.Level = class Level
     @map.removeTower(tower)
   chargeMoney: (dollars) ->
     @money -= dollars
+  canAfford: (dollars) ->
+    @money >= dollars

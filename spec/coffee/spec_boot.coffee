@@ -13,6 +13,7 @@ spec_files = [
   "../js/compiled/models/creeps/creep_spec.js",
   "../js/compiled/models/towers/tower_spec.js",
   "../js/compiled/models/towers/boxer_tower_spec.js",
+  "../js/compiled/models/towers/slingshot_tower_spec.js",
 
   "../js/compiled/views/map_view_spec.js",
 ]

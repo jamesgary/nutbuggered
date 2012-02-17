@@ -11,7 +11,7 @@ NB.Creep = class Creep
     @position = @path.start()
 
     @speed = @defaultSpeed * data.speedMod
-    @hp = @defaultHp * data.hpMod
+    @hp = @maxHp = @defaultHp * data.hpMod
     @wait = @defaultWait * data.waitMod
   tick: ->
     newPosition = @path.travel(@position, @speed)

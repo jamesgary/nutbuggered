@@ -1,10 +1,7 @@
 NB.BoxerTower = class BoxerTower extends NB.Tower
   constructor: (@coordinates, @direction) ->
-    data = NB.towerData.BoxerTower
-    @cost = data.cost
-    @upgrades = data.upgrades
-    @cooldown = 60
-    @ticksUntilAttack = 0
+    data = NB.towerData.BoxerTower()
+    super(data)
     x = @coordinates[0]
     y = @coordinates[1]
     @range = [
@@ -14,45 +11,17 @@ NB.BoxerTower = class BoxerTower extends NB.Tower
         when 's' then [x, y+1]
         when 'w' then [x-1, y]
     ]
-    @shouldDrawRange = false
-
-    @upgradePower()
-    @upgradeSpeed()
-  tick: ->
-    if @ticksUntilAttack > 0
-      @ticksUntilAttack--
-    else
-      @attack()
-      @ticksUntilAttack = @cooldown
   attack: ->
     creepsForEachRange = NB.Director.level.findCreep({range: @range})
     for creeps in creepsForEachRange
-      creep.damage(20) for creep in creeps
-    @ticksUntilAttack = @cooldown
-
-  canUpgradePower: -> true
-  nextPowerUpgrade: ->
-    @upgrades.power[0]
-  upgradePower: ->
-    @power = @upgrades.power[0].dmg
-    @upgrades.power.shift()
+      for creep in creeps
+        creep.damage(@power)
+        attacked = true
+    if attacked
+      @drawAttack()
+    return attacked
 
   canUpgradeRange: -> false
-
-  canUpgradeSpeed: -> true
-  nextSpeedUpgrade: ->
-    @upgrades.speed[0]
-  upgradeSpeed: ->
-    @speed = @upgrades.speed[0].rate
-    @upgrades.speed.shift()
-
-  clicked: ->
-    @shouldDrawRange = true
-    unless @hovering
-      @drawUpgrades()
-  unclick: ->
-    @shouldDrawRange = false
-    @undrawUpgrades()
 
 NB.BoxerTowerPlaceholder = class BoxerTowerPlaceholder extends NB.BoxerTower
   constructor: (@coordinates) ->
@@ -91,5 +60,6 @@ NB.BoxerTowerPlaceholder = class BoxerTowerPlaceholder extends NB.BoxerTower
         $('#dpad').show()
         @hasDrawn = true
     super(ctx)
+  drawUpgrades: -> # don't draw them
   promote: ->
     new NB.BoxerTower(@coordinates, @direction)

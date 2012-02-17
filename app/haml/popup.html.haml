@@ -48,44 +48,59 @@
           #upgrades
             .upgrade.power
               %h6 Power
-              .conversion
-                .orig 20
-                .unit dmg
-                .arrow &rarr;
-                .new 30
-                .unit dmg
-              %a.button{'data-upgrade_power'}
-                Buy for
-                .price 100
+              .cannot_upgrade
+                Not applicable
+                %br
+                for this tower
+              .can_upgrade
+                .conversion
+                  .orig.not_maxed ?
+                  .unit.not_maxed dmg
+                  .arrow.not_maxed &rarr;
+                  .new ?
+                  .unit dmg
+                %a.not_maxed.button
+                  Buy for
+                  .cost ?
             .upgrade.range
               %h6 Range
-              .conversion
-                .orig 1
-                .unit sq
-                .arrow &rarr;
-                .new 2
-                .unit sq
-              %a.button{'data-upgrade_range'}
-                Buy for
-                .price 100
+              .cannot_upgrade
+                Not applicable
+                %br
+                for this tower
+              .can_upgrade
+                .conversion
+                  .orig.not_maxed ?
+                  .unit.not_maxed sq
+                  .arrow.not_maxed &rarr;
+                  .new ?
+                  .unit sq
+                %a.not_maxed.button
+                  Buy for
+                  .cost ?
             .upgrade.speed
               %h6 Speed
-              .conversion
-                .orig 1.1
-                .unit / s
-                .arrow &rarr;
-                .new .9
-                .unit / s
-              %a.button{'data-upgrade_speed'}
-                Buy for
-                .price 100
+              .cannot_upgrade
+                Not applicable
+                %br
+                for this tower
+              .can_upgrade
+                .conversion
+                  .orig.not_maxed ?
+                  .unit.not_maxed s
+                  .arrow.not_maxed &rarr;
+                  .new ?
+                  .unit s
+                %a.not_maxed.button
+                  Buy for
+                  .cost ?
             .upgrade.special
               %h6 Special
               .desc
                 Tail whip a bug behind you
-              %a.button{'data-upgrade_power'}
+              %a.button
                 Buy for
-                .price 100
+                .cost 500
             .priority
               %h6 Attack Priority
               %a.button.short{'data-prioritize_first'} First
