@@ -1,5 +1,5 @@
+Work in progress, initially for Pokki's 1up content: http://www.pokki.com/1up/
+
 Start guard:
     bundle exec guard
-Start jasmine:
-    bundle exec rake jasmine
-When you open your browser to localhost:8080 for Jasmine, download the LiveReload plugin to get all the LiveReload goodies.
+When you open your browser to nutbuggered/nutbuggered/spec/jasmine/jasmine.html for Jasmine, download the LiveReload plugin to get all the LiveReload goodies.
