@@ -75,6 +75,9 @@ html, body {
   .button {
     @include buttonize($dark_blue, 42px);
   }
+  .highlight {
+    background: green !important;
+  }
 }
 .screen {
   height: $main_height;

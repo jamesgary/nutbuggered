@@ -1,6 +1,6 @@
 NB.Priorities = {
-  FIRST: {}
-  LAST: {}
-  STRONGEST: {}
-  WEAKEST: {}
+  FIRST: {name: 'first'}
+  LAST: {name: 'last'}
+  STRONGEST: {name: 'strongest'}
+  WEAKEST: {name: 'weakest'}
 }

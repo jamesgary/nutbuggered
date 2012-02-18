@@ -72,17 +72,36 @@ NB.Tower::drawUpgrades = ->
     if nextUpgrade == null # maxed out
       $range.find('.not_maxed').hide()
     else
+      cost = nextUpgrade.cost
       $range.find('.not_maxed').show()
       $range.find('.new').text(nextUpgrade.sq)
-      $range.find('.cost').text(nextUpgrade.cost)
+      $range.find('.cost').text(cost)
       $range.off('click', '.button')
       $range.on('click', '.button', (e) ->
-        tower.upgradeRange()
-        tower.drawUpgrades()
+        if NB.Director.level.canAfford(cost)
+          NB.Director.level.chargeMoney(cost)
+          tower.upgradeRange()
+          tower.drawUpgrades()
       )
   else
     $range.find('.can_upgrade').hide()
     $range.find('.cannot_upgrade').show()
+
+  # TODO check if you even can prioritize (i.e. sumo can't)
+  $priority = $('#upgrades .priority')
+  $priority.off('click', '.button')
+  $priority.on('click', '.button', (e) ->
+    switch(e.toElement.dataset.priority)
+      when 'first'     then priority = NB.Priorities.FIRST
+      when 'last'      then priority = NB.Priorities.LAST
+      when 'weakest'   then priority = NB.Priorities.WEAKEST
+      when 'strongest' then priority = NB.Priorities.STRONGEST
+    tower.priority = priority if priority
+    tower.drawUpgrades()
+  )
+  priority = tower.priority.name
+  $priority.find("a").removeClass('highlight')
+  $priority.find("a[data-priority=#{priority}]").addClass('highlight')
 
   $('#upgrades').show()
 

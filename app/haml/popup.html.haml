@@ -103,10 +103,10 @@
                 .cost 500
             .priority
               %h6 Attack Priority
-              %a.button.short{'data-prioritize_first'} First
-              %a.button{'data-prioritize_weakest'} Weakest
-              %a.button.short{'data-prioritize_last'} Last
-              %a.button{'data-prioritize_strongest'} Strongest
+              %a.button.short{'data-priority' => 'first'}     First
+              %a.button{      'data-priority' => 'weakest'}   Weakest
+              %a.button.short{'data-priority' => 'last'}      Last
+              %a.button{      'data-priority' => 'strongest'} Strongest
         #victory_dialogue
           Awwwww yea! You did it!
           %a.button.return_to_levels OK
