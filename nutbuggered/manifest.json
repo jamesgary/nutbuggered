@@ -1,0 +1,9 @@
+{
+  "name": "NutBuggered",
+  "version": "0.1",
+  "icon-19x19": "img/icons/icon-19x19.png",
+  "icon-29x29": "img/icons/icon-29x29.png",
+  "icon-42x42": "img/icons/icon-42x42.png",
+  "description": "Tower Defense with squirrels, bugs, and maybe a cat",
+  "popup": "popup.html"
+}

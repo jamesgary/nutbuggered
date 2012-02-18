@@ -20,10 +20,14 @@
       </div>
       <div class='screen' id='game_screen'>
         <div id='infobar'>
-          <div id='money'>???</div>
-          <div id='floatRight'>
-            <div id='minimize'>[-]</div>
+          <div id='speed'>
+            <div id='pause'>II</div>
+            <!-- #speed1 &#x25B6; -->
+            <!-- #speed2 &#x25B6; &#x25B6; -->
+            <!-- #speed3 &#x25B6; &#x25B6; &#x25B6; -->
           </div>
+          <div id='money'>???</div>
+          <div id='minimize'>[-]</div>
         </div>
         <ul id='waves'>
           <li class='wave' data-wave_index='1'>Wave 1</li>
@@ -138,12 +142,20 @@
           </div>
         </div>
         <div id='victory_dialogue'>
-          Awwwww yea! You did it!
+          <h2>Awwwww yea! You did it!</h2>
           <a class='button return_to_levels'>OK</a>
         </div>
         <div id='defeat_dialogue'>
-          Darn! We got buggered!
-          <a class='button return_to_levels'>OK</a>
+          <h2>Aw, dang!</h2>
+          <h3>You got buggered!</h3>
+          <h4>But you're better now than you ever were before.</h4>
+          <a class='button return_to_levels'>Return to Map</a>
+        </div>
+        <div id='pause_dialogue'>
+          <h2>~ Paused ~</h2>
+          <h3>You can do anything you put your mind to.</h3>
+          <a class='button' id='unpause'>Return to Game</a>
+          <a class='button return_to_levels'>Quit to Map</a>
         </div>
       </div>
       <div class='screen' id='levels_screen'>

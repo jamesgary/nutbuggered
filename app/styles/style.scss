@@ -72,6 +72,12 @@ html, body {
       text-decoration: underline;
     }
   }
+
+  h2 { font-size: 42px; }
+  h3 { font-size: 36px; }
+  h4 { font-size: 30px; }
+  h5 { font-size: 24px; }
+  h5 { font-size: 18px; }
   .button {
     @include buttonize($dark_blue, 42px);
   }
@@ -119,13 +125,29 @@ html, body {
     color: white;
     height: $infobar_height;
     padding: 5px;
-    #money, #minimize {
-      display: inline-block;
+    div {
+      position: absolute;
+    }
+    #speed {
+      div {
+        @include buttonize(gray, 12px);
+        border-width: 1px;
+        display: inline-block;
+      }
     }
     #money {
-      margin-left: 730px;
+      left: 730px;
       &:before {
         content: 'Money: $';
+      }
+    }
+    #minimize {
+      font-weight: bold;
+      cursor: pointer;
+      padding: 0px 5px;
+      right: 0;
+      &:hover {
+        text-shadow: yellow 0 0px 12px;
       }
     }
   }
@@ -265,18 +287,37 @@ html, body {
       }
     }
   }
-  #victory_dialogue, #defeat_dialogue {
+  #victory_dialogue, #defeat_dialogue, #pause_dialogue {
     @include border-radius(10px);
     border: 2px solid darken($aqua_green, 50%);
     background: $aqua_green;
     height: 400px;
     display: none;
+    font-size: 36px;
     left: 50%;
     margin-left: -250px;
     margin-top: 100px;
     padding: 20px;
     position: absolute;
+    text-align: center;
     width: 500px;
+    &#pause_dialogue h2 {
+      font-size: 70px;
+    }
+    h2, h3, h4 {
+      margin: 0;
+      padding: 0;
+    }
+    h4 {
+      font-weight: normal;
+      margin: 24px 12px;
+    }
+
+    .button {
+      @include buttonize($dark_blue, 36px);
+      margin: 20px 0;
+      width: 80%;
+    }
   }
 }
 

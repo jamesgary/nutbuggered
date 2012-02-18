@@ -4,8 +4,9 @@ NB.Director = {
     @tick()
   tick: ->
     webkitRequestAnimationFrame(NB.Director.tick)
-    NB.Director.stage.tick()
-    NB.Director.stage.draw()
+    unless NB.Director.paused
+      NB.Director.stage.tick()
+      NB.Director.stage.draw()
   placeTower: (tower, coordinates) ->
     @level.placeTower(tower, coordinates)
   canPlaceTower: (tower, coordinates) ->
@@ -20,12 +21,19 @@ NB.Director = {
         $('#defeat_dialogue').fadeIn 200
         console.log('A loser is you!')
   startLevel: (levelData) ->
+    @unpause()
     @hasEnded = false
     @level = levelData.level
     @stage.load(@level)
 
   # from the controller
 
+  pause: ->
+    @paused = true
+    $('#pause_dialogue').show()
+  unpause: ->
+    @paused = false
+    $('#pause_dialogue').hide()
   sendWave: (index) ->
     @level.sendWave(index)
   startFromSplash: ->

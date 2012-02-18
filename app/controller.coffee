@@ -10,6 +10,10 @@ NB.Controller = {
     )
 
     # game
+    # # pause
+    $('#game_screen').on('click', '#pause',   (e) -> NB.Director.pause())
+    $('#game_screen').on('click', '#unpause', (e) -> NB.Director.unpause())
+
     # # sending waves
     $('#game_screen').on('click', 'ul#waves li.wave', (e) -> NB.Director.sendWave(parseInt(e.toElement.dataset.wave_index)))
 

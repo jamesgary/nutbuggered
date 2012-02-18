@@ -16,9 +16,13 @@
           Start
       #game_screen.screen
         #infobar
+          #speed
+            #pause II
+            /#speed1 &#x25B6;
+            /#speed2 &#x25B6; &#x25B6;
+            /#speed3 &#x25B6; &#x25B6; &#x25B6;
           #money ???
-          #floatRight
-            #minimize [-]
+          #minimize [-]
         %ul#waves
           %li.wave{'data-wave_index' => 1}Wave 1
           %li.wave{'data-wave_index' => 2}Wave 2
@@ -108,11 +112,18 @@
               %a.button.short{'data-priority' => 'last'}      Last
               %a.button{      'data-priority' => 'strongest'} Strongest
         #victory_dialogue
-          Awwwww yea! You did it!
+          %h2 Awwwww yea! You did it!
           %a.button.return_to_levels OK
         #defeat_dialogue
-          Darn! We got buggered!
-          %a.button.return_to_levels OK
+          %h2 Aw, dang!
+          %h3 You got buggered!
+          %h4 But you're better now than you ever were before.
+          %a.button.return_to_levels Return to Map
+        #pause_dialogue
+          %h2 ~ Paused ~
+          %h3 You can do anything you put your mind to.
+          %a.button#unpause Return to Game
+          %a.button.return_to_levels Quit to Map
 
       #levels_screen.screen
         %ul
