@@ -38,13 +38,12 @@ files = [
   # other
   "js/compiled/controller.js",
   "js/compiled/lib.js",
-  "js/compiled/pokki.js",
   "js/vendor/pokki/PokkiBrowser.js",
+  "js/vendor/pokki/LocalStore.js",
   "js/vendor/pokki/GAPokki.js",
+  "js/compiled/pokki.js",
 
   "js/vendor/jquery.js",
-  "js/vendor/jquery.js",
-  "js/vendor/pokki/LocalStore.js",
 ]
 require files, ->
   console.log("* All loaded, sir!")
