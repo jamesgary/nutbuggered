@@ -3,6 +3,8 @@
   %head
     %meta{'http-equiv' => 'Content-Type', :content => 'text/html; charset=UTF-8'}/
     %script{'data-main' => 'js/compiled/boot.js', 'src' => 'js/vendor/require.js'}
+    %script{:src => "js/vendor/pokki/PokkiBrowser.js"}
+    %script{:src => "js/vendor/pokki/GAPokki.js"}
     %link{:rel => 'stylesheet', :type => 'text/css', :media => 'screen', :href => 'css/compiled/style.css'}/
   %body
     #wrapper
@@ -124,4 +126,7 @@
             %a.button.level_chooser{'data-map' => 'level4'} Map 4
           %li
             %a.button.level_chooser{'data-map' => 'level5'} Map 5
-
+%script{:type => "text/javascript"}
+:javascript
+  ga_pokki._setAccount('UA-29308111-1');
+  ga_pokki._setDomain('googleanalytics.pokki.com');
