@@ -48,6 +48,8 @@ describe 'Tower', ->
         ]
         expect(@tower.range).toContain cell for cell in cellsInRange
         expect(@tower.range.length).toEqual 9
+      it 'has the attack priority of first', ->
+        expect(@tower.priority).toBe NB.Priorities.FIRST
     describe '#tick', ->
       beforeEach ->
       describe 'if cooled down', ->

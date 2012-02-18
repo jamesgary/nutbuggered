@@ -3,6 +3,7 @@ NB.Tower = class Tower
     @cost = data.cost
     @upgrades = data.upgrades
     @ticksUntilAttack = 0
+    @priority = NB.Priorities.FIRST
     @shouldDrawRange = false #TODO move to view
 
     @canUpgradePower = !!(@upgrades.power)

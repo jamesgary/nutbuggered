@@ -3,11 +3,13 @@ NB.SlingshotTower = class SlingshotTower extends NB.Tower
     data = NB.towerData.SlingshotTower()
     super(data)
   attack: ->
-    creepsForEachRange = NB.Director.level.findCreep({range: @range})
-    if creeps = creepsForEachRange[0]
-      if creep = creeps[0]
-        creep.damage(@power)
-        attacked = true
+    creeps = NB.Director.level.findCreep(
+      range: @range
+      limit: 1
+      priority: @priority
+    )
+    creep.damage(@power) for creep in creeps
+    attacked = creeps.length > 0
     if attacked
       @drawAttack()
     return attacked

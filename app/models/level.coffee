@@ -64,7 +64,6 @@ NB.Level = class Level
         for creep in allCreep
           foundCreep.push creep if creep.isInRange cell
     foundCreep
-    #break if limitPerRange && numFoundInCell >= limitPerRange
   placeTower: (tower, coordinates) ->
     @map.placeTower(tower, coordinates)
     @chargeMoney(tower.cost)
@@ -89,7 +88,9 @@ NB.Level = class Level
   # private
 
   getAllCreep: ->
-    [].concat(wave.liveCreeps) for wave in @currentWaves
+    allCreep = []
+    allCreep = allCreep.concat(wave.liveCreeps) for wave in @currentWaves
+    allCreep
   createPrioritySorter: (priority) ->
     switch priority
       when NB.Priorities.FIRST

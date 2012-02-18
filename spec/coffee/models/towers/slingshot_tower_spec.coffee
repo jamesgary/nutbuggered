@@ -27,17 +27,15 @@ describe 'SlingshotTower', ->
   describe '#attack', ->
     beforeEach ->
       @mockCreep1 = {damage: ->}
-      @mockCreep2 = {damage: ->}
-      @mockCreep3 = {damage: ->}
       spyOn(@mockCreep1, 'damage')
-      spyOn(@mockCreep2, 'damage')
-      spyOn(@mockCreep3, 'damage')
       NB.Director.level = {findCreep: ->}
-      spyOn(NB.Director.level, 'findCreep').andReturn([[@mockCreep1, @mockCreep2], [@mockCreep3]])
+      spyOn(NB.Director.level, 'findCreep').andReturn([@mockCreep1])
       @st.power = 20
       @st.attack()
     it 'hits one creep for its entire range for its power', ->
-      expect(NB.Director.level.findCreep).toHaveBeenCalledWith({range: @st.range})
+      expect(NB.Director.level.findCreep).toHaveBeenCalledWith(
+        range: @st.range,
+        limit: 1,
+        priority: @st.priority
+      )
       expect(@mockCreep1.damage).toHaveBeenCalledWith(20)
-    it "doesn't hit a second creep", ->
-      expect(@mockCreep2.damage).not.toHaveBeenCalled()

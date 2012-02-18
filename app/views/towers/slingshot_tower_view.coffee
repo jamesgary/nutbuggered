@@ -9,6 +9,10 @@ NB.SlingshotTower::draw = (ctx) ->
 
   # draw squirrel
   ctx.save()
+
+  # look at a creep
+  #creep = NB.Director.level.findCreep
+
   ctx.translate(x, y)
   # probably gonna have to rotate to point at creep
   ctx.drawImage(NB.imageData.slingshot, -2 * offset, -2 * offset)

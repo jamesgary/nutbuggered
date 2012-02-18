@@ -49,21 +49,21 @@ describe 'Creep', ->
     it 'should find the creep', ->
       @creepData.path = new NB.Path([[1,1], [10,1]])
       @creep = new NB.Creep(@creepData)
-      expect(@creep.isInRange([[0.51, 0.51]])).toBeTruthy()
-      expect(@creep.isInRange([[0.51, 1.00]])).toBeTruthy()
-      expect(@creep.isInRange([[0.51, 1.49]])).toBeTruthy()
+      expect(@creep.isInRange([0.51, 0.51])).toBeTruthy()
+      expect(@creep.isInRange([0.51, 1.00])).toBeTruthy()
+      expect(@creep.isInRange([0.51, 1.49])).toBeTruthy()
 
-      expect(@creep.isInRange([[1.00, 0.51]])).toBeTruthy()
-      expect(@creep.isInRange([[1.00, 1.00]])).toBeTruthy()
-      expect(@creep.isInRange([[1.00, 1.49]])).toBeTruthy()
+      expect(@creep.isInRange([1.00, 0.51])).toBeTruthy()
+      expect(@creep.isInRange([1.00, 1.00])).toBeTruthy()
+      expect(@creep.isInRange([1.00, 1.49])).toBeTruthy()
 
-      expect(@creep.isInRange([[1.49, 0.51]])).toBeTruthy()
-      expect(@creep.isInRange([[1.49, 1.00]])).toBeTruthy()
-      expect(@creep.isInRange([[1.49, 1.49]])).toBeTruthy()
+      expect(@creep.isInRange([1.49, 0.51])).toBeTruthy()
+      expect(@creep.isInRange([1.49, 1.00])).toBeTruthy()
+      expect(@creep.isInRange([1.49, 1.49])).toBeTruthy()
 
-      expect(@creep.isInRange([[1.51, 1.51]])).toBeFalsy()
-      expect(@creep.isInRange([[0.49, 1.51]])).toBeFalsy()
-      expect(@creep.isInRange([[0.49, 0.49]])).toBeFalsy()
+      expect(@creep.isInRange([1.51, 1.51])).toBeFalsy()
+      expect(@creep.isInRange([0.49, 1.51])).toBeFalsy()
+      expect(@creep.isInRange([0.49, 0.49])).toBeFalsy()
   describe '#damage', ->
     it 'depletes hp', ->
       @creep.damage(10)

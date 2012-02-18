@@ -48,18 +48,18 @@ describe 'BoxerTower', ->
   describe '#attack', ->
     beforeEach ->
       @mockCreep1 = {damage: ->}
-      @mockCreep2 = {damage: ->}
       spyOn(@mockCreep1, 'damage')
-      spyOn(@mockCreep2, 'damage')
       NB.Director.level = {findCreep: ->}
-      spyOn(NB.Director.level, 'findCreep').andReturn([[@mockCreep1, @mockCreep2]])
+      spyOn(NB.Director.level, 'findCreep').andReturn([@mockCreep1])
       @bt.power = 20
       @bt.attack()
     it 'hits a creep in its range for its power', ->
-      expect(NB.Director.level.findCreep).toHaveBeenCalledWith({range: @bt.range})
+      expect(NB.Director.level.findCreep).toHaveBeenCalledWith(
+        range: @bt.range
+        limitPerRange: 1
+        priority: @bt.priority
+      )
       expect(@mockCreep1.damage).toHaveBeenCalledWith(20)
-    it "doesn't hit a second creep", ->
-      expect(@mockCreep2.damage).not.toHaveBeenCalled()
 
   it 'can upgrade power', ->
     expect(@bt.canUpgradePower).toBeTruthy()
