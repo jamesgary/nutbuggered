@@ -80,6 +80,8 @@ NB.Level = class Level
       NB.Director.endGame(true)
   removeTower: (tower) ->
     @map.removeTower(tower)
+  grantMoney: (dollars) ->
+    @money += dollars
   chargeMoney: (dollars) ->
     @money -= dollars
   canAfford: (dollars) ->

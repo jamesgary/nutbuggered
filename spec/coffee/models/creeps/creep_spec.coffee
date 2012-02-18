@@ -2,8 +2,15 @@ describe 'Creep', ->
   beforeEach ->
     @path = new NB.Path([[0,0], [10,0]])
     @parentWave = {notifyDeathOf: ->}
-    @creepData = {path: @path, hpMod: 1, speedMod: 1, waitMod: 1, parentWave: @parentWave}
+    @creepData = {path: @path, hpMod: 1, speedMod: 1, waitMod: 1, money: 3, parentWave: @parentWave}
     @creep = new NB.Creep(@creepData)
+    @mockDirector = {
+      level: {
+        tree: {damage: ->}
+        grantMoney: ->
+      }
+    }
+    NB.Director = @mockDirector
   describe '#position', ->
     it 'starts at the path start', ->
       expect(@creep.position).toEqual([0,0])
@@ -26,18 +33,12 @@ describe 'Creep', ->
       beforeEach ->
         @creep.position = [10,0]
       it 'eats away at the tree', ->
-        @mockDirector = {
-          level: {
-            tree: {damage: ->}
-          }
-        }
-        NB.Director = @mockDirector
         spyOn(@mockDirector.level.tree, 'damage')
         @creep.tick()
         expect(@mockDirector.level.tree.damage).toHaveBeenCalledWith(@creep.bitePower)
   describe 'when constructed with modifiers', ->
     beforeEach ->
-      @creepData = {path: @path, hpMod: 2, speedMod: 3, waitMod: 5}
+      @creepData = {path: @path, hpMod: 2, speedMod: 3, waitMod: 5, money: 3}
       @modifiedCreep = new NB.Creep(@creepData)
     it 'should have modified hp', ->
       expect(@modifiedCreep.hp).toEqual(@creep.hp * 2)
@@ -45,6 +46,8 @@ describe 'Creep', ->
       expect(@modifiedCreep.speed).toEqual(@creep.speed * 3)
     it 'should have a modified wait', ->
       expect(@modifiedCreep.wait).toEqual(@creep.wait * 5)
+    it 'should have the given money', ->
+      expect(@modifiedCreep.money).toEqual(3)
   describe '#isInRange', ->
     it 'should find the creep', ->
       @creepData.path = new NB.Path([[1,1], [10,1]])
@@ -84,6 +87,10 @@ describe 'Creep', ->
       it 'return false', ->
         expect(@creep.isAlive()).toBeFalsy()
   describe '#die', ->
+    it 'grants money', ->
+      spyOn(NB.Director.level, 'grantMoney')
+      @creep.die()
+      expect(NB.Director.level.grantMoney).toHaveBeenCalledWith(@creep.money)
     it 'tells the wave that it died', ->
       spyOn(@creep.parentWave, 'notifyDeathOf')
       @creep.die()

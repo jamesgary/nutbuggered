@@ -14,6 +14,7 @@ NB.Creep = class Creep
     @speed = @defaultSpeed * data.speedMod
     @hp = @maxHp = @defaultHp * data.hpMod
     @wait = @defaultWait * data.waitMod
+    @money = data.money
   tick: ->
     newPosition = @path.travel(@position, @speed)
     @traveled += @speed
@@ -37,4 +38,5 @@ NB.Creep = class Creep
   isAlive: ->
     @health > 0
   die: ->
+    NB.Director.level.grantMoney(@money)
     @parentWave.notifyDeathOf(this)
