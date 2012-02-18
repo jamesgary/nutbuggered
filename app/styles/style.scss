@@ -314,9 +314,9 @@ html, body {
     }
 
     .button {
-      @include buttonize($dark_blue, 36px);
-      margin: 20px 0;
-      width: 80%;
+      @include buttonize($dark_blue, 32px);
+      margin: 25px 0 0;
+      width: 93%;
     }
   }
 }
