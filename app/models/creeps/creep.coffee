@@ -9,12 +9,14 @@ NB.Creep = class Creep
     @parentWave = data.parentWave
     @path = data.path
     @position = @path.start()
+    @traveled = 0
 
     @speed = @defaultSpeed * data.speedMod
     @hp = @maxHp = @defaultHp * data.hpMod
     @wait = @defaultWait * data.waitMod
   tick: ->
     newPosition = @path.travel(@position, @speed)
+    @traveled += @speed
     if newPosition
       @position = newPosition
     else

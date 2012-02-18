@@ -16,6 +16,9 @@ describe 'Arc', ->
         expect(@arc.travel([2,1], 1)).toEqual [1,1]
       it 'returns excess distance if distance surpasses finish', ->
         expect(@arc.travel([2,1], 5)).toEqual 3
+    describe '#distanceTraveledFor', -> # obsolete?
+      it 'returns distance traveled for given coordinate', ->
+        expect(@arc.distanceTraveledFor([2, 1])).toEqual 1
   describe 'vertical arc', ->
     beforeEach ->
       @arc = new NB.Arc([1,1], [1,5])
@@ -30,3 +33,6 @@ describe 'Arc', ->
         expect(@arc.travel([1,2], 2)).toEqual [1,4]
       it 'returns excess distance if distance surpasses finish', ->
         expect(@arc.travel([1,2], 7)).toEqual 4
+    describe '#distanceTraveledFor', -> # obsolete?
+      it 'returns distance traveled for given coordinate', ->
+        expect(@arc.distanceTraveledFor([1, 4])).toEqual 3

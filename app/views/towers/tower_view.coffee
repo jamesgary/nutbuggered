@@ -66,7 +66,7 @@ NB.Tower::drawUpgrades = ->
   if @canUpgradeRange
     $range.find('.can_upgrade').show()
     $range.find('.cannot_upgrade').hide()
-    $range.find('.orig').text(@range)
+    $range.find('.orig').text(@radius)
 
     nextUpgrade = @nextRangeUpgrade()
     if nextUpgrade == null # maxed out

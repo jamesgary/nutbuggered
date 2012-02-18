@@ -21,9 +21,6 @@ NB.Wave = class Wave
       @totalCreepsSpawned++
       @nextSpawnTime = @totalCreepsSpawned * @waitTime
     creep.tick() for creep in @liveCreeps
-  findCreep: (criteria) ->
-    range = criteria.range
-    (creep for creep in @liveCreeps when creep.isInRange(range))
   isAlive: ->
     return true if @incubatingCreeps.length > 0
     for creep in @liveCreeps

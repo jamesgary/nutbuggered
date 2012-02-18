@@ -47,19 +47,125 @@ describe 'Level', ->
       expect(@mockWave.tick).not.toHaveBeenCalled()
       @level.tick()
       expect(@mockWave.tick).toHaveBeenCalled()
+
   describe '#findCreep', ->
-    describe 'with one current wave', ->
-      beforeEach ->
-        @level = new NB.Level(@levelData)
-        @level.sendNextWave()
-      it 'finds a creep in the current wave with a criteria', ->
-        @mockCreep = {}
-        spyOn(@mockWave, 'findCreep').andReturn(@mockCreep)
-        criteria = {}
-        @level.findCreep(criteria)
-        expect(@mockWave.findCreep).toHaveBeenCalledWith(criteria)
-    it 'finds the first/last/strongest/weakest creep'
-    it 'finds a spread or not'
+    beforeEach ->
+      @firstRange = {}
+      @nextRange = {}
+      @emptyRange = {}
+      self = this
+
+      creeps = []
+      creeps.push(@creepInFirstRange1 = {isInRange: {}, traveled: 0, hp: 100, z: 'creepInFirstRange1'})
+      creeps.push(@creepInFirstRange2 = {isInRange: {}, traveled: 0, hp: 100, z: 'creepInFirstRange2'})
+      creeps.push(@creepInNextRange1  = {isInRange: {}, traveled: 0, hp: 100, z: 'creepInNextRange1'})
+      creeps.push(@creepInNextRange2  = {isInRange: {}, traveled: 0, hp: 100, z: 'creepInNextRange2'})
+      creeps.push(@creepOutOfRange    = {isInRange: {}, traveled: 0, hp: 100, z: 'creepOutOfRange'})
+      spyOn(@creepInFirstRange1, 'isInRange').andCallFake((r) -> r == self.firstRange)
+      spyOn(@creepInFirstRange2, 'isInRange').andCallFake((r) -> r == self.firstRange)
+      spyOn(@creepInNextRange1,  'isInRange').andCallFake((r) -> r == self.nextRange)
+      spyOn(@creepInNextRange2,  'isInRange').andCallFake((r) -> r == self.nextRange)
+      spyOn(@creepOutOfRange,    'isInRange').andReturn(false)
+
+      @level = new NB.Level(@levelData)
+      spyOn(@level, 'getAllCreep').andReturn(creeps)
+    describe 'without any limit', ->
+      it 'finds no creep when there is none', ->
+        expect(@level.findCreep(range: @emptyRange)).toEqual []
+      it 'finds creep when there is some', ->
+        foundCreeps = @level.findCreep(range: [@firstRange, @nextRange])
+        expect(foundCreeps).toContain @creepInFirstRange1
+        expect(foundCreeps).toContain @creepInFirstRange2
+        expect(foundCreeps).toContain @creepInNextRange1
+        expect(foundCreeps).toContain @creepInNextRange2
+        expect(foundCreeps.length).toBe 4
+    describe 'with an overall limit', ->
+      describe 'with a priority of first', ->
+        it 'finds the first creeps', ->
+          @creepInFirstRange1.traveled = 5
+          @creepInNextRange1.traveled = 5
+          @creepInNextRange2.traveled = 5
+          foundCreeps = @level.findCreep(
+            range: [@firstRange, @nextRange], limit: 3, priority: NB.Priorities.FIRST
+          )
+          expect(foundCreeps).toContain(@creepInFirstRange1)
+          expect(foundCreeps).toContain(@creepInNextRange1)
+          expect(foundCreeps).toContain(@creepInNextRange2)
+          expect(foundCreeps.length).toBe 3
+      describe 'with a priority of last', ->
+        it 'finds the first creeps', ->
+          @creepInFirstRange1.traveled = 5
+          foundCreeps = @level.findCreep(
+            range: [@firstRange, @nextRange], limit: 3, priority: NB.Priorities.LAST
+          )
+          expect(foundCreeps).toContain(@creepInFirstRange2)
+          expect(foundCreeps).toContain(@creepInNextRange1)
+          expect(foundCreeps).toContain(@creepInNextRange2)
+          expect(foundCreeps.length).toBe 3
+      describe 'with a priority of strongest', ->
+        it 'finds the strongest creeps', ->
+          @creepInNextRange2.hp = 10
+          foundCreeps = @level.findCreep(
+            range: [@firstRange, @nextRange], limit: 3, priority: NB.Priorities.STRONGEST
+          )
+          expect(foundCreeps).toContain(@creepInFirstRange1)
+          expect(foundCreeps).toContain(@creepInFirstRange2)
+          expect(foundCreeps).toContain(@creepInNextRange1)
+          expect(foundCreeps.length).toBe 3
+      describe 'with a priority of weak', ->
+        it 'finds the weakest creeps', ->
+          @creepInFirstRange1.hp = 10
+          @creepInFirstRange2.hp = 10
+          @creepInNextRange2.hp = 10
+          foundCreeps = @level.findCreep(
+            range: [@firstRange, @nextRange], limit: 3, priority: NB.Priorities.WEAKEST
+          )
+          expect(foundCreeps).toContain(@creepInFirstRange1)
+          expect(foundCreeps).toContain(@creepInFirstRange2)
+          expect(foundCreeps).toContain(@creepInNextRange2)
+          expect(foundCreeps.length).toBe 3
+    describe 'with a limit per range', ->
+      describe 'with a priority of first', ->
+        it 'finds the first creeps', ->
+          @creepInFirstRange1.traveled = 5
+          @creepInNextRange2.traveled = 5
+          foundCreeps = @level.findCreep(
+            range: [@firstRange, @nextRange], limitPerRange: 1, priority: NB.Priorities.FIRST
+          )
+          expect(foundCreeps).toContain(@creepInFirstRange1)
+          expect(foundCreeps).toContain(@creepInNextRange2)
+          expect(foundCreeps.length).toBe 2
+      describe 'with a priority of last', ->
+        it 'finds the first creeps', ->
+          @creepInFirstRange1.traveled = 5
+          @creepInNextRange2.traveled = 5
+          foundCreeps = @level.findCreep(
+            range: [@firstRange, @nextRange], limitPerRange: 1, priority: NB.Priorities.LAST
+          )
+          expect(foundCreeps).toContain(@creepInFirstRange2)
+          expect(foundCreeps).toContain(@creepInNextRange1)
+          expect(foundCreeps.length).toBe 2
+      describe 'with a priority of strongest', ->
+        it 'finds the strongest creeps', ->
+          @creepInFirstRange1.hp = 1000
+          @creepInNextRange2.hp = 1000
+          foundCreeps = @level.findCreep(
+            range: [@firstRange, @nextRange], limitPerRange: 1, priority: NB.Priorities.STRONGEST
+          )
+          expect(foundCreeps).toContain(@creepInFirstRange1)
+          expect(foundCreeps).toContain(@creepInNextRange2)
+          expect(foundCreeps.length).toBe 2
+      describe 'with a priority of weakest', ->
+        it 'finds the weakest creeps', ->
+          @creepInFirstRange1.hp = 1
+          @creepInNextRange2.hp = 1
+          foundCreeps = @level.findCreep(
+            range: [@firstRange, @nextRange], limitPerRange: 1, priority: NB.Priorities.WEAKEST
+          )
+          expect(foundCreeps).toContain(@creepInFirstRange1)
+          expect(foundCreeps).toContain(@creepInNextRange2)
+          expect(foundCreeps.length).toBe 2
+
   describe '#placeTower', ->
     beforeEach ->
       @level = new NB.Level(@levelData)

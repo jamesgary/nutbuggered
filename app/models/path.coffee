@@ -23,3 +23,15 @@ NB.Path = class Path
     for i in [0...@arcs.length]
       return true if @arcs[i].contains(coordinate)
     return false
+
+  sortCoordinates: (coordinates) -> # obsolete?
+    sortedCoordinates = []
+    for arc in @arcs
+      arcCoordinates = []
+      for c in coordinates
+        arcCoordinates.push(c) if arc.contains(c)
+      sortByDistance = (a,b) ->
+        arc.distanceTraveledFor(a) > arc.distanceTraveledFor(b)
+      arcCoordinates.sort(sortByDistance)
+      sortedCoordinates = sortedCoordinates.concat(arcCoordinates)
+    sortedCoordinates

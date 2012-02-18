@@ -1,15 +1,14 @@
 NB.TestCreep = class TestCreep extends NB.Creep
-  defaultHp: 1000
-  defaultCount: 100
-  defaultWait: 10
-  defaultSpeed: .1
-
   constructor: (data) ->
-    @path = data.path
-    @position = @path.start()
-
-    @speed = @defaultSpeed * data.speedMod
-    @hp = @defaultHp * data.hpMod
-    @wait = @defaultWait * data.waitMod
+    data = {
+      type: NB.TestCreep,
+      money: 10,
+      hpMod: 2,
+      speedMod: 3,
+      countMod: 4,
+      waitMod: 1,
+      path: new NB.Path([[7,7], [7,5], [2,5], [2, 10], [13, 10]]),
+    }
+    super(data)
   tick: ->
     @position = @path.travel(@position, @speed)

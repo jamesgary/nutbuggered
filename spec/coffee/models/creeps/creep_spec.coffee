@@ -18,6 +18,10 @@ describe 'Creep', ->
         @creep.tick()
         # TODO this is an integration test, but oh well
         expect(@creep.position).toEqual([0 + @creep.speed, 0])
+      it 'marks how far it traveled', ->
+        expect(@creep.traveled).toEqual 0
+        @creep.tick()
+        expect(@creep.traveled).toEqual @creep.speed
     describe 'when it cannot move', ->
       beforeEach ->
         @creep.position = [10,0]

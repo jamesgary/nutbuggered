@@ -46,3 +46,10 @@ describe 'Path', ->
       it 'returns false', ->
         distance = 999
         expect(@path.travel(@origin, distance)).toBeFalsy()
+  describe '#sortCoordinates', -> # obsolete?
+    # note: breaks on corners
+    it 'sorts coordinates from first to last', ->
+      @coordinates = [[19,10], [10,10], [0,5], [0,0], [15,5], [16,5]]
+      expect(@path.sortCoordinates(@coordinates)).toEqual(
+        [[0,0], [0,5], [10,10], [19,10], [16,5], [15,5]]
+      )

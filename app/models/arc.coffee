@@ -27,3 +27,8 @@ NB.Arc = class Arc
       else
         diff = coordinate[1] - @finish[1]
       return Math.abs(diff)
+  distanceTraveledFor: (coordinate) -> # obsolete?
+    if @isHorizontal
+      (coordinate[0] - @start[0]) * @direction
+    else
+      (coordinate[1] - @start[1]) * @direction

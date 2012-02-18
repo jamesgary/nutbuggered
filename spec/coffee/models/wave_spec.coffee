@@ -37,23 +37,6 @@ describe 'Wave', ->
     #   # DO load after 20 times
     #   @wave.tick() for i in [1..10]
     #   expect(@wave.liveCreeps.length).toBe 2 # don't load more
-
-  describe '#findCreep', ->
-    beforeEach ->
-      @range = {}
-      @criteria = {range: @range}
-    it 'finds no creep when there is none', ->
-      spyOn(@mockCreep, 'isInRange').andReturn(false)
-      creeps = @wave.findCreep(@criteria)
-      expect(creeps).toEqual []
-    it 'finds a creep when there is one', ->
-      @wave.tick() # need one live creeps
-      spyOn(@mockCreep, 'isInRange').andReturn(true)
-      creeps = @wave.findCreep(@criteria)
-      expect(@mockCreep.isInRange).toHaveBeenCalledWith(@range)
-      expect(creeps).toEqual [@mockCreep]
-    xit 'finds the first/last/strongest/weakest creep'
-    xit 'finds a spread or not'
   describe '#isAlive', ->
     describe 'when not all creeps have been sent', ->
       beforeEach ->

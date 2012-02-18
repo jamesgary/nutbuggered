@@ -8,6 +8,7 @@ files = [
   "js/compiled/models/level.js",
   "js/compiled/models/map.js",
   "js/compiled/models/path.js",
+  "js/compiled/models/priorities.js",
   "js/compiled/models/stage.js",
   "js/compiled/models/tree.js",
   "js/compiled/models/tower.js",
