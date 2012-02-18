@@ -322,6 +322,10 @@ html, body {
 }
 
 #levels_screen {
-  display:none;
   background: $light_green;
+  display:none;
+  text-align: center;
+  h1 {
+    margin-top: 220px;
+  }
 }

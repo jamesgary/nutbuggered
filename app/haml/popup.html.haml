@@ -128,17 +128,12 @@
           %a.button.return_to_levels Quit to Level Select
 
       #levels_screen.screen
-        %ul
-          %li
-            %a.button.level_chooser{'data-map' => 'level1'} Map 1
-          %li
-            %a.button.level_chooser{'data-map' => 'level2'} Map 2
-          %li
-            %a.button.level_chooser{'data-map' => 'level3'} Map 3
-          %li
-            %a.button.level_chooser{'data-map' => 'level4'} Map 4
-          %li
-            %a.button.level_chooser{'data-map' => 'level5'} Map 5
+        %h1 Just one map for today. Patience is a virtue.
+        %a.button.level_chooser{'data-map' => 'level1'} Map 1
+        /%a.button.level_chooser{'data-map' => 'level2'} Map 2
+        /%a.button.level_chooser{'data-map' => 'level3'} Map 3
+        /%a.button.level_chooser{'data-map' => 'level4'} Map 4
+        /%a.button.level_chooser{'data-map' => 'level5'} Map 5
 %script{:type => "text/javascript"}
 :javascript
   ga_pokki._setAccount('UA-29308111-1');
