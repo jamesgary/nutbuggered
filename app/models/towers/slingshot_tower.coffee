@@ -11,11 +11,12 @@ NB.SlingshotTower = class SlingshotTower extends NB.Tower
     creep.damage(@power) for creep in creeps
     attacked = creeps.length > 0
     if attacked
-      @drawAttack()
+      @drawAttack(creeps[0])
     return attacked
 
 NB.SlingshotTowerPlaceholder = class SlingshotTowerPlaceholder extends NB.SlingshotTower
   constructor: (@coordinates) ->
+    @projectiles = []
     @cost = 0
     @radius = 1
     unless @coordinates

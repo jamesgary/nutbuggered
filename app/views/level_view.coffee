@@ -8,6 +8,7 @@ NB.Level.prototype.draw = ->
   @ctx.clearRect(0, 0, @canvas.width, @canvas.height)
   @map.draw(@ctx)
   wave.draw(@ctx) for wave in @currentWaves
+
 NB.Level.prototype.moveNeedle = ->
   waveHeight = 42 # from style.css
   $('#needle').css('top', pos)

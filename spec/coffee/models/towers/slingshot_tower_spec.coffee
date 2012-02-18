@@ -30,6 +30,7 @@ describe 'SlingshotTower', ->
       spyOn(@mockCreep1, 'damage')
       NB.Director.level = {findCreep: ->}
       spyOn(NB.Director.level, 'findCreep').andReturn([@mockCreep1])
+      spyOn(@st, 'drawAttack')
       @st.power = 20
       @st.attack()
     it 'hits one creep for its entire range for its power', ->
