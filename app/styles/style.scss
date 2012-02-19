@@ -281,20 +281,25 @@ html, body {
         position: absolute;
         text-align: center;
       }
-      img {
-        @include rotate(90deg);
-        left: 15px;
-        top: 15px;
-        &.slingshot {
-          @include rotate(75deg);
-          left: 12px;
-          left: 13px;
-        }
-      }
       div {
         width: 100%;
         &.top { top: 6px; }
         &.bottom { bottom: 6px; }
+      }
+      &.boxer img {
+        @include rotate(90deg);
+        left: 18px;
+        top: 16px;
+      }
+      &.slingshot img {
+        @include rotate(85deg);
+        left: 13px;
+        top: 14px;
+      }
+      &.sumo img {
+        @include rotate(90deg);
+        left: 15px;
+        top: 17px;
       }
     }
   }

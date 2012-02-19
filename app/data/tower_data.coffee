@@ -42,4 +42,28 @@ NB.towerData = {
       ]
     }
   }
+  SumoTower: -> {
+    cost: 350
+    upgrades: {
+      power: [
+        {dmg: 20, cost: 0}
+        {dmg: 50, cost: 500}
+        {dmg: 70, cost: 900}
+        {dmg: 120, cost: 1600}
+        {dmg: 200, cost: 2800}
+      ]
+      range: [
+        {sq: 1, cost: 0}
+        {sq: 2, cost: 400}
+        {sq: 3, cost: 700}
+      ]
+      speed: [
+        {rate: 1.7, cost: 0}
+        {rate: 1.4, cost: 210}
+        {rate: 1.2, cost: 430}
+        {rate: 1.0, cost: 1000}
+        {rate: 0.8, cost: 1875}
+      ]
+    }
+  }
 }

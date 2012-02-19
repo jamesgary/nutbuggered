@@ -21,6 +21,7 @@ files = [
   "js/compiled/models/towers/tower.js",
   "js/compiled/models/towers/boxer_tower.js",
   "js/compiled/models/towers/slingshot_tower.js",
+  "js/compiled/models/towers/sumo_tower.js",
 
   # views
   "js/compiled/views/view_helper.js",
@@ -33,6 +34,7 @@ files = [
   "js/compiled/views/towers/tower_view.js",
   "js/compiled/views/towers/boxer_tower_view.js",
   "js/compiled/views/towers/slingshot_tower_view.js",
+  "js/compiled/views/towers/sumo_tower_view.js",
 
   # data
   "js/compiled/data/image_data.js",
