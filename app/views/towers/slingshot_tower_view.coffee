@@ -46,7 +46,6 @@ NB.SlingshotTower.prototype.drawAttack = (creep) ->
       (@targetCoordinates[1] * dim) + offset,
     ]
 
-    console.log(@projectiles)
     @projectiles.push(new NB.Projectile(origin, target))
 
     @projectiles = @projectiles.filter(NB.Projectile.removeOldFilter)

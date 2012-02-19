@@ -41,8 +41,6 @@ NB.Controller = {
       dpadCenterY = (dpadOffset + parseInt(dpadStyle.backgroundPositionY))
       mouseX = e.offsetX
       mouseY = e.offsetY
-      #console.log([dpadCenterX, dpadCenterY])
-      #console.log [mouseX, mouseY]
       xDiff = dpadCenterX - mouseX
       yDiff = dpadCenterY - mouseY
 
