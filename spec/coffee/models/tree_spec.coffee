@@ -1,6 +1,6 @@
 describe 'Tree', ->
   beforeEach ->
-    @tree = new NB.Tree(1000)
+    @tree = new NB.Tree(1000, [2, 4])
   describe '#damage', ->
     it 'detracts hp', ->
       @tree.damage(10)
@@ -13,3 +13,8 @@ describe 'Tree', ->
       spyOn(NB.Director, 'endGame')
       @tree.damage(999)
       expect(NB.Director.endGame).not.toHaveBeenCalled()
+  describe '#healthPercentage', ->
+    it 'gives a percentage of health', ->
+      expect(@tree.healthPercentage()).toEqual 1
+      @tree.damage(100)
+      expect(@tree.healthPercentage()).toEqual .9

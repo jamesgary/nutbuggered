@@ -21,9 +21,11 @@ files = [
   "js/compiled/models/towers/slingshot_tower.js",
 
   # views
+  "js/compiled/views/view_helper.js",
   "js/compiled/views/level_view.js",
   "js/compiled/views/map_view.js",
   "js/compiled/views/wave_view.js",
+  "js/compiled/views/tree_view.js",
 
   "js/compiled/views/creeps/creep_view.js",
   "js/compiled/views/towers/tower_view.js",

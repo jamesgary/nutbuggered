@@ -6,8 +6,9 @@ NB.Level.prototype.draw = ->
   @moveNeedle()
   $('#money').html(@money)
   @ctx.clearRect(0, 0, @canvas.width, @canvas.height)
-  @map.draw(@ctx)
   wave.draw(@ctx) for wave in @currentWaves
+  @map.draw(@ctx)
+  @tree.draw(@ctx)
 
 NB.Level.prototype.moveNeedle = ->
   waveHeight = 42 # from style.css

@@ -54,7 +54,7 @@ NB.SlingshotTower.prototype.drawAttack = (creep) ->
 NB.Projectile = class Projectile
   constructor: (@origin, @target) ->
     @age = 0
-    @lifespan = 30
+    @lifespan = 15
   draw: (ctx) ->
     ctx.lineWidth = 5
     ctx.lineCap = 'round'
@@ -74,5 +74,6 @@ NB.Projectile = class Projectile
     ctx.stroke()
     @age++
     @dead = @age >= @lifespan
+NB.Projectile.lifespan = 15
 NB.Projectile.removeOldFilter = (element, index, array) ->
   !element.dead

@@ -15,7 +15,7 @@ NB.levelData = {
           {creepData: {type: NB.Creep, money: 380, hpMod: 2.5, speedMod: 11.5, countMod: 1.5, waitMod: 1}}
         ]
         map: new NB.Map(new NB.Path([[7,7], [7,5], [2,5], [2, 10], [13, 10]]))
-        tree: new NB.Tree(1000)
+        tree: new NB.Tree(1000, [13, 10])
       })
     }
 }
