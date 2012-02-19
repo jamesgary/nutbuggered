@@ -28,8 +28,8 @@ NB.Director = {
 
   # from the controller
 
-  pause: ->
-    @paused = true
+  pause: -> # can be called by pokki hook
+    NB.Director.paused = true
     $('#pause_dialogue').show()
   unpause: ->
     @paused = false

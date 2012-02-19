@@ -1,5 +1,6 @@
 NB.Tree.prototype.draw = (ctx) ->
   healthPercentage = @hp / @maxHp
+  nudgeRight = 15
 
   if healthPercentage == 1
     image = NB.imageData.tree
@@ -10,14 +11,14 @@ NB.Tree.prototype.draw = (ctx) ->
     if healthPercentage < .33
       image = NB.imageData.tree_dmg3
 
-  ctx.drawImage(image, @x + 15, @y)
+  ctx.drawImage(image, @x + nudgeRight, @y)
 
   margin = 20
   dim = 160
   topMargin = 15
   healthBarOpts = {
     ctx: ctx,
-    x: @x + margin,
+    x: @x + margin + nudgeRight,
     y: @y + topMargin,
     width: dim - (2 * margin),
     height: 4,

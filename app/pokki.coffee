@@ -3,4 +3,4 @@
 minimize = document.getElementById('minimize')
 minimize.addEventListener('click', pokki.closePopup)
 
-pokki.addEventListener('popup_hidden', NB.Director.pause)
+pokki.addEventListener('popup_hiding', NB.Director.pause)

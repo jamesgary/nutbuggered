@@ -85,6 +85,18 @@ html, body {
     background: green !important;
   }
 }
+#minimize {
+  @include buttonize(gray, 12px);
+  font-weight: bold;
+  padding: 4px;
+  position: absolute;
+  right: 0;
+  //&:hover {
+  //  text-shadow: yellow 0 0px 12px;
+  //}
+  border-width: 1px;
+  z-index: 999;
+}
 .screen {
   height: $main_height;
   left:0;
@@ -139,15 +151,6 @@ html, body {
       left: 730px;
       &:before {
         content: 'Money: $';
-      }
-    }
-    #minimize {
-      font-weight: bold;
-      cursor: pointer;
-      padding: 0px 5px;
-      right: 0;
-      &:hover {
-        text-shadow: yellow 0 0px 12px;
       }
     }
   }
