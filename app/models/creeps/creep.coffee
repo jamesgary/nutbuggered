@@ -1,9 +1,9 @@
 NB.Creep = class Creep
   defaultHp: 50
-  defaultSpeed: .01
-  defaultWait: 200
+  defaultSpeed: .02
+  defaultWait: 60
   defaultCount: 10
-  bitePower: 5
+  bitePower: .2
 
   constructor: (data) ->
     @parentWave = data.parentWave

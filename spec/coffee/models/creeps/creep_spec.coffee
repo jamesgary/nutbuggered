@@ -15,8 +15,8 @@ describe 'Creep', ->
     it 'starts at the path start', ->
       expect(@creep.position).toEqual([0,0])
   describe '#speed', ->
-    it 'defaults to .01 per tick', ->
-      expect(@creep.speed).toEqualAbout(.01)
+    it 'defaults to .02 per tick', ->
+      expect(@creep.speed).toEqualAbout(.02)
   describe '#tick', ->
     describe 'when it can move', ->
       beforeEach ->
