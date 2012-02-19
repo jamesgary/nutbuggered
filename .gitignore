@@ -1,3 +1,6 @@
-nutbuggered/js/compiled/*
+# app/haml/popup.html.haml generates this
+nutbuggered/popup.html
+
 nutbuggered/css/compiled/*
+nutbuggered/js/compiled/*
 spec/js/compiled/*

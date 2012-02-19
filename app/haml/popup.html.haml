@@ -23,18 +23,23 @@
             /#speed2 &#x25B6; &#x25B6;
             /#speed3 &#x25B6; &#x25B6; &#x25B6;
           #money ???
-        %ul#waves
-          %li.wave{'data-wave_index' => 1}Wave 1
-          %li.wave{'data-wave_index' => 2}Wave 2
-          %li.wave{'data-wave_index' => 3}Wave 3
-          %li.wave{'data-wave_index' => 4}Wave 4
-          %li.wave{'data-wave_index' => 5}Wave 5
-          %li.wave{'data-wave_index' => 6}Wave 6
-          %li.wave{'data-wave_index' => 7}Wave 7
-          %li.wave{'data-wave_index' => 8}Wave 8
-          %li.wave{'data-wave_index' => 9}Wave 9
-          %li.wave{'data-wave_index' => 10}Wave 10
-          %li#needle
+        #waves
+          #explainer
+            .close X
+            %p Click the first wave to start.
+            %p When you're feeling bold, you can click a future wave to skip straight to it (spawning the bugs in any preceding waves all at once). Any fast-forwarded bug will grant 25% more money!
+          %ul
+            %li.wave{'data-wave_index' => 1}Wave 1
+            %li.wave{'data-wave_index' => 2}Wave 2
+            %li.wave{'data-wave_index' => 3}Wave 3
+            %li.wave{'data-wave_index' => 4}Wave 4
+            %li.wave{'data-wave_index' => 5}Wave 5
+            %li.wave{'data-wave_index' => 6}Wave 6
+            %li.wave{'data-wave_index' => 7}Wave 7
+            %li.wave{'data-wave_index' => 8}Wave 8
+            %li.wave{'data-wave_index' => 9}Wave 9
+            %li.wave{'data-wave_index' => 10}Wave 10
+            %li#needle
         #map
           %canvas#background{:width => '512', :height => '512'}
           %canvas#foreground{:width => '512', :height => '512'}

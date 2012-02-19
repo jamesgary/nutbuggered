@@ -14,8 +14,11 @@ NB.Controller = {
     $('#game_screen').on('click', '#pause',   (e) -> NB.Director.pause())
     $('#game_screen').on('click', '#unpause', (e) -> NB.Director.unpause())
 
+    # # close wave explainer
+    $('#game_screen').on('click', '#waves .close, #waves .wave', (e) -> $('#explainer').fadeOut(100))
+
     # # sending waves
-    $('#game_screen').on('click', 'ul#waves li.wave', (e) -> NB.Director.sendWave(parseInt(e.currentTarget.dataset.wave_index)))
+    $('#game_screen').on('click', '#waves li.wave', (e) -> NB.Director.sendWave(parseInt(e.currentTarget.dataset.wave_index)))
 
     # # choosing towers
     $('#game_screen').on('click', '.tower_chooser', (e) ->
