@@ -1,6 +1,8 @@
 (exports ? this).NB = {}
 
 files = [
+  "js/vendor/jquery.js",
+
   # models
   "js/compiled/models/arc.js",
   "js/compiled/models/creep.js",
@@ -44,8 +46,6 @@ files = [
   "js/vendor/pokki/LocalStore.js",
   "js/vendor/pokki/GAPokki.js",
   "js/compiled/pokki.js",
-
-  "js/vendor/jquery.js",
 ]
 require files, ->
   console.log("* All loaded, sir!")
