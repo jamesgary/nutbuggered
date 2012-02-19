@@ -30,6 +30,8 @@ NB.Wave = class Wave
     @liveCreeps.remove(creep)
     if @incubatingCreeps.isEmpty() && @liveCreeps.isEmpty()
       NB.Director.level.notifyCompletionOf(this)
+  boostIncubatingCreepsMoney: ->
+    creep.money = creep.money * 1.2 for creep in @incubatingCreeps
 
   #private
 

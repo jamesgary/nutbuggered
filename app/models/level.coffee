@@ -19,6 +19,9 @@ NB.Level = class Level
     if @waves.isEmpty()
       false
     else
+      currentWave = @currentWaves[@currentWaves.length - 1]
+      if currentWave
+        currentWave.boostIncubatingCreepsMoney()
       @currentWaves.push(@waves.shift())
       @currentWaveIndex++
       @currentWaveAge = 0

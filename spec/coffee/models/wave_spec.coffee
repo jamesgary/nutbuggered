@@ -5,6 +5,7 @@ describe 'Wave', ->
       tick: ->,
       isInRange: ->,
       isAlive: -> true,
+      money: 100,
     }
     spyOn(NB, 'TestCreep').andReturn(@mockCreep)
     @path = {}
@@ -77,3 +78,9 @@ describe 'Wave', ->
         @wave.liveCreeps = [@mockCreep]
         @wave.notifyDeathOf(@mockCreep)
         expect(NB.Director.level.notifyCompletionOf).toHaveBeenCalledWith(@wave)
+  describe '#boostIncubatingCreepsMoney', ->
+    it 'increases the money for all incubating creeps', ->
+      @wave.incubatingCreeps = [@mockCreep]
+      @wave.boostIncubatingCreepsMoney()
+      expect(@mockCreep.money).toEqual 120
+

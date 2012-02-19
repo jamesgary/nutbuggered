@@ -17,6 +17,7 @@ describe 'Level', ->
       tick: ->
       draw: ->
       findCreep: ->
+      boostIncubatingCreepsMoney: ->
     }
     spyOn(NB, 'Wave').andReturn(@mockWave)
   describe '#tick', ->
@@ -35,6 +36,12 @@ describe 'Level', ->
       @level.sendNextWave()
       @level.sendNextWave()
       expect(@level.sendNextWave()).toBeFalsy()
+    it 'boosts the money granted by all incubating creeps in the current wave', ->
+      @level = new NB.Level(@levelData)
+      @level.currentWaves = [@mockWave]
+      spyOn(@mockWave, 'boostIncubatingCreepsMoney')
+      @level.sendNextWave()
+      expect(@mockWave.boostIncubatingCreepsMoney).toHaveBeenCalled()
 
   describe '#sendNextWave & #tick', ->
     it 'makes the next wave tick when level is ticked', ->
