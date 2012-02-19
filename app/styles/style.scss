@@ -48,6 +48,14 @@ $aqua_green: #90EE90;
   * {
     cursor: pointer;
   }
+  &.disabled {
+    opacity: .95;
+    @include background-image(linear-gradient(#aaa, #999));
+    @include box-shadow();
+    border: 1px solid transparent;
+    cursor: default;
+    text-shadow: 0 0 0;
+  }
 }
 
 * {

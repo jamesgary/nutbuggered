@@ -6,6 +6,7 @@ NB.Tower = class Tower
     @priority = NB.Priorities.FIRST
     @shouldDrawRange = false #TODO move to view
     @projectiles = []
+    @canPrioritize = true
 
     @canUpgradePower = !!(@upgrades.power)
     @canUpgradeRange = !!(@upgrades.range)

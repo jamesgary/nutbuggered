@@ -87,21 +87,26 @@ NB.Tower::drawUpgrades = ->
     $range.find('.can_upgrade').hide()
     $range.find('.cannot_upgrade').show()
 
-  # TODO check if you even can prioritize (i.e. sumo can't)
   $priority = $('#upgrades .priority')
+  $priorityButtons = $priority.find('.button')
   $priority.off('click', '.button')
-  $priority.on('click', '.button', (e) ->
-    switch(e.toElement.dataset.priority)
-      when 'first'     then priority = NB.Priorities.FIRST
-      when 'last'      then priority = NB.Priorities.LAST
-      when 'weakest'   then priority = NB.Priorities.WEAKEST
-      when 'strongest' then priority = NB.Priorities.STRONGEST
-    tower.priority = priority if priority
-    tower.drawUpgrades()
-  )
-  priority = tower.priority.name
-  $priority.find("a").removeClass('highlight')
-  $priority.find("a[data-priority=#{priority}]").addClass('highlight')
+  if @canPrioritize
+    $priorityButtons.removeClass('disabled')
+    $priority.on('click', '.button', (e) ->
+      switch(e.toElement.dataset.priority)
+        when 'first'     then priority = NB.Priorities.FIRST
+        when 'last'      then priority = NB.Priorities.LAST
+        when 'weakest'   then priority = NB.Priorities.WEAKEST
+        when 'strongest' then priority = NB.Priorities.STRONGEST
+      tower.priority = priority if priority
+      tower.drawUpgrades()
+    )
+    priority = tower.priority.name
+    $priority.find("a").removeClass('highlight')
+    $priority.find("a[data-priority=#{priority}]").addClass('highlight')
+  else
+    $priorityButtons.addClass('disabled')
+    $priorityButtons.removeClass('highlight')
 
   $('#upgrades').show()
 

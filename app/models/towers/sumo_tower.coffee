@@ -4,6 +4,7 @@ NB.SumoTower = class SumoTower extends NB.Tower
     super(data)
     @ticksUntilAttack = @cooldown
     @shikoRotationDirection = 1
+    @canPrioritize = false
   attack: ->
     creeps = NB.Director.level.findCreep(
       range: @range
