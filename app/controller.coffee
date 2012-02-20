@@ -73,9 +73,4 @@ NB.Controller = {
       y = parseInt(e.offsetY / 32)
       NB.Director.level.erase([e.offsetX,e.offsetY])
     )
-
-  # private
-
-  uponClick: (elementId, event) ->
-    document.getElementById(elementId).addEventListener('click', event)
 }

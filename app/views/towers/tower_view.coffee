@@ -6,14 +6,22 @@ NB.Tower::drawRange = (ctx) ->
       ctx.fillRect((cell[0] * dim), (cell[1] * dim), dim, dim)
 
 NB.Tower::drawUpgrades = ->
-  #FIXME Refactor!!!!!
+  #TODO Refactor!!!!!
   tower = this
 
   $power = $('#upgrades .power')
   if @canUpgradePower
     $power.find('.can_upgrade').show()
     $power.find('.cannot_upgrade').hide()
-    $power.find('.orig').text(@power)
+    isChilly = @constructor == NB.ChillyTower
+
+    power = if isChilly then @power * 100 else @power
+    $power.find('.orig').text(power)
+
+    if isChilly
+      $power.find('.unit').text('%')
+    else
+      $power.find('.unit').text('dmg')
 
     nextUpgrade = @nextPowerUpgrade()
     if nextUpgrade == null # maxed out
@@ -21,6 +29,7 @@ NB.Tower::drawUpgrades = ->
     else
       powerCost = nextUpgrade.cost
       dmg = nextUpgrade.dmg
+      dmg *= 100 if isChilly # using percentages
       $power.find('.not_maxed').show()
       $power.find('.new').text(dmg)
       $power.find('.cost').text(powerCost)

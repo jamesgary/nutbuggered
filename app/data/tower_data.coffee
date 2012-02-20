@@ -16,6 +16,10 @@ NB.towerData = {
         {rate: .3, cost: 500}
         {rate: .2, cost: 875}
       ]
+      special: [
+        {description: "Tail whip a bug behind you", 200}
+        {description: "Roundhouse kick a bug in each in-range cell", 500}
+      ]
     }
   }
   SlingshotTower: -> {
@@ -39,6 +43,10 @@ NB.towerData = {
         {rate: .6, cost: 430}
         {rate: .4, cost: 700}
         {rate: .2, cost: 1075}
+      ]
+      special: [
+        {description: "Ricochet your shot against nearby bugs", 500}
+        {description: "Projectiles split upon impact", 500}
       ]
     }
   }
@@ -64,6 +72,10 @@ NB.towerData = {
         {rate: 1.0, cost: 1000}
         {rate: 0.8, cost: 1875}
       ]
+      special: [
+        {description: "20% chance to stun", 1500}
+        {description: "50% chance to stun", 3500}
+      ]
     }
   }
   ChillyTower: -> {
@@ -80,6 +92,10 @@ NB.towerData = {
         {sq: 1, cost: 0}
         {sq: 2, cost: 400}
         {sq: 3, cost: 700}
+      ]
+      special: [
+        {description: "Creeps takes a few seconds to that", cost: 1000}
+        {description: "Creeps are permanently slowed", cost: 5000}
       ]
     }
   }
