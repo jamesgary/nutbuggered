@@ -1,5 +1,5 @@
 NB.Level = class Level
-  waveLifespan: 1200
+  waveLifespan: 1800
 
   constructor: (data) ->
     @waves = for waveData in data.wavesData

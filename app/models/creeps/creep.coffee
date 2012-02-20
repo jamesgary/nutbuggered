@@ -1,7 +1,7 @@
 NB.Creep = class Creep
-  defaultHp: 50
+  defaultHp: 150
   defaultSpeed: .02
-  defaultWait: 60
+  defaultWait: 120
   defaultCount: 10
   bitePower: .2
 

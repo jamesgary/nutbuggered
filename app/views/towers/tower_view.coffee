@@ -81,14 +81,15 @@ NB.Tower::drawUpgrades = ->
     if nextUpgrade == null # maxed out
       $range.find('.not_maxed').hide()
     else
-      cost = nextUpgrade.cost
+      rangeCost = nextUpgrade.cost
+      console.log("!!! #{cost}")
       $range.find('.not_maxed').show()
       $range.find('.new').text(nextUpgrade.sq)
-      $range.find('.cost').text(cost)
+      $range.find('.cost').text(rangeCost)
       $range.off('click', '.button')
       $range.on('click', '.button', (e) ->
-        if NB.Director.level.canAfford(cost)
-          NB.Director.level.chargeMoney(cost)
+        if NB.Director.level.canAfford(rangeCost)
+          NB.Director.level.chargeMoney(rangeCost)
           tower.upgradeRange()
           tower.drawUpgrades()
       )
@@ -99,27 +100,31 @@ NB.Tower::drawUpgrades = ->
 
 
   $special = $('#upgrades .special')
-  nextUpgrade = @nextSpecialUpgrade()
+  if @constructor == NB.BoxerTower
+    $special.show()
+    nextUpgrade = @nextSpecialUpgrade()
 
-  if nextUpgrade == null # maxed out
-    $special.find('.not_maxed').hide()
-    $special.find('.maxed').show()
+    if nextUpgrade == null # maxed out
+      $special.find('.not_maxed').hide()
+      $special.find('.maxed').show()
+    else
+      $special.find('.not_maxed').show()
+      $special.find('.maxed').hide()
+      cost        = nextUpgrade.cost
+      description = nextUpgrade.description
+
+      $special.find('.desc').text(description)
+
+      $special.find('.cost').text(cost)
+      $special.off('click', '.button')
+      $special.on('click', '.button', (e) ->
+        if NB.Director.level.canAfford(cost)
+          NB.Director.level.chargeMoney(cost)
+          tower.upgradeSpecial()
+          tower.drawUpgrades()
+      )
   else
-    $special.find('.not_maxed').show()
-    $special.find('.maxed').hide()
-    cost        = nextUpgrade.cost
-    description = nextUpgrade.description
-
-    $special.find('.desc').text(description)
-
-    $special.find('.cost').text(cost)
-    $special.off('click', '.button')
-    $special.on('click', '.button', (e) ->
-      if NB.Director.level.canAfford(cost)
-        NB.Director.level.chargeMoney(cost)
-        tower.upgradeSpecial()
-        tower.drawUpgrades()
-    )
+    $special.hide()
 
 
 

@@ -69,10 +69,12 @@ describe 'Creep', ->
       expect(@creep.isInRange([0.49, 0.49])).toBeFalsy()
   describe '#damage', ->
     it 'depletes hp', ->
+      @creep.hp = 50
       @creep.damage(10)
       expect(@creep.hp).toEqual 40
     it 'dies if it runs out of health', ->
       spyOn(@creep, 'die')
+      @creep.hp = 50
       @creep.damage(50)
       expect(@creep.die).toHaveBeenCalled()
   describe '#slow', ->
