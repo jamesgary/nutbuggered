@@ -7,6 +7,7 @@ NB.Tower = class Tower
     @shouldDrawRange = false #TODO move to view
     @projectiles = []
     @canPrioritize = true
+    @age = 0
 
     @canUpgradePower   = !!(@upgrades.power)
     @canUpgradeRange   = !!(@upgrades.range)

@@ -22,6 +22,7 @@ NB.ChillyTowerPlaceholder = class ChillyTowerPlaceholder extends NB.ChillyTower
       @hovering = true
     @shouldDrawRange = true
     @shikoRotationDirection = 1
+    @age = 0
   tick: -> # just don't shoot!
   clicked: ->
     super()

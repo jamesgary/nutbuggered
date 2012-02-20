@@ -13,9 +13,25 @@ NB.ChillyTower::draw = (ctx) ->
   ctx.drawImage(NB.imageData.chilly, x, y)
 
   # draw snowflakes
-  @age = if @age then 0 else @age + 1
+  @age++
 
-  ctx.drawImage(NB.imageData.snow, snowX, snowY)
+  mod = @power || .2 # cheating!
+  ageOffsetX = Math.sin(@age / 100) * -100 * @power
+  ageOffsetY = (@age * 4 * @power) + 1000
+  if @range
+    for cell in @range
+      ctx.drawImage(NB.imageData.snow,
+        # source
+        Math.abs(((cell[0] * dim) + ageOffsetX) % 96),
+        96 - Math.abs(((cell[1] * -dim) + ageOffsetY) % 96),
+        dim, dim,
+
+        # destination
+        (cell[0] * dim),
+        (cell[1] * dim),
+        dim, dim
+      )
+
   #ctx.drawImage(NB.imageData.snow,
   #  0, 0, 96, 96, # source
   #  snowX, snowY, 96, 96 # destination
