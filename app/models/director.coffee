@@ -46,6 +46,16 @@ NB.Director = {
     $('#defeat_dialogue').hide()
     $('#game_screen').fadeIn 200, ->
       $('#levels_screen').hide()
+
+    # set tower costs
+    $('#buttons a.tower_chooser').each((index) ->
+      $this = $(this)
+      dataset = this.dataset
+      if tower_type = dataset.tower_type
+        cost = (new NB.towerData[tower_type]()).cost
+        $this.find('.cost').text(cost)
+    )
+
   returnToLevels: () ->
     @level = null
     @stage.clear()
@@ -69,9 +79,12 @@ NB.Director = {
       if @activeTower
         @activeTower.unclick()
         @activeTower = null
-  clickTowerChooser: (towerType) ->
-    @activeTower.unclick() if @activeTower
-    @placeholderTower = new towerType()
+  clickTowerChooser: (towerType, cost) ->
+    console.log(cost)
+    console.log(@level.money)
+    if cost <= @level.money
+      @activeTower.unclick() if @activeTower
+      @placeholderTower = new towerType()
   turnPlaceholderTower: (dir) ->
     if @placeholderTower
       @placeholderTower.direction = dir

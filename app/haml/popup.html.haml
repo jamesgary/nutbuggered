@@ -45,22 +45,26 @@
           %canvas#foreground{:width => '512', :height => '512'}
           #dpad
         #buttons
-          %a.button.boxer.tower_chooser{'data-tower_type' => 'BoxerTowerPlaceholder'}
+          %a.button.boxer.tower_chooser{'data-tower_type_placeholder' => 'BoxerTowerPlaceholder', 'data-tower_type' => 'BoxerTower'}
             .top Boxer
             %img{:src => 'img/towers/boxer.png'}
             .bottom Brown
-          %a.slingshot.tower_chooser{'data-tower_type' => 'SlingshotTowerPlaceholder'}
+            .cost ?
+          %a.slingshot.tower_chooser{'data-tower_type_placeholder' => 'SlingshotTowerPlaceholder', 'data-tower_type' => 'SlingshotTower'}
             .top Slingshot
             %img{:src => 'img/towers/slingshot.png'}
             .bottom Sally
-          %a.sumo.tower_chooser{'data-tower_type' => 'SumoTowerPlaceholder'}
+            .cost ?
+          %a.sumo.tower_chooser{'data-tower_type_placeholder' => 'SumoTowerPlaceholder', 'data-tower_type' => 'SumoTower'}
             .top Sumo
             %img{:src => 'img/towers/sumo.png'}
             .bottom Saburu
-          %a.chilly.tower_chooser{'data-tower_type' => 'ChillyTowerPlaceholder'}
+            .cost ?
+          %a.chilly.tower_chooser{'data-tower_type_placeholder' => 'ChillyTowerPlaceholder', 'data-tower_type' => 'ChillyTower'}
             .top Chilly
             %img{:src => 'img/towers/chilly.png'}
             .bottom Chell
+            .cost ?
 
           /%a.button.tower_chooser{'data-tower_type' => 'BoxerTowerPlaceholder'} Boxer Brown!
           /%a.button.tower_chooser{'data-tower_type' => 'BoxerTowerPlaceholder'} Boxer Brown!

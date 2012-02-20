@@ -279,7 +279,7 @@ html, body {
     a.tower_chooser {
       $button_width: .4 * $buttons_width;
       @include buttonize($med_blue, 18px);
-      height: $button_width;
+      height: $button_width + 20px;
       margin: 10px 0 10px 15px;
       padding: 0;
       position: relative;
@@ -292,7 +292,14 @@ html, body {
       div {
         width: 100%;
         &.top { top: 6px; }
-        &.bottom { bottom: 6px; }
+        &.bottom { bottom: 25px; }
+        &.cost {
+          bottom: 5px;
+          color: #7e7;
+          &:before {
+            content: '$';
+          }
+        }
       }
       &.boxer img {
         @include rotate(90deg);
