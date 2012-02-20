@@ -5,5 +5,6 @@
   "icon-29x29": "img/icons/icon-29x29.png",
   "icon-42x42": "img/icons/icon-42x42.png",
   "description": "Tower Defense with squirrels, bugs, and maybe a cat",
-  "popup": "popup.html"
+  "popup": "popup.html",
+  "default_popup_size": "910,710"
 }
