@@ -24,6 +24,25 @@ NB.BoxerTower = class BoxerTower extends NB.Tower
     return attacked
 
   canUpgradeRange: -> false
+  upgradeSpecial: ->
+    x = @coordinates[0]
+    y = @coordinates[1]
+    if @upgrades.special.length == 2 # first upgrade
+      @range.push(
+        switch @direction
+          when 'n' then [x, y+1]
+          when 'e' then [x-1, y]
+          when 's' then [x, y-1]
+          when 'w' then [x+1, y]
+      )
+    else
+      ranges = [
+        [x-1,y+1],[x,y+1],[x+1,y+1]
+        [x-1,y  ],        [x+1,y  ]
+        [x-1,y-1],[x,y-1],[x+1,y-1]
+      ]
+      @range = ranges
+    @upgrades.special.shift()
 
 NB.BoxerTowerPlaceholder = class BoxerTowerPlaceholder extends NB.BoxerTower
   constructor: (@coordinates) ->

@@ -16,9 +16,15 @@ NB.BoxerTower::draw = (ctx) ->
     when 's' then 0
     when 'w' then 1
   totalTurn = quarterTurns * 90
-  if @punchRotationDirection
-    if @ticksUntilAttack > 0 # cooling down, wind back
-      totalTurn += @punchRotationDirection * Math.pow(@ticksUntilAttack / @cooldown, 7) * 60
+  if @range.length >= 8 # roundhouse time!
+    percentage = @ticksUntilAttack / @cooldown
+    # first half is kicking, second half is at rest
+    if percentage < .5
+      totalTurn += @punchRotationDirection * Math.pow(2*percentage, 2) * 360
+  else
+    if @punchRotationDirection
+      if @ticksUntilAttack > 0 # cooling down, wind back
+        totalTurn += @punchRotationDirection * Math.pow(@ticksUntilAttack / @cooldown, 7) * 60
 
   rotation = (totalTurn * Math.PI / 180)
   ctx.rotate(rotation)
