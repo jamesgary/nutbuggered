@@ -20,6 +20,10 @@ describe 'Tower', ->
               {rate: .9, cost: 110}
               {rate: .6, cost: 230}
             ]
+            special: [
+              {description: 'Something special!', cost: 500}
+              {description: 'Something even specialer!', cost: 1500}
+            ]
           }
         }
       }
@@ -146,6 +150,16 @@ describe 'Tower', ->
           it 'upgrades speed', ->
             @tower.upgradeSpeed()
             expect(@tower.speed).toEqual .9
+
+      describe 'special upgrades', ->
+        it '#canUpgradeSpecial returns true', ->
+          expect(@tower.canUpgradeSpecial).toBeTruthy()
+        describe '#nextSpecialUpgrade', ->
+          it 'returns a hash of rate and cost', ->
+            expect(@tower.nextSpecialUpgrade()).toEqual {description: 'Something special!', cost: 500}
+          it 'returns null if already maxed out', ->
+            @tower.upgrades.special = []
+            expect(@tower.nextSpecialUpgrade()).toBe null
 
   describe 'limited tower', ->
     beforeEach ->

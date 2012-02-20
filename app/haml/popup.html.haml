@@ -137,11 +137,14 @@
                   .cost ?
             .upgrade.special
               %h6 Special
-              .desc
-                Tail whip a bug behind you
-              %a.button
-                Buy for
-                .cost 500
+              .not_maxed
+                .desc
+                  ?
+                %a.button
+                  Buy for
+                  .cost ?
+              .maxed
+                Maxed out!
             .priority
               %h6 Attack Priority
               %a.button.short{'data-priority' => 'first'}     First

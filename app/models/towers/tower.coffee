@@ -8,9 +8,10 @@ NB.Tower = class Tower
     @projectiles = []
     @canPrioritize = true
 
-    @canUpgradePower = !!(@upgrades.power)
-    @canUpgradeRange = !!(@upgrades.range)
-    @canUpgradeSpeed = !!(@upgrades.speed)
+    @canUpgradePower   = !!(@upgrades.power)
+    @canUpgradeRange   = !!(@upgrades.range)
+    @canUpgradeSpeed   = !!(@upgrades.speed)
+    @canUpgradeSpecial = !!(@upgrades.special)
     @upgradePower() if @canUpgradePower
     @upgradeRange() if @canUpgradeRange
     @upgradeSpeed() if @canUpgradeSpeed
@@ -54,6 +55,9 @@ NB.Tower = class Tower
     @speed = @upgrades.speed[0].rate
     @cooldown = 60 * @speed # 60 FPS
     @upgrades.speed.shift()
+
+  nextSpecialUpgrade: ->
+    @upgrades.special[0] || null
 
   ######
   # UX #

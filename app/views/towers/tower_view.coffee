@@ -96,6 +96,35 @@ NB.Tower::drawUpgrades = ->
     $range.find('.can_upgrade').hide()
     $range.find('.cannot_upgrade').show()
 
+
+
+  $special = $('#upgrades .special')
+  nextUpgrade = @nextSpecialUpgrade()
+
+  if nextUpgrade == null # maxed out
+    $special.find('.not_maxed').hide()
+    $special.find('.maxed').show()
+  else
+    console.log(nextUpgrade)
+    $special.find('.not_maxed').show()
+    $special.find('.maxed').hide()
+    cost        = nextUpgrade.cost
+    description = nextUpgrade.description
+
+    $special.find('.desc').text(description)
+
+    $special.find('.cost').text(cost)
+    $special.off('click', '.button')
+    $special.on('click', '.button', (e) ->
+      if NB.Director.level.canAfford(cost)
+        NB.Director.level.chargeMoney(cost)
+        tower.upgradeSpecial()
+        tower.drawUpgrades()
+    )
+
+
+
+
   $priority = $('#upgrades .priority')
   $priorityButtons = $priority.find('.button')
   $priority.off('click', '.button')
