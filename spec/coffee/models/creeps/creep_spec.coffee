@@ -75,6 +75,15 @@ describe 'Creep', ->
       spyOn(@creep, 'die')
       @creep.damage(50)
       expect(@creep.die).toHaveBeenCalled()
+  describe '#slow', ->
+    it 'decreases its distance traveled', ->
+      @creep.tick()
+      defaultSpeed = @creep.traveled
+      @creep.traveled = 0
+
+      @creep.slow(.1)
+      @creep.tick()
+      expect(@creep.traveled).toEqualAbout defaultSpeed * .9
   describe '#isAlive', ->
     describe 'when it has health', ->
       beforeEach ->

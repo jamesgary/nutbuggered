@@ -11,17 +11,20 @@ NB.Creep = class Creep
     @position = @path.start()
     @traveled = 0
 
+    @slowMod = 1
     @speed = @defaultSpeed * data.speedMod
     @hp = @maxHp = @defaultHp * data.hpMod
     @wait = @defaultWait * data.waitMod
     @money = data.money
   tick: ->
-    newPosition = @path.travel(@position, @speed)
-    @traveled += @speed
+    speed = @speed * @slowMod
+    newPosition = @path.travel(@position, speed)
+    @traveled += speed
     if newPosition
       @position = newPosition
     else
       NB.Director.level.tree.damage(@bitePower)
+    @slowMod = 1 # reset
   isInRange: (coordinate) ->
     posX = @position[0]
     posY = @position[1]
@@ -40,3 +43,5 @@ NB.Creep = class Creep
   die: ->
     NB.Director.level.grantMoney(@money)
     @parentWave.notifyDeathOf(this)
+  slow: (percent) ->
+    @slowMod = 1 - percent

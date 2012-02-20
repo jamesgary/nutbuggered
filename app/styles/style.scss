@@ -309,6 +309,11 @@ html, body {
         left: 15px;
         top: 17px;
       }
+      &.chilly img {
+        @include rotate(90deg);
+        left: 16px;
+        top: 16px;
+      }
     }
   }
   #infospace {

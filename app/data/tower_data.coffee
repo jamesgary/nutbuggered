@@ -66,4 +66,21 @@ NB.towerData = {
       ]
     }
   }
+  ChillyTower: -> {
+    cost: 500
+    upgrades: {
+      power: [
+        {dmg: .20, cost: 0}
+        {dmg: .30, cost: 500}
+        {dmg: .40, cost: 900}
+        {dmg: .50, cost: 1600}
+        {dmg: .60, cost: 2800}
+      ]
+      range: [
+        {sq: 1, cost: 0}
+        {sq: 2, cost: 400}
+        {sq: 3, cost: 700}
+      ]
+    }
+  }
 }
