@@ -32,9 +32,4 @@ NB.ChillyTower::draw = (ctx) ->
         dim, dim
       )
 
-  #ctx.drawImage(NB.imageData.snow,
-  #  0, 0, 96, 96, # source
-  #  snowX, snowY, 96, 96 # destination
-  #)
-
 NB.ChillyTower::drawAttack = ->
