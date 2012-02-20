@@ -11,6 +11,9 @@ NB.Level = class Level
     @money = 1000
     @currentWaveIndex = 0
     @currentWaveAge = 0
+
+    @activeTower = null
+    $('#upgrades').hide()
   sendWave: (index) ->
     while @currentWaveIndex < index
       @sendNextWave()

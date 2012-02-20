@@ -82,7 +82,6 @@ NB.Tower::drawUpgrades = ->
       $range.find('.not_maxed').hide()
     else
       rangeCost = nextUpgrade.cost
-      console.log("!!! #{cost}")
       $range.find('.not_maxed').show()
       $range.find('.new').text(nextUpgrade.sq)
       $range.find('.cost').text(rangeCost)

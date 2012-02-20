@@ -13,6 +13,8 @@ NB.imageData = {
     @grass.src = "img/grass.png?#{new Date().getTime()}"
     @path = new Image
     @path.src = "img/path.png?#{new Date().getTime()}"
+    @spawner = new Image
+    @spawner.src = "img/spawner.png?#{new Date().getTime()}"
     @snow = new Image
     @snow.src = "img/snow.png?#{new Date().getTime()}"
 

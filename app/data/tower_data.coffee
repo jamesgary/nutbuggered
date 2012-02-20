@@ -26,11 +26,11 @@ NB.towerData = {
     cost: 100
     upgrades: {
       power: [
-        {dmg: 15, cost: 0}
-        {dmg: 25, cost: 150}
-        {dmg: 40, cost: 250}
-        {dmg: 60, cost: 350}
-        {dmg: 100, cost: 500}
+        {dmg: 25, cost: 0}
+        {dmg: 45, cost: 100}
+        {dmg: 80, cost: 200}
+        {dmg: 110, cost: 300}
+        {dmg: 180, cost: 450}
       ]
       range: [
         {sq: 1, cost: 0}
@@ -39,9 +39,9 @@ NB.towerData = {
       ]
       speed: [
         {rate: 1.2, cost: 0}
-        {rate: .9, cost: 210}
-        {rate: .6, cost: 430}
-        {rate: .4, cost: 700}
+        {rate: .9, cost: 190}
+        {rate: .6, cost: 330}
+        {rate: .4, cost: 600}
         {rate: .2, cost: 1075}
       ]
       special: [

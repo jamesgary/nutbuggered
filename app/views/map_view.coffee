@@ -4,14 +4,20 @@ NB.Map.prototype.drawInit = ->
     ctx = canvas.getContext("2d")
     dim = 32
 
+    startX = @path.start()[0]
+    startY = @path.start()[1]
     for x in [0...@width]
       for y in [0...@height]
+        if x == startX && y == startY
+          image = NB.imageData.spawner
+        else
+          if @path.contains([x,y])
+            image = NB.imageData.path
+          else
+            image = NB.imageData.grass
         xPos = x * dim
         yPos = y * dim
-        if @path.contains([x,y])
-          ctx.drawImage(NB.imageData.path, xPos, yPos)
-        else
-          ctx.drawImage(NB.imageData.grass, xPos, yPos)
+        ctx.drawImage(image, xPos, yPos)
 
 NB.Map.prototype.draw = ->
   canvas = document.getElementById('foreground')
