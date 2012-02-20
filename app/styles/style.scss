@@ -260,6 +260,7 @@ html, body {
     position: relative;
     width: $map_width;
     canvas { position:absolute; }
+    #treeground { pointer-events: auto; }
     #dpad {
       background: transparent url('../../img/dpad.svg') no-repeat center center;
       background-size: 250px;
