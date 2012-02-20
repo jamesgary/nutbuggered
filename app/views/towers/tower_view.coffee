@@ -105,7 +105,6 @@ NB.Tower::drawUpgrades = ->
     $special.find('.not_maxed').hide()
     $special.find('.maxed').show()
   else
-    console.log(nextUpgrade)
     $special.find('.not_maxed').show()
     $special.find('.maxed').hide()
     cost        = nextUpgrade.cost

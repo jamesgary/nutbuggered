@@ -87,12 +87,13 @@ NB.Director = {
     if @placeholderTower
       @placeholderTower.direction = dir
   setPlaceholderTower: ->
-    realTower = @placeholderTower.promote()
-    @level.removeTower(@placeholderTower)
-    @placeTower(realTower, realTower.coordinates)
-    $('#dpad').hide()
-    @placeholderTower = null
-    @mapClick(realTower.coordinates)
+    if @placeholderTower
+      realTower = @placeholderTower.promote()
+      @level.removeTower(@placeholderTower)
+      @placeTower(realTower, realTower.coordinates)
+      $('#dpad').hide()
+      @placeholderTower = null
+      @mapClick(realTower.coordinates)
   movedOutOfMap: ->
     if @placeholderTower
       $('#dpad').hide()

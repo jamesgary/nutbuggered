@@ -58,7 +58,10 @@ NB.Controller = {
 
       NB.Director.turnPlaceholderTower(dir)
     )
-    $('#game_screen').on('click', '#dpad', (e) -> NB.Director.setPlaceholderTower())
+    $('#game_screen').on('click', '#dpad', (e) ->
+      NB.Director.setPlaceholderTower()
+      e.stopPropagation()
+    )
 
     # # context menus
     $('#game_screen').on('click', '.return_to_levels', (e) -> NB.Director.returnToLevels())
