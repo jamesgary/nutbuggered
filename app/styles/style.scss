@@ -291,8 +291,9 @@ html, body {
       }
       div {
         width: 100%;
-        &.top { top: 6px; }
-        &.bottom { bottom: 25px; }
+        &.name {
+          top: 6px;
+        }
         &.cost {
           bottom: 5px;
           color: #7e7;
@@ -304,22 +305,22 @@ html, body {
       &.boxer img {
         @include rotate(90deg);
         left: 18px;
-        top: 16px;
+        top: 35px;
       }
       &.slingshot img {
         @include rotate(85deg);
         left: 13px;
-        top: 14px;
+        top: 33px;
       }
       &.sumo img {
         @include rotate(90deg);
         left: 15px;
-        top: 17px;
+        top: 36px;
       }
       &.chilly img {
         @include rotate(90deg);
         left: 16px;
-        top: 16px;
+        top: 35px;
       }
     }
   }

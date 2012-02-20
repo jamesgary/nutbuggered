@@ -24,8 +24,7 @@ NB.Controller = {
     $('#game_screen').on('click', '.tower_chooser', (e) ->
       tower_type = NB[e.currentTarget.dataset.tower_type_placeholder]
       cost = NB.towerData[e.currentTarget.dataset.tower_type]().cost
-      console.log(cost)
-      NB.Director.clickTowerChooser(tower_type, 50)
+      NB.Director.clickTowerChooser(tower_type, cost)
     )
     # # placing towers
     $('#game_screen').on('mousemove', '#map', (e) ->

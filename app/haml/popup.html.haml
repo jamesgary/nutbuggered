@@ -46,24 +46,32 @@
           #dpad
         #buttons
           %a.button.boxer.tower_chooser{'data-tower_type_placeholder' => 'BoxerTowerPlaceholder', 'data-tower_type' => 'BoxerTower'}
-            .top Boxer
+            .name<
+              Boxer
+              %br>
+              Brown
             %img{:src => 'img/towers/boxer.png'}
-            .bottom Brown
             .cost ?
           %a.slingshot.tower_chooser{'data-tower_type_placeholder' => 'SlingshotTowerPlaceholder', 'data-tower_type' => 'SlingshotTower'}
-            .top Slingshot
+            .name<
+              Slingshot
+              %br>
+              Sally
             %img{:src => 'img/towers/slingshot.png'}
-            .bottom Sally
             .cost ?
           %a.sumo.tower_chooser{'data-tower_type_placeholder' => 'SumoTowerPlaceholder', 'data-tower_type' => 'SumoTower'}
-            .top Sumo
+            .name<
+              Sumo
+              %br>
+              Saburu
             %img{:src => 'img/towers/sumo.png'}
-            .bottom Saburu
             .cost ?
           %a.chilly.tower_chooser{'data-tower_type_placeholder' => 'ChillyTowerPlaceholder', 'data-tower_type' => 'ChillyTower'}
-            .top Chilly
+            .name<
+              Chilly
+              %br>
+              Chell
             %img{:src => 'img/towers/chilly.png'}
-            .bottom Chell
             .cost ?
 
           /%a.button.tower_chooser{'data-tower_type' => 'BoxerTowerPlaceholder'} Boxer Brown!

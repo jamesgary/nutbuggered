@@ -80,8 +80,7 @@ NB.Director = {
         @activeTower.unclick()
         @activeTower = null
   clickTowerChooser: (towerType, cost) ->
-    console.log(cost)
-    console.log(@level.money)
+    console.log("cost: #{cost} and i have #{@level.money}")
     if cost <= @level.money
       @activeTower.unclick() if @activeTower
       @placeholderTower = new towerType()
