@@ -11,7 +11,9 @@ NB.Tree.prototype.draw = (ctx) ->
     if healthPercentage < .33
       image = NB.imageData.tree_dmg3
 
+  ctx.globalAlpha = 0.7
   ctx.drawImage(image, @x + nudgeRight, @y)
+  ctx.globalAlpha = 1
 
   margin = 20
   dim = 160
