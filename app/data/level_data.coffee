@@ -78,7 +78,63 @@ NB.levelData = {
           [8,  11]
           [10, 11]
         ])})
-        tree: new NB.Tree(1000, [10, 11])
+        tree: new NB.Tree(500, [10, 11])
+      })
+    }
+  hard: ->
+    {
+      level: new NB.Level({
+        wavesData: [
+          {creepData: {type: NB.Ant, money: 20,  hpMod: .5,    speedMod: 1,   countMod: 1.0, waitMod: 1}} # basic
+          {creepData: {type: NB.Ant, money: 35,  hpMod: 1.0,  speedMod: 1.1, countMod: 1.0, waitMod: 1}} # basic
+          {creepData: {type: NB.Ant, money: 10,  hpMod: 0.5,  speedMod: 1.4, countMod: 2.5, waitMod: .1}} # swarm
+          {creepData: {type: NB.Ant, money: 70,  hpMod: 2.2,  speedMod: 1.2, countMod: 1.0, waitMod: 1}} # basic
+          {creepData: {type: NB.Ant, money: 80,  hpMod: 2.0,  speedMod: 2.5, countMod: 1.2, waitMod: .9}} # fast
+          {creepData: {type: NB.Ant, money: 20,  hpMod: 1.7,  speedMod: 1.2, countMod: 2.5, waitMod: .3}} # swarm
+          {creepData: {type: NB.Ant, money: 110, hpMod: 3.0,  speedMod: 1.0, countMod: 1.0, waitMod: 1}} # basic
+          {creepData: {type: NB.Ant, money: 150, hpMod: 3.0,  speedMod: 3.5, countMod: 1.2, waitMod: .9}} # fast
+          {creepData: {type: NB.Ant, money: 50,  hpMod: 2.7,  speedMod: 1.2, countMod: 3.5, waitMod: .1}} # swarm
+          {creepData: {type: NB.Creep, money: 380, hpMod: 20.0, speedMod: 0.8, countMod: 0.1, waitMod: 1}} # boss
+        ]
+        map: new NB.Map({path: new NB.Path([
+          [13,1]
+          [12,1 ]
+          [12,2 ]
+          [11,2 ]
+          [11,3 ]
+          [10,3 ]
+          [10,4 ]
+          [9,4  ]
+          [9,5  ]
+          [8,5  ]
+          [8,6  ]
+          [7,6  ]
+          [7,7  ]
+          [6,7  ]
+          [6,8  ]
+          [5,8  ]
+          [5,9  ]
+          [4,9  ]
+          [4,10 ]
+          [3,10 ]
+          [3,11 ]
+          [2,11 ]
+          [2,12 ]
+          [1,12 ]
+          [1,14 ]
+          [4,14 ]
+          [4,13 ]
+          [6,13 ]
+          [6,12 ]
+          [8,12 ]
+          [8,11 ]
+          [10,11]
+          [10,10]
+          [12,10]
+          [12,9 ]
+          [13,9 ]
+        ])})
+        tree: new NB.Tree(500, [13, 9])
       })
     }
 }
