@@ -99,8 +99,7 @@ NB.Level = class Level
       @chargeMoney(@swatter.cost)
       creep.damage(50) for creep in @findCreep(
         range: @swatter.rangeCoordinates
-        limit: 5
-        priority: NB.Priorities.FIRST
+        limit: 10
       )
 
   # private
