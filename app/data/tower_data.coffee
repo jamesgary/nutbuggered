@@ -3,9 +3,9 @@ NB.towerData = {
     cost: 50
     upgrades: {
       power: [
-        {dmg: 20, cost: 0}
+        {dmg: 30, cost: 0}
         {dmg: 50, cost: 100}
-        {dmg: 70, cost: 150}
+        {dmg: 75, cost: 150}
         {dmg: 120, cost: 250}
         {dmg: 200, cost: 350}
       ]

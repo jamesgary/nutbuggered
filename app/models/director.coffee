@@ -2,10 +2,15 @@ NB.Director = {
   start: ->
     @stage = new NB.Stage()
     @tick()
+    @gameSpeed = 1
   tick: ->
     webkitRequestAnimationFrame(NB.Director.tick)
+    NB.Director.gamesSpeed = 1 unless NB.Director.gamesSpeed
     unless NB.Director.paused
       NB.Director.stage.tick()
+      NB.Director.stage.tick() if NB.Director.gameSpeed > 1
+      NB.Director.stage.tick() if NB.Director.gameSpeed > 2
+      NB.Director.stage.tick() if NB.Director.gameSpeed > 2
       NB.Director.stage.draw()
   placeTower: (tower, coordinates) ->
     @level.placeTower(tower, coordinates)
@@ -119,4 +124,8 @@ NB.Director = {
       $('#dpad').hide()
       @level.removeTower(@placeholderTower)
       @placeholderTower = null
+  setGameSpeed: (speed) ->
+    @gameSpeed = speed
+    $('#speed div').removeClass('highlight')
+    $("#speed #speed#{speed}").addClass('highlight')
 }

@@ -14,6 +14,11 @@ NB.Controller = {
     $('#game_screen').on('click', '#pause',   (e) -> NB.Director.pause())
     $('#game_screen').on('click', '#unpause', (e) -> NB.Director.unpause())
 
+    # # speed
+    $('#game_screen').on('click', '#speed1',   (e) -> NB.Director.setGameSpeed(1))
+    $('#game_screen').on('click', '#speed2',   (e) -> NB.Director.setGameSpeed(2))
+    $('#game_screen').on('click', '#speed4',   (e) -> NB.Director.setGameSpeed(4))
+
     # # close wave explainer
     $('#game_screen').on('click', '#waves .close, #waves .wave', (e) -> $('#explainer').fadeOut(100))
 
@@ -94,6 +99,10 @@ NB.Controller = {
         when 'g' then $('.swatter').click()
         when 'b' then $('.tower_chooser.bazooka').click()
         when ' ' then [NB.Director.level.sendNextWave(),  $('#explainer').fadeOut(100)]
+        when '`' then NB.Director.pause()
+        when '1' then NB.Director.setGameSpeed(1)
+        when '2' then NB.Director.setGameSpeed(2)
+        when '3' then NB.Director.setGameSpeed(4)
 
       #FIXME DRY
       x = NB.Director.currentX

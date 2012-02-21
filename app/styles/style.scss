@@ -147,18 +147,19 @@ html, body {
     color: white;
     height: $infobar_height;
     padding: 5px;
-    div {
-      position: absolute;
-    }
     #speed {
       div {
         @include buttonize(gray, 12px);
         border-width: 1px;
         display: inline-block;
+        &.highlight {
+          border-color: #2b2;
+        }
       }
     }
     #money {
       left: 730px;
+      position: absolute;
       &:before {
         content: 'Money: $';
       }

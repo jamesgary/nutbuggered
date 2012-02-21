@@ -17,17 +17,18 @@
           Start
       #game_screen.screen
         #infobar
+          #money ???
           #speed
             #pause II
-            /#speed1 &#x25B6;
-            /#speed2 &#x25B6; &#x25B6;
-            /#speed3 &#x25B6; &#x25B6; &#x25B6;
-          #money ???
+            #speed1 &#x25B6;
+            #speed2 &#x25B6;&#x25B6;
+            #speed4 &#x25B6;&#x25B6;&#x25B6;
         #waves
           #explainer
             .close X
             %p{:style => 'margin-right: 35px'} Click the first wave to start. You can also hit [spacebar] to send the next wave.
             %p When you're feeling bold, you can click a future wave to start spawning that wave early. Any bugs that were still queued to spawn will grant 25% more money!
+            %p One last thing: 1, 2, and 3 are hot keys for game speed, and ~ will pause the game.
           %ul
             %li.wave{'data-wave_index' => 1}Wave 1
             %li.wave{'data-wave_index' => 2}Wave 2
