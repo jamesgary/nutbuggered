@@ -99,8 +99,8 @@ NB.Tower::drawUpgrades = ->
 
 
   $special = $('#upgrades .special')
-  if @constructor == NB.BoxerTower
-    $special.show()
+  if @constructor == NB.BoxerTower || @constructor == NB.BazookaTower
+    $special.css('visibility', 'visible')
     nextUpgrade = @nextSpecialUpgrade()
 
     if nextUpgrade == null # maxed out
@@ -123,7 +123,7 @@ NB.Tower::drawUpgrades = ->
           tower.drawUpgrades()
       )
   else
-    $special.hide()
+    $special.css('visibility', 'hidden')
 
 
 

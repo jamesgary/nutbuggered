@@ -2,7 +2,7 @@ NB.BazookaTower = class BazookaTower extends NB.Tower
   constructor: (@coordinates, @direction) ->
     data = NB.towerData.BazookaTower()
     super(data)
-    @pierceLimit = 2
+    @pierceLimit = 5
 
     x = @coordinates[0]
     y = @coordinates[1]
@@ -37,6 +37,13 @@ NB.BazookaTower = class BazookaTower extends NB.Tower
       @radius = @upgrades.range[0].sq
       @refreshRange()
     @upgrades.range.shift()
+
+  upgradeSpecial: ->
+    if @upgrades.special.length == 2 # first upgrade
+      @pierceLimit = 10
+    else
+      @pierceLimit = 25
+    @upgrades.special.shift()
 
 NB.BazookaTowerPlaceholder = class BazookaTowerPlaceholder extends NB.BazookaTower
   constructor: (@coordinates) ->

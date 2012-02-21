@@ -8,7 +8,7 @@ NB.Level = class Level
     @currentWaves = []
     @map = data.map
     @tree = data.tree
-    @money = 1000
+    @money = 10000
     @currentWaveIndex = 0
     @currentWaveAge = 0
 
