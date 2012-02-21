@@ -66,6 +66,7 @@ $aqua_green: #90EE90;
 }
 html, body {
   background: black;
+  overflow: hidden; //FIXME: Just here to prevent Pokki window from resizing, but borks browser
   width: $main_width;
   height: $main_height;
   &, ul, li, p {

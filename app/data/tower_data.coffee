@@ -23,26 +23,26 @@ NB.towerData = {
     }
   }
   SlingshotTower: -> {
-    cost: 100
+    cost: 75
     upgrades: {
       power: [
-        {dmg: 25, cost: 0}
-        {dmg: 45, cost: 100}
-        {dmg: 80, cost: 200}
-        {dmg: 110, cost: 300}
-        {dmg: 180, cost: 450}
+        {dmg: 35, cost: 0}
+        {dmg: 55, cost: 100}
+        {dmg: 100, cost: 200}
+        {dmg: 160, cost: 300}
+        {dmg: 250, cost: 450}
       ]
       range: [
         {sq: 1, cost: 0}
-        {sq: 2, cost: 300}
-        {sq: 3, cost: 500}
+        {sq: 2, cost: 100}
+        {sq: 3, cost: 200}
       ]
       speed: [
         {rate: 1.2, cost: 0}
-        {rate: .9, cost: 190}
-        {rate: .6, cost: 330}
-        {rate: .4, cost: 600}
-        {rate: .2, cost: 1075}
+        {rate: .9, cost: 120}
+        {rate: .6, cost: 200}
+        {rate: .4, cost: 400}
+        {rate: .2, cost: 600}
       ]
       special: [
         {description: "Ricochet your shot against nearby bugs", cost: 500}
@@ -51,14 +51,14 @@ NB.towerData = {
     }
   }
   SumoTower: -> {
-    cost: 350
+    cost: 200
     upgrades: {
       power: [
         {dmg: 20, cost: 0}
-        {dmg: 50, cost: 500}
-        {dmg: 70, cost: 900}
-        {dmg: 120, cost: 1600}
-        {dmg: 200, cost: 2800}
+        {dmg: 50, cost: 300}
+        {dmg: 70, cost: 600}
+        {dmg: 120, cost: 1000}
+        {dmg: 200, cost: 1600}
       ]
       range: [
         {sq: 1, cost: 0}
@@ -67,10 +67,10 @@ NB.towerData = {
       ]
       speed: [
         {rate: 1.7, cost: 0}
-        {rate: 1.4, cost: 210}
-        {rate: 1.2, cost: 430}
-        {rate: 1.0, cost: 1000}
-        {rate: 0.8, cost: 1875}
+        {rate: 1.4, cost: 180}
+        {rate: 1.2, cost: 350}
+        {rate: 1.0, cost: 600}
+        {rate: 0.8, cost: 1075}
       ]
       special: [
         {description: "20% chance to stun", cost: 1500}
@@ -79,14 +79,14 @@ NB.towerData = {
     }
   }
   ChillyTower: -> {
-    cost: 500
+    cost: 200
     upgrades: {
       power: [
-        {dmg: .20, cost: 0}
-        {dmg: .30, cost: 500}
-        {dmg: .40, cost: 900}
-        {dmg: .50, cost: 1600}
-        {dmg: .60, cost: 2800}
+        {dmg: .25, cost: 0}
+        {dmg: .35, cost: 200}
+        {dmg: .45, cost: 400}
+        {dmg: .55, cost: 800}
+        {dmg: .65, cost: 1000}
       ]
       range: [
         {sq: 1, cost: 0}
@@ -100,14 +100,14 @@ NB.towerData = {
     }
   }
   BazookaTower: -> {
-    cost: 60
+    cost: 300
     upgrades: {
       power: [
-        {dmg: 20, cost: 0}
-        {dmg: 40, cost: 300}
-        {dmg: 75, cost: 600}
-        {dmg: 150, cost: 900}
-        {dmg: 280, cost: 1500}
+        {dmg: 60, cost: 0}
+        {dmg: 120, cost: 300}
+        {dmg: 240, cost: 600}
+        {dmg: 400, cost: 900}
+        {dmg: 600, cost: 1500}
       ]
       range: [
         {sq: 3, cost: 0}
@@ -115,11 +115,11 @@ NB.towerData = {
         {sq: 16, cost: 1000}
       ]
       speed: [
-        {rate: 1.7, cost: 0}
-        {rate: 1.4, cost: 210}
-        {rate: 1.2, cost: 430}
-        {rate: 1.0, cost: 1000}
-        {rate: 0.8, cost: 1875}
+        {rate: 1.6, cost: 0}
+        {rate: 1.3, cost: 210}
+        {rate: 1.0, cost: 430}
+        {rate: 0.7, cost: 1000}
+        {rate: 0.5, cost: 1875}
       ]
       special: [
         {description: "Pierce through 10 bugs", cost: 600}

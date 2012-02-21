@@ -29,7 +29,7 @@ NB.Tower::drawUpgrades = ->
     else
       powerCost = nextUpgrade.cost
       dmg = nextUpgrade.dmg
-      dmg *= 100 if isChilly # using percentages
+      dmg = Math.round(dmg * 100) if isChilly # using percentages
       $power.find('.not_maxed').show()
       $power.find('.new').text(dmg)
       $power.find('.cost').text(powerCost)

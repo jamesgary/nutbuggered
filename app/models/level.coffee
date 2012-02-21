@@ -5,6 +5,15 @@ NB.Level = class Level
     @waves = for waveData in data.wavesData
       waveData.path = data.map.path
       new NB.Wave(waveData)
+    if @waves.length <= 10
+      $('.wave.med').hide()
+      $('.wave.hard').hide()
+    else if @waves.length <= 13
+      $('.wave.med').show()
+      $('.wave.hard').hide()
+    else
+      $('.wave.med').show()
+      $('.wave.hard').show()
     @currentWaves = []
     @map = data.map
     @tree = data.tree
