@@ -6,8 +6,8 @@ NB.levelData = {
           {creepData: {type: NB.Ant, money: 20,  hpMod: .5,    speedMod: 1,   countMod: 1.0, waitMod: 1}} # basic
           {creepData: {type: NB.Ant, money: 35,  hpMod: 1.0,  speedMod: 1.1, countMod: 1.0, waitMod: 1}} # basic
           {creepData: {type: NB.Ant, money: 10,  hpMod: 0.5,  speedMod: 1.4, countMod: 2.5, waitMod: .1}} # swarm
-          {creepData: {type: NB.Ant, money: 70,  hpMod: 2.2,  speedMod: 1.2, countMod: 1.0, waitMod: 1}} # basic
-          {creepData: {type: NB.Ant, money: 80,  hpMod: 2.0,  speedMod: 2.5, countMod: 1.2, waitMod: .9}} # fast
+          {creepData: {type: NB.Ant, money: 50,  hpMod: 2.2,  speedMod: 1.2, countMod: 1.0, waitMod: 1}} # basic
+          {creepData: {type: NB.Ant, money: 60,  hpMod: 2.0,  speedMod: 2.5, countMod: 1.2, waitMod: .9}} # fast
           {creepData: {type: NB.Ant, money: 20,  hpMod: 1.7,  speedMod: 1.2, countMod: 2.5, waitMod: .3}} # swarm
           {creepData: {type: NB.Ant, money: 110, hpMod: 3.0,  speedMod: 1.0, countMod: 1.0, waitMod: 1}} # basic
           {creepData: {type: NB.Ant, money: 150, hpMod: 3.0,  speedMod: 3.5, countMod: 1.2, waitMod: .9}} # fast

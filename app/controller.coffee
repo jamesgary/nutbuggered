@@ -41,8 +41,8 @@ NB.Controller = {
     )
     # # placing towers
     $('#game_screen').on('mousemove', '#map', (e) ->
-      x = e.offsetX
-      y = e.offsetY
+      x = NB.Director.currentX = e.offsetX
+      y = NB.Director.currentY = e.offsetY
       if NB.Director.level.swatter
         NB.Director.mapHoverWithSwatter([x,y])
       else
@@ -79,6 +79,32 @@ NB.Controller = {
     )
     $('#game_screen').on('click', '#dpad', (e) ->
       NB.Director.setPlaceholderTower()
+      e.stopPropagation()
+    )
+
+    # # hotkeys
+    $('body').keypress((e) ->
+      NB.Director.movedOutOfMap()
+      key = String.fromCharCode(e.which)
+      switch key
+        when 'q' then $('.tower_chooser.boxer').click()
+        when 'w' then $('.tower_chooser.slingshot').click()
+        when 'e' then $('.tower_chooser.sumo').click()
+        when 'r' then $('.tower_chooser.chilly').click()
+        when 't' then $('.tower_chooser.bazooka').click()
+        when ' ' then $('.swatter').click()
+
+      #FIXME DRY
+      x = NB.Director.currentX
+      y = NB.Director.currentY
+      if (x && y)
+        if NB.Director.level.swatter
+          NB.Director.mapHoverWithSwatter([x,y])
+        else
+          x = parseInt(x / 32)
+          y = parseInt(y / 32)
+          NB.Director.mapHover([x,y])
+
       e.stopPropagation()
     )
 
