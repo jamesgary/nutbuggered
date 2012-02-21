@@ -87,12 +87,13 @@ NB.Controller = {
       NB.Director.movedOutOfMap()
       key = String.fromCharCode(e.which)
       switch key
-        when 'q' then $('.tower_chooser.boxer').click()
-        when 'w' then $('.tower_chooser.slingshot').click()
-        when 'e' then $('.tower_chooser.sumo').click()
-        when 'r' then $('.tower_chooser.chilly').click()
-        when 't' then $('.tower_chooser.bazooka').click()
-        when ' ' then $('.swatter').click()
+        when 'a' then $('.tower_chooser.boxer').click()
+        when 's' then $('.tower_chooser.slingshot').click()
+        when 'd' then $('.tower_chooser.sumo').click()
+        when 'f' then $('.tower_chooser.chilly').click()
+        when 'g' then $('.swatter').click()
+        when 'b' then $('.tower_chooser.bazooka').click()
+        when ' ' then [NB.Director.level.sendNextWave(),  $('#explainer').fadeOut(100)]
 
       #FIXME DRY
       x = NB.Director.currentX
