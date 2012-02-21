@@ -46,56 +46,84 @@
           %canvas#treeground{:width => '512', :height => '512'}
           #dpad
         #buttons
-          %a.button.boxer.tower_chooser{'data-tower_type_placeholder' => 'BoxerTowerPlaceholder', 'data-tower_type' => 'BoxerTower'}
+          %a.button.boxer.tower_chooser{'data-tower_type_placeholder' => 'BoxerTowerPlaceholder', 'data-tower_type' => 'BoxerTower', 'data-name' => 'boxer'}
             .name<
               Boxer
               %br>
               Brown
             %img{:src => 'img/towers/boxer.png'}
             .cost ?
-          %a.slingshot.tower_chooser{'data-tower_type_placeholder' => 'SlingshotTowerPlaceholder', 'data-tower_type' => 'SlingshotTower'}
+          %a.slingshot.tower_chooser{'data-tower_type_placeholder' => 'SlingshotTowerPlaceholder', 'data-tower_type' => 'SlingshotTower', 'data-name' => 'slingshot'}
             .name<
               Slingshot
               %br>
               Sally
             %img{:src => 'img/towers/slingshot.png'}
             .cost ?
-          %a.sumo.tower_chooser{'data-tower_type_placeholder' => 'SumoTowerPlaceholder', 'data-tower_type' => 'SumoTower'}
+          %a.sumo.tower_chooser{'data-tower_type_placeholder' => 'SumoTowerPlaceholder', 'data-tower_type' => 'SumoTower', 'data-name' => 'sumo'}
             .name<
               Sumo
               %br>
               Saburu
             %img{:src => 'img/towers/sumo.png'}
             .cost ?
-          %a.chilly.tower_chooser{'data-tower_type_placeholder' => 'ChillyTowerPlaceholder', 'data-tower_type' => 'ChillyTower'}
+          %a.chilly.tower_chooser{'data-tower_type_placeholder' => 'ChillyTowerPlaceholder', 'data-tower_type' => 'ChillyTower', 'data-name' => 'chilly'}
             .name<
               Chilly
               %br>
               Chell
             %img{:src => 'img/towers/chilly.png'}
             .cost ?
-          %a.bazooka.tower_chooser{'data-tower_type_placeholder' => 'BazookaTowerPlaceholder', 'data-tower_type' => 'BazookaTower'}
+          %a.bazooka.tower_chooser{'data-tower_type_placeholder' => 'BazookaTowerPlaceholder', 'data-tower_type' => 'BazookaTower', 'data-name' => 'bazooka'}
             .name<
               Bazooka
               %br>
               Becky
             %img{:src => 'img/towers/bazooka.png'}
             .cost ?
-          %a.swatter
+          %a.swatter{'data-name' => 'swatter'}
             .name Swatter
             %img{:src => 'img/swatter.png'}
             .cost 10
 
-          /%a.button.tower_chooser{'data-tower_type' => 'BoxerTowerPlaceholder'} Boxer Brown!
-          /%a.button.tower_chooser{'data-tower_type' => 'BoxerTowerPlaceholder'} Boxer Brown!
-          /%a.button.tower_chooser{'data-tower_type' => 'BoxerTowerPlaceholder'} Boxer Brown!
-          /%a.button.tower_chooser{'data-tower_type' => 'BoxerTowerPlaceholder'} Boxer Brown!
         #infospace
           #tower_descriptions
             .boxer
-              %img{:src => 'img/towers/boxer.png', :height => '64', :width => '64'}
-              %p
-                Boxer Brown was born to fight!
+              .img
+                .img_frame
+                  %img{:src => 'img/towers/boxer.png'}
+              %h2 Boxer Brown (Hotkey: Q)
+              %p A former super lightweight champ, black belt in Capoeira, and successful tapioca-scented soap salesman, Brown now puts on the gloves to knock out bug scum. He can upgrade to punch and tail whip at the same time, a trick he picked up in Malaysia one summer. If fully upgraded, he can do his signature roundhouse kick, damaging as many as 8 bugs around him.
+            .slingshot
+              .img
+                .img_frame
+                  %img{:src => 'img/towers/slingshot.png'}
+              %h2 Slingshot Sally (Hotkey: W)
+              %p Sally grew up on her family farm taking potshots at bugs encroaching on their prized tapioca trees. But now the stakes are higher: the very existence of squirrel-kind as she knows it (which is admittedly rather limited). But not one to back down from a challenge, she strikes down bugs with perfect accuracy from a considerable distance.
+            .sumo
+              .img
+                .img_frame
+                  %img{:src => 'img/towers/sumo.png'}
+              %h2 Sumo Saburu (Hotkey: E)
+              %p Saburu had shown early promise as a Sumo wrestler. He had skill, dedication, and integrity. So much integrity, however, that he decided to resign from the Squirrel Sumo Association due to its recent tapioca scandals. Saburu now must purify his soul the only way he can: bug stompin'.
+            .chilly
+              .img
+                .img_frame
+                  %img{:src => 'img/towers/chilly.png'}
+              %h2 Chilly Chell (Hotkey: R)
+              %p Winter always seems to follow Chell, which is why she's always hibernating. Whenever we try to wake her, she just rolls over and mumbles something inappropriate about tapioca. Anyway, when any bugs go near her, they will feel the chill and be slowed down.
+            .bazooka
+              .img
+                .img_frame
+                  %img{:src => 'img/towers/bazooka.png'}
+              %h2 Bazooka Becky (Hotkey: T)
+              %p The bugs stand for conformity, obedience, and control. Becky enjoys debating the bugs on these issues... with her thorax-piercing cast-iron tapioca-infused bazooka. It randomly shoots through 5 bugs at first, and then 10 bugs when upgraded. Satisfy Becky's bloodlust by upgrading again, and she'll pierce through 25 bugs.
+            .swatter
+              .img
+                .img_frame
+                  %img{:src => 'img/swatter.png'}
+              %h2 Swatter (Hotkey: [Space Bar])
+              %p When you're in a panic, you can take matters into your own hand. Each swat costs $10, so use only when needed. Warning: Do not attempt to use as a tapioca spoon. It is highly ineffective.
 
           #upgrades
             .upgrade.power

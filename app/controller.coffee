@@ -26,6 +26,13 @@ NB.Controller = {
       cost = NB.towerData[e.currentTarget.dataset.tower_type]().cost
       NB.Director.clickTowerChooser(tower_type, cost)
     )
+    $('#game_screen').on('mouseover', '.tower_chooser, .swatter', (e) ->
+      tower_name = e.currentTarget.dataset.name
+      console.log(tower_name)
+      $("#infospace #tower_descriptions > div").hide()
+      $("#infospace #tower_descriptions .#{tower_name}").show()
+    )
+
     $('#game_screen').on('click', '.swatter', (e) ->
       NB.Director.clickSwatter()
     )

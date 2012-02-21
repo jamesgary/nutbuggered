@@ -343,6 +343,42 @@ html, body {
     height: $infospace_height;
     position: relative;
     width: $infospace_width;
+    #tower_descriptions {
+      margin: 10px;
+      height: 100%;
+      position: relative;
+      & > div {
+        display: none;
+        h2 {
+          font-size: 36px;
+          margin: 0;
+          padding: 0;
+        }
+        .img {
+          float: left;
+          height: 100%;
+          .img_frame {
+            height: 128px;
+            width: 128px;
+            overflow: hidden;
+            img {
+              height: 128px;
+              width: 128px;
+            }
+          }
+        }
+        &.bazooka {
+          .img_frame {
+            img {
+              margin-top: 9px;
+              margin-left: -23px;
+              height: 164px;
+              width: 164px;
+            }
+          }
+        }
+      }
+    }
     #upgrades {
       display: none;
       height: 100%;
