@@ -8,6 +8,13 @@ NB.imageData = {
     @sumo.src = "img/towers/sumo.png?#{new Date().getTime()}"
     @chilly = new Image
     @chilly.src = "img/towers/chilly.png?#{new Date().getTime()}"
+    @bazooka = new Image
+    @bazooka.src = "img/towers/bazooka.png?#{new Date().getTime()}"
+
+    @swatter = new Image
+    @swatter.src = "img/swatter.png?#{new Date().getTime()}"
+    @swatterHit = new Image
+    @swatterHit.src = "img/swatter-hit.png?#{new Date().getTime()}"
 
     @grass = new Image
     @grass.src = "img/grass.png?#{new Date().getTime()}"

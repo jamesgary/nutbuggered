@@ -93,6 +93,16 @@ NB.Level = class Level
   canAfford: (dollars) ->
     @money >= dollars
 
+  swatted: (coordinates) ->
+    if @canAfford(@swatter.cost)
+      @swatter.swatted = true
+      @chargeMoney(@swatter.cost)
+      creep.damage(50) for creep in @findCreep(
+        range: @swatter.rangeCoordinates
+        limit: 5
+        priority: NB.Priorities.FIRST
+      )
+
   # private
 
   getAllCreep: ->
@@ -113,4 +123,7 @@ NB.Level = class Level
       when NB.Priorities.WEAKEST
         sorter = (a,b) ->
           a.hp > b.hp
+      else # random
+        sorter = (a,b) ->
+          Math.random() > .5
     sorter

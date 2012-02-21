@@ -99,4 +99,32 @@ NB.towerData = {
       ]
     }
   }
+  BazookaTower: -> {
+    cost: 60
+    upgrades: {
+      power: [
+        {dmg: 20, cost: 0}
+        {dmg: 40, cost: 300}
+        {dmg: 75, cost: 600}
+        {dmg: 150, cost: 900}
+        {dmg: 280, cost: 1500}
+      ]
+      range: [
+        {sq: 3, cost: 0}
+        {sq: 6, cost: 400}
+        {sq: 16, cost: 1000}
+      ]
+      speed: [
+        {rate: 1.7, cost: 0}
+        {rate: 1.4, cost: 210}
+        {rate: 1.2, cost: 430}
+        {rate: 1.0, cost: 1000}
+        {rate: 0.8, cost: 1875}
+      ]
+      special: [
+        {description: "Pierce through 10 bugs", cost: 600}
+        {description: "Pierce through 25 bugs", cost: 1000}
+      ]
+    }
+  }
 }

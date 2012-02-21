@@ -279,7 +279,7 @@ html, body {
     float: left;
     height: $map_height;
     width: $buttons_width;
-    a.tower_chooser {
+    a.tower_chooser, a.swatter {
       $button_width: .4 * $buttons_width;
       @include buttonize($med_blue, 18px);
       height: $button_width + 20px;
@@ -324,6 +324,15 @@ html, body {
         @include rotate(90deg);
         left: 16px;
         top: 35px;
+      }
+      &.bazooka img {
+        @include rotate(90deg);
+        left: -13px;
+        top: 18px;
+      }
+      &.swatter img {
+        left: 8px;
+        top: 26px;
       }
     }
   }

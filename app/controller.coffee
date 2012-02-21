@@ -26,14 +26,22 @@ NB.Controller = {
       cost = NB.towerData[e.currentTarget.dataset.tower_type]().cost
       NB.Director.clickTowerChooser(tower_type, cost)
     )
+    $('#game_screen').on('click', '.swatter', (e) ->
+      NB.Director.clickSwatter()
+    )
     # # placing towers
     $('#game_screen').on('mousemove', '#map', (e) ->
-      x = parseInt(e.offsetX / 32)
-      y = parseInt(e.offsetY / 32)
-      NB.Director.mapHover([x,y])
+      x = e.offsetX
+      y = e.offsetY
+      if NB.Director.level.swatter
+        NB.Director.mapHoverWithSwatter([x,y])
+      else
+        x = parseInt(x / 32)
+        y = parseInt(y / 32)
+        NB.Director.mapHover([x,y])
     )
     $('#game_screen').on('mouseleave', '#map', (e) -> NB.Director.movedOutOfMap())
-    $('#game_screen').on('click', '#map', (e) ->
+    $('#game_screen').on('mousedown', '#map', (e) ->
       x = parseInt(e.offsetX / 32)
       y = parseInt(e.offsetY / 32)
       NB.Director.mapClick([x, y])

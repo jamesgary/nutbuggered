@@ -16,6 +16,7 @@ spec_files = [
   "../js/compiled/models/towers/slingshot_tower_spec.js",
   "../js/compiled/models/towers/sumo_tower_spec.js",
   "../js/compiled/models/towers/chilly_tower_spec.js",
+  "../js/compiled/models/towers/bazooka_tower_spec.js",
 
   "../js/compiled/views/map_view_spec.js",
 ]

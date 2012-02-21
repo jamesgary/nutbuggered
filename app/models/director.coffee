@@ -68,21 +68,39 @@ NB.Director = {
       @placeholderTower.coordinates = coordinates
       @placeholderTower.refreshRange()
       @placeTower(@placeholderTower, coordinates)
+  mapHoverWithSwatter: (coordinates) ->
+    dim = 32
+    x = coordinates[0]
+    y = coordinates[1]
+    cellX = parseInt(x / dim) * dim
+    cellY = parseInt(y / dim) * dim
+    rangeCoordinates = [[parseInt(x / dim), parseInt(y / dim)]]
+    @level.swatter.rangeCoordinates = rangeCoordinates
+    @level.swatter.x = x
+    @level.swatter.y = y
+    @level.swatter.range = [[cellX, cellY]]
+
   mapClick: (coordinates) ->
-    @placeholderTower.hovering = false if @placeholderTower
-    tower = @level.map.cellAt(coordinates[0], coordinates[1])
-    if tower
-      @activeTower.unclick() if @activeTower
-      @activeTower = tower
-      tower.clicked()
+    if @level.swatter
+      @level.swatted(coordinates)
     else
-      if @activeTower
-        @activeTower.unclick()
-        @activeTower = null
+      @placeholderTower.hovering = false if @placeholderTower
+      tower = @level.map.cellAt(coordinates[0], coordinates[1])
+      if tower
+        @activeTower.unclick() if @activeTower
+        @activeTower = tower
+        tower.clicked()
+      else
+        if @activeTower
+          @activeTower.unclick()
+          @activeTower = null
   clickTowerChooser: (towerType, cost) ->
+    @level.swatter = null
     if cost <= @level.money
       @activeTower.unclick() if @activeTower
       @placeholderTower = new towerType()
+  clickSwatter: ->
+    @level.swatter = {cost: 10, range: []}
   turnPlaceholderTower: (dir) ->
     if @placeholderTower
       @placeholderTower.direction = dir
@@ -95,6 +113,8 @@ NB.Director = {
       @placeholderTower = null
       @mapClick(realTower.coordinates)
   movedOutOfMap: ->
+    @level.eraseCoordinates = null
+    @level.swatter = null
     if @placeholderTower
       $('#dpad').hide()
       @level.removeTower(@placeholderTower)

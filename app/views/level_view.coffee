@@ -14,6 +14,22 @@ NB.Level::draw = ->
   # draw canvas
   wave.draw(@ctx) for wave in @currentWaves
   @map.draw(@ctx)
+
+  if @swatter
+    # draw range
+    dim = 32
+    @ctx.fillStyle = "rgba(255,255,255,.3)"
+    @ctx.fillRect(cell[0], cell[1], dim, dim) for cell in @swatter.range
+
+    if @swatter.swatted
+      @swatter.hitLength = 5
+    if @swatter.hitLength && @swatter.hitLength > 0
+      @ctx.drawImage(NB.imageData.swatterHit, @swatter.x - 24, @swatter.y - 24)
+      @swatter.hitLength--
+      @swatter.swatted = false
+    else
+      @ctx.drawImage(NB.imageData.swatter, @swatter.x - 24, @swatter.y - 24)
+
   @tree.draw(@treeCtx)
   if @eraseCoordinates
     size = 70

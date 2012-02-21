@@ -74,17 +74,28 @@
               Chell
             %img{:src => 'img/towers/chilly.png'}
             .cost ?
+          %a.bazooka.tower_chooser{'data-tower_type_placeholder' => 'BazookaTowerPlaceholder', 'data-tower_type' => 'BazookaTower'}
+            .name<
+              Bazooka
+              %br>
+              Becky
+            %img{:src => 'img/towers/bazooka.png'}
+            .cost ?
+          %a.swatter
+            .name Swatter
+            %img{:src => 'img/swatter.png'}
+            .cost 10
 
           /%a.button.tower_chooser{'data-tower_type' => 'BoxerTowerPlaceholder'} Boxer Brown!
           /%a.button.tower_chooser{'data-tower_type' => 'BoxerTowerPlaceholder'} Boxer Brown!
           /%a.button.tower_chooser{'data-tower_type' => 'BoxerTowerPlaceholder'} Boxer Brown!
           /%a.button.tower_chooser{'data-tower_type' => 'BoxerTowerPlaceholder'} Boxer Brown!
         #infospace
-          /#tower_descriptions
-          /  .boxer
-          /    %img{:src => 'img/towers/boxer.png', :height => '64', :width => '64'}
-          /    %p
-          /      Boxer Brown was born to fight!
+          #tower_descriptions
+            .boxer
+              %img{:src => 'img/towers/boxer.png', :height => '64', :width => '64'}
+              %p
+                Boxer Brown was born to fight!
 
           #upgrades
             .upgrade.power
