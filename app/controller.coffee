@@ -27,10 +27,13 @@ NB.Controller = {
       NB.Director.clickTowerChooser(tower_type, cost)
     )
     $('#game_screen').on('mouseover', '.tower_chooser, .swatter', (e) ->
+      if NB.Director.activeTower
+        NB.Director.activeTower.unclick()
+        NB.Director.activeTower = null
       tower_name = e.currentTarget.dataset.name
-      console.log(tower_name)
       $("#infospace #tower_descriptions > div").hide()
       $("#infospace #tower_descriptions .#{tower_name}").show()
+      $("#infospace #tower_descriptions").show()
     )
 
     $('#game_screen').on('click', '.swatter', (e) ->
@@ -49,6 +52,7 @@ NB.Controller = {
     )
     $('#game_screen').on('mouseleave', '#map', (e) -> NB.Director.movedOutOfMap())
     $('#game_screen').on('mousedown', '#map', (e) ->
+      $("#infospace #tower_descriptions").hide()
       x = parseInt(e.offsetX / 32)
       y = parseInt(e.offsetY / 32)
       NB.Director.mapClick([x, y])
